@@ -1,0 +1,82 @@
+2025-11-21 18:35:42.806 +02:00 [ERR] Shut down complete
+2025-11-21 21:54:18.342 +02:00 [INF] Starting APP
+2025-11-21 21:54:19.237 +02:00 [FTL] Application terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: MediatR.IRequestHandler`2[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQuery,API.Shared.Models.RequestResult`1[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekResponse]] Lifetime: Transient ImplementationType: API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler': Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: MediatR.IRequestHandler`2[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQuery,API.Shared.Models.RequestResult`1[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekResponse]] Lifetime: Transient ImplementationType: API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler': Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in /home/eslam/Documents/GitHub/CQRS-With-Vertical-Slicing/Program.cs:line 48
+2025-11-21 21:54:19.270 +02:00 [ERR] Shut down complete
+2025-11-21 21:54:40.496 +02:00 [INF] Starting APP
+2025-11-21 21:54:41.154 +02:00 [FTL] Application terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: MediatR.IRequestHandler`2[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQuery,API.Shared.Models.RequestResult`1[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekResponse]] Lifetime: Transient ImplementationType: API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler': Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: MediatR.IRequestHandler`2[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQuery,API.Shared.Models.RequestResult`1[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekResponse]] Lifetime: Transient ImplementationType: API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler': Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in /home/eslam/Documents/GitHub/CQRS-With-Vertical-Slicing/Program.cs:line 48
+2025-11-21 21:54:41.173 +02:00 [ERR] Shut down complete
+2025-11-21 21:54:53.737 +02:00 [INF] Starting APP
+2025-11-21 21:54:54.346 +02:00 [FTL] Application terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: MediatR.IRequestHandler`2[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQuery,API.Shared.Models.RequestResult`1[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekResponse]] Lifetime: Transient ImplementationType: API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler': Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: MediatR.IRequestHandler`2[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQuery,API.Shared.Models.RequestResult`1[API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekResponse]] Lifetime: Transient ImplementationType: API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler': Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'API.Infrastructure.Persistence.Repositories.ILongRepository`1[API.Domain.Entities.publics.Chef]' while attempting to activate 'API.Application.Features.Home.ChefOfTheWeek.GetChefOfTheWeekQueryHandler'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, ServiceIdentifier serviceIdentifier, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, ServiceIdentifier serviceIdentifier, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in /home/eslam/Documents/GitHub/CQRS-With-Vertical-Slicing/Program.cs:line 48
+2025-11-21 21:54:54.366 +02:00 [ERR] Shut down complete
+2025-11-21 21:56:02.505 +02:00 [INF] Starting APP
+2025-11-21 21:56:10.117 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-11-21 21:56:15.285 +02:00 [INF] HTTP GET / responded 302 in 10.6879 ms
+2025-11-21 21:56:15.579 +02:00 [INF] HTTP GET /scalar/v1 responded 200 in 258.8942 ms
+2025-11-21 21:56:15.624 +02:00 [INF] HTTP GET /scalar/scalar.aspnetcore.js responded 200 in 20.1531 ms
+2025-11-21 21:56:15.659 +02:00 [INF] HTTP GET /scalar/scalar.js responded 200 in 55.5173 ms
+2025-11-21 21:56:16.212 +02:00 [INF] HTTP GET /openapi/v1.json responded 200 in 268.6010 ms
+2025-11-21 21:56:16.215 +02:00 [INF] HTTP GET /openapi/v1.json responded 200 in 4.1725 ms
+2025-11-21 21:56:16.609 +02:00 [INF] HTTP GET /scalar/favicon.svg responded 200 in 0.8160 ms
+2025-11-21 21:57:01.534 +02:00 [INF] Starting APP
+2025-11-21 21:57:09.139 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2025-11-21 21:57:12.002 +02:00 [INF] HTTP GET / responded 302 in 13.2933 ms
+2025-11-21 21:57:12.299 +02:00 [INF] HTTP GET /scalar/v1 responded 200 in 255.2871 ms
+2025-11-21 21:57:12.346 +02:00 [INF] HTTP GET /scalar/scalar.aspnetcore.js responded 200 in 20.4757 ms
+2025-11-21 21:57:12.379 +02:00 [INF] HTTP GET /scalar/scalar.js responded 200 in 54.0289 ms
+2025-11-21 21:57:12.780 +02:00 [INF] HTTP GET /scalar/favicon.svg responded 200 in 0.6948 ms
+2025-11-21 21:57:12.933 +02:00 [INF] HTTP GET /openapi/v1.json responded 200 in 306.7915 ms
+2025-11-21 21:57:12.937 +02:00 [INF] HTTP GET /openapi/v1.json responded 200 in 5.1931 ms
+2025-11-21 21:57:17.149 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-11-21 21:57:20.129 +02:00 [INF] HTTP GET /Home/DashboardStats responded 200 in 3008.3993 ms
+2025-11-21 21:57:20.136 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Home/DashboardStats, Method: GET, Time Taken: 3009ms
