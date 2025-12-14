@@ -175,8 +175,8 @@ public class JwtEndpointFilter : IEndpointFilter
 
             var user = await connection.QueryFirstOrDefaultAsync<dynamic>(
                 @"SELECT u.""ID"", u.""Name"", u.""CompanyID"", u.""Role"" 
-                  FROM ""public"".""Users"" u 
-                  INNER JOIN ""public"".""Tokens"" t ON u.""ID"" = t.""UserID""  
+                  FROM ""Identity"".""User"" u 
+                  INNER JOIN ""Identity"".""Token"" t ON u.""ID"" = t.""UserID""  
                   WHERE t.""JwtID"" = @JwtID 
                     AND t.""IsActive"" = TRUE 
                     AND (t.""LoggedOutAt"" IS NULL OR t.""LoggedOutAt"" > @Now)",

@@ -19,7 +19,7 @@ public class TransactionMiddleware : IMiddleware
             return;
         }
 
-        await _unitOfWork.BeginTransactionAsync();
+        // await _unitOfWork.BeginTransactionAsync();
 
         try
         {
@@ -27,16 +27,16 @@ public class TransactionMiddleware : IMiddleware
 
             if (context.Response.StatusCode >= 200 && context.Response.StatusCode < 300)
             {
-                await _unitOfWork.CommitChangesAsync();
+                await _unitOfWork.SaveChangesAsync();
             }
-            else
-            {
-                await _unitOfWork.RollbackTransactionAsync();
-            }
+            // else
+            // {
+            //     await _unitOfWork.RollbackTransactionAsync();
+            // }
         }
         catch
         {
-            await _unitOfWork.RollbackTransactionAsync();
+            // await _unitOfWork.RollbackTransactionAsync();
             throw;
         }
     }

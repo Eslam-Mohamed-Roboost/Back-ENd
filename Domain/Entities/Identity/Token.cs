@@ -1,4 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace API.Domain.Entities.Identity;
+
+[Table("Token", Schema = "Identity")]
 
 public class Token : BaseEntity
 {

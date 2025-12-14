@@ -54,6 +54,9 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
 
+    // Global Exception Middleware should be early in pipeline, before other middleware that might write responses
+    app.UseMiddleware<GlobalExceptionMiddleware>();
+
     // Auto-register endpoints
     var endpointDefinitions = typeof(Program).Assembly
         .GetTypes()
@@ -72,8 +75,7 @@ try
     // Enable Response Compression
     app.EnableResponseCompression();
 
-    // Middleware Pipeline
-    app.UseMiddleware<GlobalExceptionMiddleware>();
+    // Other Middleware Pipeline
     app.UseMiddleware<RequestTimeoutMiddleware>();
     app.UseMiddleware<SlowRequestLoggingMiddleware>();
     app.UseMiddleware<UserStateInitializerMiddleware>();
