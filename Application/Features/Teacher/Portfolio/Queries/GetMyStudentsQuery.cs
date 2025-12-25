@@ -10,7 +10,7 @@ using ClassEntity = API.Domain.Entities.General.Classes;
 
 namespace API.Application.Features.Teacher.Portfolio.Queries;
 
-public record GetMyStudentsQuery(long? SubjectId = null) : IRequest<RequestResult<List<StudentPortfolioDto>>>;
+public record GetMyStudentsQuery(long? SubjectId = null, long? ClassId = null) : IRequest<RequestResult<List<StudentPortfolioDto>>>;
 
 public class GetMyStudentsQueryHandler(
     RequestHandlerBaseParameters parameters,
@@ -33,6 +33,12 @@ public class GetMyStudentsQueryHandler(
         if (request.SubjectId.HasValue)
         {
             teacherAssignments = teacherAssignments.Where(a => a.SubjectId == request.SubjectId.Value);
+        }
+
+        // Filter by class if provided
+        if (request.ClassId.HasValue)
+        {
+            teacherAssignments = teacherAssignments.Where(a => a.ClassId == request.ClassId.Value);
         }
 
         var assignedClassIds = await teacherAssignments

@@ -16,6 +16,17 @@ public class TeacherPortfolioEndpoints : EndpointDefinition
 {
     public override void RegisterEndpoints(IEndpointRouteBuilder app)
     {
+        // GET /Teacher/Portfolio/MyStudents?subjectId=...&classId=...
+        app.MapGet("/Teacher/Portfolio/MyStudents",
+                async (IMediator mediator, long? subjectId, long? classId, CancellationToken cancellationToken) =>
+                {
+                    var result = await mediator.Send(new GetMyStudentsQuery(subjectId, classId), cancellationToken);
+                    return Response(result);
+                })
+            .WithTags("Teacher")
+            .AddEndpointFilter<JwtEndpointFilter>()
+            .Produces<EndPointResponse<List<StudentPortfolioDto>>>();
+
         // GET /Teacher/Portfolio/Students?subjectId=...
         app.MapGet("/Teacher/Portfolio/Students",
                 async (IMediator mediator, long subjectId, CancellationToken cancellationToken) =>

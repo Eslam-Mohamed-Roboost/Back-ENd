@@ -12,6 +12,7 @@ CREATE SCHEMA IF NOT EXISTS "Gamification";
 CREATE SCHEMA IF NOT EXISTS "Portfolio";
 CREATE SCHEMA IF NOT EXISTS "Teacher";
 CREATE SCHEMA IF NOT EXISTS "System";
+CREATE SCHEMA IF NOT EXISTS "Academic";
 
 -- =============================================
 -- IDENTITY SCHEMA
@@ -716,6 +717,248 @@ CREATE TABLE IF NOT EXISTS "System"."SystemLogs" (
 
 CREATE INDEX IF NOT EXISTS "idx_systemlogs_level" ON "System"."SystemLogs" ("Level");
 CREATE INDEX IF NOT EXISTS "idx_systemlogs_createdat" ON "System"."SystemLogs" ("CreatedAt" DESC);
+
+-- =============================================
+-- ACADEMIC SCHEMA
+-- =============================================
+
+-- Exercises Table
+CREATE TABLE IF NOT EXISTS "Academic"."Exercises" (
+    "ID" BIGSERIAL PRIMARY KEY,
+    "CompanyID" BIGINT NOT NULL DEFAULT 0,
+    "TeacherId" BIGINT NOT NULL,
+    "ClassId" BIGINT NOT NULL,
+    "SubjectId" BIGINT NOT NULL,
+    "Title" VARCHAR(500) NOT NULL,
+    "Description" TEXT,
+    "Type" VARCHAR(50) NOT NULL, -- Homework, Classwork, Project
+    "DueDate" TIMESTAMP WITH TIME ZONE,
+    "MaxScore" DECIMAL(10,2) NOT NULL DEFAULT 100.00,
+    "Instructions" TEXT,
+    "Attachments" JSONB,
+    "Status" VARCHAR(50) NOT NULL DEFAULT 'Draft', -- Draft, Published, Closed
+    "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedBy" BIGINT,
+    "UpdatedAt" TIMESTAMP WITH TIME ZONE,
+    "UpdatedBy" BIGINT,
+    "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
+    "TTL" TIMESTAMP WITH TIME ZONE,
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_Exercises_Teacher" FOREIGN KEY ("TeacherId") 
+        REFERENCES "Identity"."User"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_Exercises_Class" FOREIGN KEY ("ClassId") 
+        REFERENCES "General"."Classes"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_Exercises_Subject" FOREIGN KEY ("SubjectId") 
+        REFERENCES "General"."Subjects"("ID") ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS "idx_exercises_teacher" ON "Academic"."Exercises"("TeacherId");
+CREATE INDEX IF NOT EXISTS "idx_exercises_class" ON "Academic"."Exercises"("ClassId");
+CREATE INDEX IF NOT EXISTS "idx_exercises_subject" ON "Academic"."Exercises"("SubjectId");
+CREATE INDEX IF NOT EXISTS "idx_exercises_status" ON "Academic"."Exercises"("Status");
+CREATE INDEX IF NOT EXISTS "idx_exercises_type" ON "Academic"."Exercises"("Type");
+CREATE INDEX IF NOT EXISTS "idx_exercises_duedate" ON "Academic"."Exercises"("DueDate");
+
+-- Examinations Table
+CREATE TABLE IF NOT EXISTS "Academic"."Examinations" (
+    "ID" BIGSERIAL PRIMARY KEY,
+    "CompanyID" BIGINT NOT NULL DEFAULT 0,
+    "TeacherId" BIGINT NOT NULL,
+    "ClassId" BIGINT NOT NULL,
+    "SubjectId" BIGINT NOT NULL,
+    "Title" VARCHAR(500) NOT NULL,
+    "Description" TEXT,
+    "Type" VARCHAR(50) NOT NULL, -- Quiz, Test, Exam
+    "ScheduledDate" TIMESTAMP WITH TIME ZONE,
+    "Duration" INTEGER, -- Duration in minutes
+    "MaxScore" DECIMAL(10,2) NOT NULL DEFAULT 100.00,
+    "Instructions" TEXT,
+    "Questions" JSONB,
+    "Status" VARCHAR(50) NOT NULL DEFAULT 'Draft', -- Draft, Scheduled, InProgress, Completed
+    "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedBy" BIGINT,
+    "UpdatedAt" TIMESTAMP WITH TIME ZONE,
+    "UpdatedBy" BIGINT,
+    "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
+    "TTL" TIMESTAMP WITH TIME ZONE,
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_Examinations_Teacher" FOREIGN KEY ("TeacherId") 
+        REFERENCES "Identity"."User"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_Examinations_Class" FOREIGN KEY ("ClassId") 
+        REFERENCES "General"."Classes"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_Examinations_Subject" FOREIGN KEY ("SubjectId") 
+        REFERENCES "General"."Subjects"("ID") ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS "idx_examinations_teacher" ON "Academic"."Examinations"("TeacherId");
+CREATE INDEX IF NOT EXISTS "idx_examinations_class" ON "Academic"."Examinations"("ClassId");
+CREATE INDEX IF NOT EXISTS "idx_examinations_subject" ON "Academic"."Examinations"("SubjectId");
+CREATE INDEX IF NOT EXISTS "idx_examinations_status" ON "Academic"."Examinations"("Status");
+CREATE INDEX IF NOT EXISTS "idx_examinations_type" ON "Academic"."Examinations"("Type");
+CREATE INDEX IF NOT EXISTS "idx_examinations_scheduleddate" ON "Academic"."Examinations"("ScheduledDate");
+
+-- Exercise Submissions Table
+CREATE TABLE IF NOT EXISTS "Academic"."ExerciseSubmissions" (
+    "ID" BIGSERIAL PRIMARY KEY,
+    "CompanyID" BIGINT NOT NULL DEFAULT 0,
+    "ExerciseId" BIGINT NOT NULL,
+    "StudentId" BIGINT NOT NULL,
+    "SubmittedAt" TIMESTAMP WITH TIME ZONE,
+    "Content" TEXT,
+    "Attachments" JSONB,
+    "Status" VARCHAR(50) NOT NULL DEFAULT 'Submitted', -- Submitted, Late, Graded
+    "Score" DECIMAL(10,2),
+    "Feedback" TEXT,
+    "GradedBy" BIGINT,
+    "GradedAt" TIMESTAMP WITH TIME ZONE,
+    "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedBy" BIGINT,
+    "UpdatedAt" TIMESTAMP WITH TIME ZONE,
+    "UpdatedBy" BIGINT,
+    "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
+    "TTL" TIMESTAMP WITH TIME ZONE,
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_ExerciseSubmissions_Exercise" FOREIGN KEY ("ExerciseId") 
+        REFERENCES "Academic"."Exercises"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_ExerciseSubmissions_Student" FOREIGN KEY ("StudentId") 
+        REFERENCES "Identity"."User"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_ExerciseSubmissions_GradedBy" FOREIGN KEY ("GradedBy") 
+        REFERENCES "Identity"."User"("ID") ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS "idx_exercisesubmissions_exercise" ON "Academic"."ExerciseSubmissions"("ExerciseId");
+CREATE INDEX IF NOT EXISTS "idx_exercisesubmissions_student" ON "Academic"."ExerciseSubmissions"("StudentId");
+CREATE INDEX IF NOT EXISTS "idx_exercisesubmissions_status" ON "Academic"."ExerciseSubmissions"("Status");
+CREATE UNIQUE INDEX IF NOT EXISTS "idx_exercisesubmissions_unique" 
+    ON "Academic"."ExerciseSubmissions"("ExerciseId", "StudentId") 
+    WHERE "IsDeleted" = FALSE;
+
+-- Examination Attempts Table
+CREATE TABLE IF NOT EXISTS "Academic"."ExaminationAttempts" (
+    "ID" BIGSERIAL PRIMARY KEY,
+    "CompanyID" BIGINT NOT NULL DEFAULT 0,
+    "ExaminationId" BIGINT NOT NULL,
+    "StudentId" BIGINT NOT NULL,
+    "StartedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "SubmittedAt" TIMESTAMP WITH TIME ZONE,
+    "Answers" JSONB,
+    "Score" DECIMAL(10,2),
+    "Status" VARCHAR(50) NOT NULL DEFAULT 'InProgress', -- InProgress, Submitted, Graded
+    "GradedBy" BIGINT,
+    "GradedAt" TIMESTAMP WITH TIME ZONE,
+    "TimeSpent" INTEGER, -- Time spent in minutes
+    "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedBy" BIGINT,
+    "UpdatedAt" TIMESTAMP WITH TIME ZONE,
+    "UpdatedBy" BIGINT,
+    "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
+    "TTL" TIMESTAMP WITH TIME ZONE,
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_ExaminationAttempts_Examination" FOREIGN KEY ("ExaminationId") 
+        REFERENCES "Academic"."Examinations"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_ExaminationAttempts_Student" FOREIGN KEY ("StudentId") 
+        REFERENCES "Identity"."User"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_ExaminationAttempts_GradedBy" FOREIGN KEY ("GradedBy") 
+        REFERENCES "Identity"."User"("ID") ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS "idx_examinationattempts_examination" ON "Academic"."ExaminationAttempts"("ExaminationId");
+CREATE INDEX IF NOT EXISTS "idx_examinationattempts_student" ON "Academic"."ExaminationAttempts"("StudentId");
+CREATE INDEX IF NOT EXISTS "idx_examinationattempts_status" ON "Academic"."ExaminationAttempts"("Status");
+CREATE UNIQUE INDEX IF NOT EXISTS "idx_examinationattempts_unique" 
+    ON "Academic"."ExaminationAttempts"("ExaminationId", "StudentId") 
+    WHERE "IsDeleted" = FALSE AND "Status" != 'InProgress';
+
+-- Grades Table
+CREATE TABLE IF NOT EXISTS "Academic"."Grades" (
+    "ID" BIGSERIAL PRIMARY KEY,
+    "CompanyID" BIGINT NOT NULL DEFAULT 0,
+    "StudentId" BIGINT NOT NULL,
+    "ClassId" BIGINT NOT NULL,
+    "SubjectId" BIGINT NOT NULL,
+    "ExerciseId" BIGINT,
+    "ExaminationId" BIGINT,
+    "Score" DECIMAL(10,2) NOT NULL,
+    "MaxScore" DECIMAL(10,2) NOT NULL,
+    "Percentage" DECIMAL(5,2) NOT NULL,
+    "LetterGrade" VARCHAR(10),
+    "Term" VARCHAR(50),
+    "Year" INTEGER NOT NULL,
+    "GradedBy" BIGINT NOT NULL,
+    "GradedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "Status" VARCHAR(50) NOT NULL DEFAULT 'Draft', -- Draft, PendingApproval, Approved, Rejected
+    "ApprovedBy" BIGINT,
+    "ApprovedAt" TIMESTAMP WITH TIME ZONE,
+    "Notes" TEXT,
+    "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedBy" BIGINT,
+    "UpdatedAt" TIMESTAMP WITH TIME ZONE,
+    "UpdatedBy" BIGINT,
+    "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
+    "TTL" TIMESTAMP WITH TIME ZONE,
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_Grades_Student" FOREIGN KEY ("StudentId") 
+        REFERENCES "Identity"."User"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_Grades_Class" FOREIGN KEY ("ClassId") 
+        REFERENCES "General"."Classes"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_Grades_Subject" FOREIGN KEY ("SubjectId") 
+        REFERENCES "General"."Subjects"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_Grades_Exercise" FOREIGN KEY ("ExerciseId") 
+        REFERENCES "Academic"."Exercises"("ID") ON DELETE SET NULL,
+    CONSTRAINT "FK_Grades_Examination" FOREIGN KEY ("ExaminationId") 
+        REFERENCES "Academic"."Examinations"("ID") ON DELETE SET NULL,
+    CONSTRAINT "FK_Grades_GradedBy" FOREIGN KEY ("GradedBy") 
+        REFERENCES "Identity"."User"("ID") ON DELETE RESTRICT,
+    CONSTRAINT "FK_Grades_ApprovedBy" FOREIGN KEY ("ApprovedBy") 
+        REFERENCES "Identity"."User"("ID") ON DELETE SET NULL,
+    CONSTRAINT "CHK_Grades_ExerciseOrExamination" CHECK (
+        ("ExerciseId" IS NOT NULL AND "ExaminationId" IS NULL) OR 
+        ("ExerciseId" IS NULL AND "ExaminationId" IS NOT NULL) OR
+        ("ExerciseId" IS NULL AND "ExaminationId" IS NULL)
+    )
+);
+
+CREATE INDEX IF NOT EXISTS "idx_grades_student" ON "Academic"."Grades"("StudentId");
+CREATE INDEX IF NOT EXISTS "idx_grades_class" ON "Academic"."Grades"("ClassId");
+CREATE INDEX IF NOT EXISTS "idx_grades_subject" ON "Academic"."Grades"("SubjectId");
+CREATE INDEX IF NOT EXISTS "idx_grades_exercise" ON "Academic"."Grades"("ExerciseId");
+CREATE INDEX IF NOT EXISTS "idx_grades_examination" ON "Academic"."Grades"("ExaminationId");
+CREATE INDEX IF NOT EXISTS "idx_grades_status" ON "Academic"."Grades"("Status");
+CREATE INDEX IF NOT EXISTS "idx_grades_term_year" ON "Academic"."Grades"("Term", "Year");
+
+-- Teacher Permissions Table
+CREATE TABLE IF NOT EXISTS "Teacher"."TeacherPermissions" (
+    "ID" BIGSERIAL PRIMARY KEY,
+    "CompanyID" BIGINT NOT NULL DEFAULT 0,
+    "TeacherId" BIGINT NOT NULL,
+    "ClassId" BIGINT,
+    "SubjectId" BIGINT,
+    "CanCreateExercises" BOOLEAN NOT NULL DEFAULT TRUE,
+    "CanCreateExaminations" BOOLEAN NOT NULL DEFAULT TRUE,
+    "CanGradeOwnClasses" BOOLEAN NOT NULL DEFAULT TRUE,
+    "CanGradeAllClasses" BOOLEAN NOT NULL DEFAULT FALSE,
+    "CanApproveGrades" BOOLEAN NOT NULL DEFAULT FALSE,
+    "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedBy" BIGINT,
+    "UpdatedAt" TIMESTAMP WITH TIME ZONE,
+    "UpdatedBy" BIGINT,
+    "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
+    "TTL" TIMESTAMP WITH TIME ZONE,
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_TeacherPermissions_Teacher" FOREIGN KEY ("TeacherId") 
+        REFERENCES "Identity"."User"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_TeacherPermissions_Class" FOREIGN KEY ("ClassId") 
+        REFERENCES "General"."Classes"("ID") ON DELETE CASCADE,
+    CONSTRAINT "FK_TeacherPermissions_Subject" FOREIGN KEY ("SubjectId") 
+        REFERENCES "General"."Subjects"("ID") ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS "idx_teacherpermissions_teacher" ON "Teacher"."TeacherPermissions"("TeacherId");
+CREATE INDEX IF NOT EXISTS "idx_teacherpermissions_class" ON "Teacher"."TeacherPermissions"("ClassId");
+CREATE INDEX IF NOT EXISTS "idx_teacherpermissions_subject" ON "Teacher"."TeacherPermissions"("SubjectId");
+CREATE UNIQUE INDEX IF NOT EXISTS "idx_teacherpermissions_unique" 
+    ON "Teacher"."TeacherPermissions"("TeacherId", "ClassId", "SubjectId") 
+    WHERE "IsDeleted" = FALSE;
 
 -- =============================================
 -- END OF SCHEMA
