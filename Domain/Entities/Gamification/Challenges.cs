@@ -15,5 +15,11 @@ public class Challenges : BaseEntity
     public string? BackgroundColor { get; set; }
     public string? ContentUrl { get; set; }
     public int Points { get; set; } = 25;
+    
+    public long? BadgeId { get; set; }
+    
+    [Column(TypeName = "decimal(5,2)")]
+    public decimal HoursAwarded { get; set; } = 0.5m;
+    
     public bool IsActive { get; set; } = true;
 }

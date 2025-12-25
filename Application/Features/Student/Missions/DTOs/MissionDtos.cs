@@ -69,4 +69,5 @@ public class MissionProgressResponse
     public int NewProgress { get; set; } // 0-100
     public string Status { get; set; } = string.Empty; // "in-progress", "completed"
     public PortfolioBadgeDto? BadgeEarned { get; set; }
+    public decimal HoursEarned { get; set; }
 }

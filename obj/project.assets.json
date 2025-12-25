@@ -5488,11 +5488,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj",
+      "projectUniqueName": "/home/eslam/Documents/GitHub/Back-End/API.csproj",
       "projectName": "API",
-      "projectPath": "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj",
+      "projectPath": "/home/eslam/Documents/GitHub/Back-End/API.csproj",
       "packagesPath": "/home/eslam/.nuget/packages/",
-      "outputPath": "/home/eslam/Downloads/School-Hub-v2/Back-End/obj/",
+      "outputPath": "/home/eslam/Documents/GitHub/Back-End/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/eslam/.nuget/NuGet/NuGet.Config"
@@ -5501,6 +5501,7 @@
         "net9.0"
       ],
       "sources": {
+        "/usr/lib/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5519,7 +5520,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -5673,7 +5674,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

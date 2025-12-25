@@ -1,9 +1,12 @@
+using API.Application.Events;
 using API.Application.Features.Student.Missions.DTOs;
+using API.Application.Services;
 using API.Domain.Entities.Gamification;
 using API.Domain.Entities.Missions;
 using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
+using DotNetCore.CAP;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +21,9 @@ public class UpdateMissionProgressCommandHandler(
     IRepository<Activities> activitiesRepository,
     IRepository<Domain.Entities.Missions.Missions> missionsRepository,
     IRepository<Domain.Entities.Gamification.StudentBadges> studentBadgesRepository,
-    IRepository<Domain.Entities.Gamification.Badges> badgesRepository)
+    IRepository<Domain.Entities.Gamification.Badges> badgesRepository,
+    IHoursTrackingService hoursTrackingService,
+    ICapPublisher eventPublisher)
     : RequestHandlerBase<UpdateMissionProgressCommand, RequestResult<MissionProgressResponse>>(parameters)
 {
     public override async Task<RequestResult<MissionProgressResponse>> Handle(UpdateMissionProgressCommand request, CancellationToken cancellationToken)
@@ -86,8 +91,10 @@ public class UpdateMissionProgressCommandHandler(
 
          progressRepository.Update(missionProgress);
 
-        // Award badge if mission completed
+        // Award badge and hours if mission completed
         Portfolio.DTOs.PortfolioBadgeDto? badgeEarned = null;
+        decimal hoursAwarded = 0;
+        
         if (missionProgress.Status == ProgressStatus.Completed)
         {
             var mission = await missionsRepository.Get(x => x.ID == request.MissionId).FirstOrDefaultAsync(cancellationToken);
@@ -126,6 +133,30 @@ public class UpdateMissionProgressCommandHandler(
                         };
                     }
                 }
+                
+                // Record learning hours
+                hoursAwarded = await hoursTrackingService.RecordLearningHoursAsync(
+                    studentId,
+                    ActivityLogType.Completion,
+                    request.MissionId,
+                    mission.HoursAwarded,
+                    cancellationToken);
+                
+                // Publish mission completed event
+                var completionTime = missionProgress.StartedAt.HasValue 
+                    ? DateTime.UtcNow - missionProgress.StartedAt.Value 
+                    : TimeSpan.Zero;
+                    
+                await eventPublisher.PublishAsync("mission.completed", new MissionCompletedEvent
+                {
+                    StudentId = studentId,
+                    MissionId = request.MissionId,
+                    MissionTitle = mission.Title,
+                    BadgeId = mission.BadgeId,
+                    HoursAwarded = mission.HoursAwarded,
+                    CompletedAt = DateTime.UtcNow,
+                    CompletionTime = completionTime
+                }, cancellationToken: cancellationToken);
             }
         }
 
@@ -134,7 +165,8 @@ public class UpdateMissionProgressCommandHandler(
             MissionId = request.MissionId,
             NewProgress = (int)missionProgress.ProgressPercentage,
             Status = missionProgress.Status == ProgressStatus.Completed ? "completed" : "in-progress",
-            BadgeEarned = badgeEarned
+            BadgeEarned = badgeEarned,
+            HoursEarned = hoursAwarded
         };
 
         return RequestResult<MissionProgressResponse>.Success(response);

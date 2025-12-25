@@ -1,8 +1,11 @@
+using API.Application.Events;
 using API.Application.Features.Student.Challenges.DTOs;
+using API.Application.Services;
 using API.Domain.Entities.Gamification;
 using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
+using DotNetCore.CAP;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +16,9 @@ public record SubmitChallengeCommand(long ChallengeId, SubmitChallengeRequest Re
 public class SubmitChallengeCommandHandler(
     RequestHandlerBaseParameters parameters,
     IRepository<StudentChallenges> studentChallengesRepository,
-    IRepository<Domain.Entities.Gamification.Challenges> challengesRepository)
+    IRepository<Domain.Entities.Gamification.Challenges> challengesRepository,
+    IHoursTrackingService hoursTrackingService,
+    ICapPublisher eventPublisher)
     : RequestHandlerBase<SubmitChallengeCommand, RequestResult<ChallengeSubmissionResponse>>(parameters)
 {
     public override async Task<RequestResult<ChallengeSubmissionResponse>> Handle(SubmitChallengeCommand request, CancellationToken cancellationToken)
@@ -47,14 +52,32 @@ public class SubmitChallengeCommandHandler(
 
         studentChallengesRepository.Update(studentChallenge);
 
-        // TODO: Store answer/attachments if needed
-        // TODO: Award badge if applicable
+        // Record learning hours
+        var hoursAwarded = await hoursTrackingService.RecordLearningHoursAsync(
+            studentId,
+            ActivityLogType.Completion,
+            request.ChallengeId,
+            challenge.HoursAwarded,
+            cancellationToken);
+
+        // Publish challenge completed event
+        await eventPublisher.PublishAsync("challenge.completed", new ChallengeCompletedEvent
+        {
+            UserId = studentId,
+            IsTeacher = false,
+            ChallengeId = request.ChallengeId,
+            ChallengeTitle = challenge.Title,
+            BadgeId = challenge.BadgeId,
+            HoursAwarded = challenge.HoursAwarded,
+            CompletedAt = DateTime.UtcNow
+        }, cancellationToken: cancellationToken);
 
         var response = new ChallengeSubmissionResponse
         {
             Success = true,
             PointsEarned = studentChallenge.PointsEarned,
-            BadgeEarned = false, // TODO: Implement badge logic
+            BadgeEarned = challenge.BadgeId.HasValue,
+            HoursEarned = hoursAwarded,
             Feedback = score >= 80 ? "Great work! You've completed the challenge." : "Challenge submitted. Keep practicing!"
         };
 

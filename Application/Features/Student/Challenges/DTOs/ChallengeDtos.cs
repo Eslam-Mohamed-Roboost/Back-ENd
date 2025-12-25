@@ -32,5 +32,6 @@ public class ChallengeSubmissionResponse
     public bool Success { get; set; }
     public int PointsEarned { get; set; }
     public bool BadgeEarned { get; set; }
+    public decimal HoursEarned { get; set; }
     public string Feedback { get; set; } = string.Empty;
 }

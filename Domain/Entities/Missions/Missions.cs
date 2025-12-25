@@ -11,6 +11,10 @@ public class Missions : BaseEntity
     public string? Icon { get; set; }
     public int EstimatedMinutes { get; set; } = 30;
     public long BadgeId { get; set; }
+    
+    [Column(TypeName = "decimal(5,2)")]
+    public decimal HoursAwarded { get; set; } = 1.5m;
+    
     public int Order { get; set; }
     public bool IsEnabled { get; set; } = true;
 }
