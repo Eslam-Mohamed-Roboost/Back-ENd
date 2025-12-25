@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Application.Features.User.GetUsers.Queriess;
 
-public record GetUsersQuery(string? Email, ApplicationRole? Role,bool? IsActive  ,int Page = 1, int Size = 10) : IRequest<RequestResult<PagingDto<UserListDto>>>;
+public record GetUsersQuery(string? Email, ApplicationRole? Role, bool? IsActive, long? ClassId = null, int Page = 1, int Size = 10) : IRequest<RequestResult<PagingDto<UserListDto>>>;
 
 public class GetUsersQueryHandler(
     RequestHandlerBaseParameters parameters, 
@@ -40,10 +40,14 @@ public class GetUsersQueryHandler(
                 Id = x.ID,
                 Name = x.Name,
                 Email = x.Email,
-                Role = x.Role.GetDescription(),
+                Role = x.Role,
+                RoleName = x.Role.GetDescription(),
+                
                 Status = x.IsActive ? "Active" : "Inactive",
                 LastLogin = x.LastLogin,
-                BadgeCount = x.Badges.Count()
+                BadgeCount = x.Badges.Count(),
+                ClassId = x.ClassID,
+                ClassName = x.Classes != null ? x.Classes.Name : null
 
             });
 
@@ -72,7 +76,11 @@ public class GetUsersQueryHandler(
         if (query.IsActive is not null)
         {
             predicate = predicate.And(ch => ch.IsActive ==  query.IsActive);
+        }
 
+        if (query.ClassId.HasValue)
+        {
+            predicate = predicate.And(ch => ch.ClassID == query.ClassId.Value);
         }
 
         return predicate;

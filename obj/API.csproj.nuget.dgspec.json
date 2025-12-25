@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/eslam/Documents/GitHub/school-hub/API.csproj": {}
+    "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj": {}
   },
   "projects": {
-    "/home/eslam/Documents/GitHub/school-hub/API.csproj": {
+    "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/eslam/Documents/GitHub/school-hub/API.csproj",
+        "projectUniqueName": "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj",
         "projectName": "API",
-        "projectPath": "/home/eslam/Documents/GitHub/school-hub/API.csproj",
+        "projectPath": "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj",
         "packagesPath": "/home/eslam/.nuget/packages/",
-        "outputPath": "/home/eslam/Documents/GitHub/school-hub/obj/",
+        "outputPath": "/home/eslam/Downloads/School-Hub-v2/Back-End/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/eslam/.nuget/NuGet/NuGet.Config"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -167,6 +167,10 @@
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.9.25, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.9, )"
             }
           },
           "imports": [
@@ -188,7 +192,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/eslam/.dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -2017,7 +2017,7 @@
       "System.Text.Json/9.0.9": {
         "type": "package",
         "compile": {
-          "lib/net9.0/_._": {
+          "lib/net9.0/System.Text.Json.dll": {
             "related": ".xml"
           }
         },
@@ -5478,7 +5478,8 @@
       "Serilog.AspNetCore >= 9.0.0",
       "Serilog.Sinks.Console >= 6.0.0",
       "Serilog.Sinks.File >= 7.0.0",
-      "StackExchange.Redis >= 2.9.25"
+      "StackExchange.Redis >= 2.9.25",
+      "System.Text.Json >= 9.0.9"
     ]
   },
   "packageFolders": {
@@ -5487,11 +5488,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/eslam/Documents/GitHub/school-hub/API.csproj",
+      "projectUniqueName": "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj",
       "projectName": "API",
-      "projectPath": "/home/eslam/Documents/GitHub/school-hub/API.csproj",
+      "projectPath": "/home/eslam/Downloads/School-Hub-v2/Back-End/API.csproj",
       "packagesPath": "/home/eslam/.nuget/packages/",
-      "outputPath": "/home/eslam/Documents/GitHub/school-hub/obj/",
+      "outputPath": "/home/eslam/Downloads/School-Hub-v2/Back-End/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/eslam/.nuget/NuGet/NuGet.Config"
@@ -5518,7 +5519,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -5647,6 +5648,10 @@
           "StackExchange.Redis": {
             "target": "Package",
             "version": "[2.9.25, )"
+          },
+          "System.Text.Json": {
+            "target": "Package",
+            "version": "[9.0.9, )"
           }
         },
         "imports": [
@@ -5668,7 +5673,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/eslam/.dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

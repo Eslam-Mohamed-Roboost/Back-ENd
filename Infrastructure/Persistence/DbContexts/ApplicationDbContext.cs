@@ -74,7 +74,7 @@ public class ApplicationDbContext : DbContext
                     property.SetColumnType("numeric(18,2)");
                 }
 
-                if (property.ClrType == typeof(string) && property.GetMaxLength() == null)
+                if (property.ClrType == typeof(string) && property.GetMaxLength() == null && property.Name != "ResourceLinks")
                 {
                     property.SetMaxLength(250);
                 }
@@ -87,6 +87,11 @@ public class ApplicationDbContext : DbContext
         // Configure relationships to prevent delete cascade
         foreach (var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+
+        // Configure WeeklyChallenges ResourceLinks as JSONB
+        modelBuilder.Entity<WeeklyChallenges>()
+            .Property(e => e.ResourceLinks)
+            .HasColumnType("jsonb");
     }
 
     private void SetDefaultValue(ModelBuilder modelBuilder, Microsoft.EntityFrameworkCore.Metadata.IMutableEntityType entityType, string propertyName, Type propertyType, string defaultValueSql)

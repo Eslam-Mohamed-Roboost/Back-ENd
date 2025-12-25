@@ -12,7 +12,8 @@ public record RegisterUserOrchestrator(
     string Email, 
     string Password,
     string PhoneNumber,
-    ApplicationRole Role) : IRequest<RequestResult<bool>>;
+    ApplicationRole Role,
+    long? ClassID = null) : IRequest<RequestResult<bool>>;
 
 public class RegisterUserOrchestratorHandler : RequestHandlerBase<RegisterUserOrchestrator, RequestResult<bool>>
 {
@@ -40,7 +41,8 @@ public class RegisterUserOrchestratorHandler : RequestHandlerBase<RegisterUserOr
             SecurityHelper.GetHashedPassword(request.Password, saltPassword),
             saltPassword,
             request.PhoneNumber,
-            request.Role), cancellationToken).ConfigureAwait(false);
+            request.Role,
+            request.ClassID), cancellationToken).ConfigureAwait(false);
 
         return RequestResult<bool>.Success(true, "User registered successfully.");
     }

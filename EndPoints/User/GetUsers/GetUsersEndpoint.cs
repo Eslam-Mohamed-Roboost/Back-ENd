@@ -13,7 +13,7 @@ public class GetUsersEndpoint : EndpointDefinition
         app.MapGet("/User/GetUsers",
                 async (IMediator _mediator,[AsParameters] GetUserRequest request, CancellationToken cancellationToken) =>
                 {
-                     var result = await _mediator.Send(new GetUsersQuery(request.email,request.role,request.IsActve,request.page,request.pageSize), cancellationToken);
+                     var result = await _mediator.Send(new GetUsersQuery(request.email, request.role, request.IsActve, request.classId, request.page, request.pageSize), cancellationToken);
                     return Response(result);
                 })
             .WithTags("User")

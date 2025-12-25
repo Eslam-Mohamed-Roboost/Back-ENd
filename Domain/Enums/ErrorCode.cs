@@ -20,6 +20,10 @@ public enum ErrorCode
     EmailAlreadyExists = 4,
     
     [DescriptionAnnotation("User not found", "User not found")]
-    UserNotFound = 5
+    UserNotFound = 5,
+    NotFound = 6,
+    BadRequest = 7,
+    ValidationError = 8,
+    FileTooLarge = 9
 }
 
