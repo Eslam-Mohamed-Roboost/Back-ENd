@@ -32,6 +32,7 @@ public class ApplicationDbContext : DbContext
     // General
     public DbSet<Classes> Classes { get; set; }
     public DbSet<Subjects> Subjects { get; set; }
+    public DbSet<LearningHours> LearningHours { get; set; }
     
     // Missions
     public DbSet<Missions> Missions { get; set; }

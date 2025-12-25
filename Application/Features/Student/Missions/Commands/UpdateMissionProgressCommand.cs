@@ -23,7 +23,7 @@ public class UpdateMissionProgressCommandHandler(
     IRepository<Domain.Entities.Gamification.StudentBadges> studentBadgesRepository,
     IRepository<Domain.Entities.Gamification.Badges> badgesRepository,
     IHoursTrackingService hoursTrackingService,
-    ICapPublisher eventPublisher)
+    ICapPublisher? eventPublisher = null)
     : RequestHandlerBase<UpdateMissionProgressCommand, RequestResult<MissionProgressResponse>>(parameters)
 {
     public override async Task<RequestResult<MissionProgressResponse>> Handle(UpdateMissionProgressCommand request, CancellationToken cancellationToken)
@@ -142,21 +142,24 @@ public class UpdateMissionProgressCommandHandler(
                     mission.HoursAwarded,
                     cancellationToken);
                 
-                // Publish mission completed event
-                var completionTime = missionProgress.StartedAt.HasValue 
-                    ? DateTime.UtcNow - missionProgress.StartedAt.Value 
-                    : TimeSpan.Zero;
-                    
-                await eventPublisher.PublishAsync("mission.completed", new MissionCompletedEvent
+                // Publish mission completed event (if CAP is configured)
+                if (eventPublisher != null)
                 {
-                    StudentId = studentId,
-                    MissionId = request.MissionId,
-                    MissionTitle = mission.Title,
-                    BadgeId = mission.BadgeId,
-                    HoursAwarded = mission.HoursAwarded,
-                    CompletedAt = DateTime.UtcNow,
-                    CompletionTime = completionTime
-                }, cancellationToken: cancellationToken);
+                    var completionTime = missionProgress.StartedAt.HasValue 
+                        ? DateTime.UtcNow - missionProgress.StartedAt.Value 
+                        : TimeSpan.Zero;
+                        
+                    await eventPublisher.PublishAsync("mission.completed", new MissionCompletedEvent
+                    {
+                        StudentId = studentId,
+                        MissionId = request.MissionId,
+                        MissionTitle = mission.Title,
+                        BadgeId = mission.BadgeId,
+                        HoursAwarded = mission.HoursAwarded,
+                        CompletedAt = DateTime.UtcNow,
+                        CompletionTime = completionTime
+                    }, cancellationToken: cancellationToken);
+                }
             }
         }
 

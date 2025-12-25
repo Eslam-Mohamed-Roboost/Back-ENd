@@ -18,7 +18,7 @@ public class SubmitChallengeCommandHandler(
     IRepository<StudentChallenges> studentChallengesRepository,
     IRepository<Domain.Entities.Gamification.Challenges> challengesRepository,
     IHoursTrackingService hoursTrackingService,
-    ICapPublisher eventPublisher)
+    ICapPublisher? eventPublisher = null)
     : RequestHandlerBase<SubmitChallengeCommand, RequestResult<ChallengeSubmissionResponse>>(parameters)
 {
     public override async Task<RequestResult<ChallengeSubmissionResponse>> Handle(SubmitChallengeCommand request, CancellationToken cancellationToken)
@@ -60,17 +60,20 @@ public class SubmitChallengeCommandHandler(
             challenge.HoursAwarded,
             cancellationToken);
 
-        // Publish challenge completed event
-        await eventPublisher.PublishAsync("challenge.completed", new ChallengeCompletedEvent
+        // Publish challenge completed event (if CAP is configured)
+        if (eventPublisher != null)
         {
-            UserId = studentId,
-            IsTeacher = false,
-            ChallengeId = request.ChallengeId,
-            ChallengeTitle = challenge.Title,
-            BadgeId = challenge.BadgeId,
-            HoursAwarded = challenge.HoursAwarded,
-            CompletedAt = DateTime.UtcNow
-        }, cancellationToken: cancellationToken);
+            await eventPublisher.PublishAsync("challenge.completed", new ChallengeCompletedEvent
+            {
+                UserId = studentId,
+                IsTeacher = false,
+                ChallengeId = request.ChallengeId,
+                ChallengeTitle = challenge.Title,
+                BadgeId = challenge.BadgeId,
+                HoursAwarded = challenge.HoursAwarded,
+                CompletedAt = DateTime.UtcNow
+            }, cancellationToken: cancellationToken);
+        }
 
         var response = new ChallengeSubmissionResponse
         {

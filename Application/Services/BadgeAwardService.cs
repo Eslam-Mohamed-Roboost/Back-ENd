@@ -84,7 +84,7 @@ public class BadgeAwardService : IBadgeAwardService
             .Get(x => x.TeacherId == teacherId && x.BadgeId == badgeId)
             .FirstOrDefaultAsync(cancellationToken);
 
-        if (existingSubmission != null && existingSubmission.Status == ReviewStatus.Approved)
+        if (existingSubmission != null && existingSubmission.Status == SubmissionStatus.Approved)
         {
             return false; // Already has this badge
         }
@@ -108,7 +108,7 @@ public class BadgeAwardService : IBadgeAwardService
             EvidenceLink = evidenceLink,
             SubmitterNotes = notes ?? "Automatically awarded upon completion",
             SubmittedAt = DateTime.UtcNow,
-            Status = ReviewStatus.Approved, // Auto-approve system awards
+            Status = SubmissionStatus.Approved, // Auto-approve system awards
             ReviewedAt = DateTime.UtcNow,
             CpdHoursAwarded = badge.CpdHours ?? 0
         };
@@ -127,7 +127,7 @@ public class BadgeAwardService : IBadgeAwardService
         if (isTeacher)
         {
             return await _teacherBadgeSubmissionsRepository
-                .Get(x => x.TeacherId == userId && x.BadgeId == badgeId && x.Status == ReviewStatus.Approved)
+                .Get(x => x.TeacherId == userId && x.BadgeId == badgeId && x.Status == SubmissionStatus.Approved)
                 .AnyAsync(cancellationToken);
         }
         else

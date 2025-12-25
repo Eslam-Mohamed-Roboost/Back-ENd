@@ -192,14 +192,14 @@ public class HoursTrackingService : IHoursTrackingService
         }
     }
 
-    private static string GetLevelName(int level)
+    private static StudentLevelName? GetLevelName(int level)
     {
         return level switch
         {
-            4 => "Digital Leader",
-            3 => "Digital Champion",
-            2 => "Digital Explorer",
-            _ => "Digital Scout"
+            4 => StudentLevelName.Leader,
+            3 => StudentLevelName.Champion,
+            2 => StudentLevelName.Explorer,
+            _ => StudentLevelName.DigitalScout
         };
     }
 }
