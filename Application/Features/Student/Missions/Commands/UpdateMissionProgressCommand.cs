@@ -23,12 +23,31 @@ public class UpdateMissionProgressCommandHandler(
     IRepository<Domain.Entities.Gamification.StudentBadges> studentBadgesRepository,
     IRepository<Domain.Entities.Gamification.Badges> badgesRepository,
     IHoursTrackingService hoursTrackingService,
+    INotificationService notificationService,
     ICapPublisher? eventPublisher = null)
     : RequestHandlerBase<UpdateMissionProgressCommand, RequestResult<MissionProgressResponse>>(parameters)
 {
     public override async Task<RequestResult<MissionProgressResponse>> Handle(UpdateMissionProgressCommand request, CancellationToken cancellationToken)
     {
         var studentId = _userState.UserID;
+
+        // Get mission to check deadline and prerequisites
+        var mission = await missionsRepository
+            .Get(m => m.ID == request.MissionId)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (mission == null)
+        {
+            return RequestResult<MissionProgressResponse>.Failure(ErrorCode.NotFound, "Mission not found");
+        }
+
+        // Check deadline
+        if (mission.Deadline.HasValue && DateTime.UtcNow > mission.Deadline.Value)
+        {
+            return RequestResult<MissionProgressResponse>.Failure(
+                ErrorCode.ValidationError, 
+                "Mission deadline has passed. Submissions are no longer accepted.");
+        }
 
         // Get or create mission progress
         var missionProgress = await progressRepository.Get(x => x.StudentId == studentId && x.MissionId == request.MissionId)
@@ -97,23 +116,23 @@ public class UpdateMissionProgressCommandHandler(
         
         if (missionProgress.Status == ProgressStatus.Completed)
         {
-            var mission = await missionsRepository.Get(x => x.ID == request.MissionId).FirstOrDefaultAsync(cancellationToken);
-            if (mission != null && mission.BadgeId > 0)
+            var completedMission = await missionsRepository.Get(x => x.ID == request.MissionId).FirstOrDefaultAsync(cancellationToken);
+            if (completedMission != null && completedMission.BadgeId > 0)
             {
                 var existingBadge = await studentBadgesRepository.Get(x => 
                     x.StudentId == studentId && 
-                    x.BadgeId == mission.BadgeId)
+                    x.BadgeId == completedMission.BadgeId)
                     .FirstOrDefaultAsync(cancellationToken);
 
                 if (existingBadge == null)
                 {
-                    var badge = await badgesRepository.Get(x => x.ID == mission.BadgeId).FirstOrDefaultAsync(cancellationToken);
+                    var badge = await badgesRepository.Get(x => x.ID == completedMission.BadgeId).FirstOrDefaultAsync(cancellationToken);
                     if (badge != null)
                     {
                         var studentBadge = new Domain.Entities.Gamification.StudentBadges
                         {
                             StudentId = studentId,
-                            BadgeId = mission.BadgeId,
+                            BadgeId = completedMission.BadgeId,
                             MissionId = request.MissionId,
                             AutoAwarded = true,
                             EarnedDate = DateTime.UtcNow,
@@ -139,8 +158,35 @@ public class UpdateMissionProgressCommandHandler(
                     studentId,
                     ActivityLogType.Completion,
                     request.MissionId,
-                    mission.HoursAwarded,
+                    completedMission.HoursAwarded,
                     cancellationToken);
+                
+                // Send notifications
+                await notificationService.SendMissionCompletedNotificationAsync(
+                    studentId,
+                    request.MissionId,
+                    completedMission.Title,
+                    cancellationToken);
+                
+                if (badgeEarned != null)
+                {
+                    await notificationService.SendBadgeEarnedNotificationAsync(
+                        studentId,
+                        false,
+                        completedMission.BadgeId,
+                        badgeEarned.Name,
+                        cancellationToken);
+                }
+                
+                if (hoursAwarded > 0)
+                {
+                    await notificationService.SendHoursAwardedNotificationAsync(
+                        studentId,
+                        false,
+                        hoursAwarded,
+                        completedMission.Title,
+                        cancellationToken);
+                }
                 
                 // Publish mission completed event (if CAP is configured)
                 if (eventPublisher != null)
@@ -153,9 +199,9 @@ public class UpdateMissionProgressCommandHandler(
                     {
                         StudentId = studentId,
                         MissionId = request.MissionId,
-                        MissionTitle = mission.Title,
-                        BadgeId = mission.BadgeId,
-                        HoursAwarded = mission.HoursAwarded,
+                        MissionTitle = completedMission.Title,
+                        BadgeId = completedMission.BadgeId,
+                        HoursAwarded = completedMission.HoursAwarded,
                         CompletedAt = DateTime.UtcNow,
                         CompletionTime = completionTime
                     }, cancellationToken: cancellationToken);

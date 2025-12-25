@@ -1,9 +1,11 @@
+using API.Application.Services;
 using API.Domain.Entities.Portfolio;
 using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using UserEntity = API.Domain.Entities.User;
 
 namespace API.Application.Features.Teacher.Portfolio.Commands;
 
@@ -13,7 +15,9 @@ public record ReviewPortfolioCommand(
 
 public class ReviewPortfolioCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<PortfolioFiles> portfolioRepository)
+    IRepository<PortfolioFiles> portfolioRepository,
+    IRepository<UserEntity> userRepository,
+    INotificationService notificationService)
     : RequestHandlerBase<ReviewPortfolioCommand, RequestResult<bool>>(parameters)
 {
     public override async Task<RequestResult<bool>> Handle(
@@ -37,7 +41,18 @@ public class ReviewPortfolioCommandHandler(
         portfolioRepository.Update(portfolioFile);
         await portfolioRepository.SaveChangesAsync();
 
-        // TODO: Create notification for student (Phase 7)
+        // Notify student
+        var teacher = await userRepository.Get(u => u.ID == _userState.UserID).FirstOrDefaultAsync(cancellationToken);
+        var teacherName = teacher?.Name ?? "Your teacher";
+
+        await notificationService.SendPortfolioReviewNotificationAsync(
+            portfolioFile.StudentId,
+            teacherName,
+            portfolioFile.FileName,
+            false, // Not a revision request
+            request.FeedbackNotes,
+            portfolioFile.ID,
+            cancellationToken);
 
         return RequestResult<bool>.Success(true, "Portfolio reviewed successfully");
     }

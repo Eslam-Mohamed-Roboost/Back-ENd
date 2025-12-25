@@ -1,12 +1,11 @@
 using API.Application.Features.Teacher.CPD.Queries;
+using API.Filters;
 using API.Shared.Models;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.EndPoints.Teacher.CPD;
 
-[Authorize(Roles = "Teacher")]
 public class GetCpdHoursEndpoint : EndpointDefinition
 {
     public override void RegisterEndpoints(IEndpointRouteBuilder app)
@@ -14,6 +13,8 @@ public class GetCpdHoursEndpoint : EndpointDefinition
         app.MapGet("/Teacher/CPD/Hours", HandleAsync)
             .WithName("GetCpdHours")
             .WithTags("Teacher CPD")
+            .AddEndpointFilter<JwtEndpointFilter>()
+            .Produces<EndPointResponse<API.Application.Features.Teacher.CPD.DTOs.CpdHoursSummaryDto>>()
             .WithOpenApi();
     }
 

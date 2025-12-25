@@ -1,9 +1,13 @@
 using API.Application.Features.Student.Portfolio.DTOs;
+using API.Application.Services;
 using API.Domain.Entities.Portfolio;
+using API.Domain.Entities.Teacher;
 using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using UserEntity = API.Domain.Entities.User;
 
 namespace API.Application.Features.Student.Portfolio.Commands;
 
@@ -11,7 +15,10 @@ public record UploadPortfolioFileCommand(PortfolioUploadRequest Request) : IRequ
 
 public class UploadPortfolioFileCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<PortfolioFiles> portfolioFilesRepository)
+    IRepository<PortfolioFiles> portfolioFilesRepository,
+    IRepository<TeacherSubjects> teacherSubjectsRepository,
+    IRepository<UserEntity> userRepository,
+    INotificationService notificationService)
     : RequestHandlerBase<UploadPortfolioFileCommand, RequestResult<PortfolioFileDto>>(parameters)
 {
     public override async Task<RequestResult<PortfolioFileDto>> Handle(UploadPortfolioFileCommand request, CancellationToken cancellationToken)
@@ -52,6 +59,29 @@ public class UploadPortfolioFileCommandHandler(
         };
 
         portfolioFilesRepository.Add(entity);
+        await portfolioFilesRepository.SaveChangesAsync();
+
+        // Notify teacher(s) assigned to this subject
+        var teacherAssignments = await teacherSubjectsRepository
+            .Get(ts => ts.SubjectId == request.Request.SubjectId)
+            .ToListAsync();
+
+        if (teacherAssignments.Any())
+        {
+            var student = await userRepository.Get(u => u.ID == studentId).FirstOrDefaultAsync();
+            var studentName = student?.Name ?? "A student";
+
+            foreach (var assignment in teacherAssignments)
+            {
+                await notificationService.SendPortfolioUploadNotificationAsync(
+                    assignment.TeacherId,
+                    studentId,
+                    studentName,
+                    file.FileName,
+                    entity.ID,
+                    cancellationToken);
+            }
+        }
 
         var dto = new PortfolioFileDto
         {

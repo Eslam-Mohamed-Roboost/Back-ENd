@@ -17,4 +17,6 @@ public class Missions : BaseEntity
     
     public int Order { get; set; }
     public bool IsEnabled { get; set; } = true;
+    public DateTime? Deadline { get; set; }
+    public string? PrerequisiteMissionIds { get; set; } // JSON array of mission IDs
 }

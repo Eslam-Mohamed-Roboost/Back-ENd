@@ -93,6 +93,18 @@ public class HoursTrackingService : IHoursTrackingService
             return 0;
         }
 
+        // Check if hours already recorded for this module
+        var existing = await _cpdProgressRepository
+            .Get(x => x.TeacherId == teacherId && 
+                     x.ModuleId == moduleId && 
+                     x.HoursEarned > 0)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (existing != null)
+        {
+            return 0; // Already recorded hours for this module
+        }
+
         // Update or create CPD progress
         var progress = await _cpdProgressRepository
             .Get(x => x.TeacherId == teacherId && x.ModuleId == moduleId)
@@ -100,16 +112,29 @@ public class HoursTrackingService : IHoursTrackingService
 
         if (progress == null)
         {
-            return 0; // Progress record should exist
+            // Create new progress record
+            progress = new TeacherCpdProgress
+            {
+                TeacherId = teacherId,
+                ModuleId = moduleId,
+                Status = ProgressStatus.Completed,
+                HoursEarned = hours,
+                CompletedAt = DateTime.UtcNow,
+                CreatedAt = DateTime.UtcNow
+            };
+            _cpdProgressRepository.Add(progress);
         }
-
-        // Update hours if not already set
-        if (progress.HoursEarned == null || progress.HoursEarned == 0)
+        else
         {
+            // Update existing progress
             progress.HoursEarned = hours;
+            progress.Status = ProgressStatus.Completed;
+            progress.CompletedAt = DateTime.UtcNow;
             progress.UpdatedAt = DateTime.UtcNow;
+            _cpdProgressRepository.Update(progress);
         }
 
+        await _cpdProgressRepository.SaveChangesAsync();
         return hours;
     }
 

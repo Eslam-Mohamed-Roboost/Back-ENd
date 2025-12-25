@@ -6,6 +6,7 @@ using API.Domain.Entities.Missions;
 using API.Domain.Entities.Portfolio;
 using API.Domain.Entities.System;
 using API.Domain.Entities.Teacher;
+using API.Domain.Entities.Exercises;
 using Microsoft.EntityFrameworkCore;
 using BadgesEntity = API.Domain.Entities.Gamification.Badges;
 
@@ -60,6 +61,10 @@ public class ApplicationDbContext : DbContext
     public DbSet<TeacherCpdProgress> TeacherCpdProgress { get; set; }
     public DbSet<WeeklyChallenges> WeeklyChallenges { get; set; }
     public DbSet<CpdModules> CpdModules { get; set; }
+    
+    // Exercises
+    public DbSet<Exercises> Exercises { get; set; }
+    public DbSet<ExerciseSubmissions> ExerciseSubmissions { get; set; }
  
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

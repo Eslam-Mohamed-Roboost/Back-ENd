@@ -5,6 +5,7 @@ using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using BadgeEntity = API.Domain.Entities.Gamification.Badges;
 
 namespace API.Application.Features.Teacher.Portfolio.Queries;
 
@@ -12,7 +13,7 @@ public record GetTeacherPortfolioBadgesQuery : IRequest<RequestResult<List<Badge
 
 public class GetTeacherPortfolioBadgesQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Badges> badgesRepository)
+    IRepository<BadgeEntity> badgesRepository)
     : RequestHandlerBase<GetTeacherPortfolioBadgesQuery, RequestResult<List<BadgeDto>>>(parameters)
 {
     public override async Task<RequestResult<List<BadgeDto>>> Handle(GetTeacherPortfolioBadgesQuery request, CancellationToken cancellationToken)

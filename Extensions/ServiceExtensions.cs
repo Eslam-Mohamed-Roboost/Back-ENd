@@ -29,6 +29,9 @@ public static class ServiceExtensions
         // Register Badge and Hours Services
         services.AddScoped<IBadgeAwardService, BadgeAwardService>();
         services.AddScoped<IHoursTrackingService, HoursTrackingService>();
+        services.AddScoped<INotificationService, NotificationService>();
+        services.AddScoped<IStreakCalculationService, StreakCalculationService>();
+        services.AddScoped<ILeaderboardService, LeaderboardService>();
 
         return services;
     }

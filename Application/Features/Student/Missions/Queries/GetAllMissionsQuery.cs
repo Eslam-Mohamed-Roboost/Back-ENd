@@ -1,69 +1,104 @@
-using API.Application.Features.Student.Missions.DTOs;
+using System.Text.Json;
 using API.Domain.Entities.Missions;
-using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MissionsEntity = API.Domain.Entities.Missions.Missions;
 
 namespace API.Application.Features.Student.Missions.Queries;
 
-public record GetAllMissionsQuery : IRequest<RequestResult<List<MissionDto>>>;
+public record MissionWithPrerequisitesDto(
+    long Id,
+    string Title,
+    string Description,
+    string Difficulty,
+    int Points,
+    decimal? HoursAwarded,
+    DateTime? Deadline,
+    bool IsLocked,
+    List<long> PrerequisiteMissionIds,
+    bool IsCompleted,
+    int? Progress);
+
+public record GetAllMissionsQuery : IRequest<RequestResult<List<MissionWithPrerequisitesDto>>>;
 
 public class GetAllMissionsQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Domain.Entities.Missions.Missions> missionsRepository,
-    IRepository<StudentMissionProgress> progressRepository,
-    IRepository<Domain.Entities.Gamification.Badges> badgesRepository)
-    : RequestHandlerBase<GetAllMissionsQuery, RequestResult<List<MissionDto>>>(parameters)
+    IRepository<MissionsEntity> missionsRepository,
+    IRepository<StudentMissionProgress> progressRepository)
+    : RequestHandlerBase<GetAllMissionsQuery, RequestResult<List<MissionWithPrerequisitesDto>>>(parameters)
 {
-    public override async Task<RequestResult<List<MissionDto>>> Handle(GetAllMissionsQuery request, CancellationToken cancellationToken)
+    public override async Task<RequestResult<List<MissionWithPrerequisitesDto>>> Handle(
+        GetAllMissionsQuery request,
+        CancellationToken cancellationToken)
     {
         var studentId = _userState.UserID;
 
         // Get all enabled missions
-        var missions = await missionsRepository.Get(x => x.IsEnabled).ToListAsync(cancellationToken);
+        var missions = await missionsRepository
+            .Get(m => m.IsEnabled)
+            .OrderBy(m => m.Order)
+            .ToListAsync(cancellationToken);
 
-        // Get student progress for all missions
-        var progressMap = await progressRepository.Get(x => x.StudentId == studentId)
-            .ToDictionaryAsync(x => x.MissionId, cancellationToken);
+        // Get student's progress
+        var progressRecords = await progressRepository
+            .Get(p => p.StudentId == studentId)
+            .ToListAsync(cancellationToken);
 
-        // Get badges
-        var badgeMap = await badgesRepository.Get()
-            .ToDictionaryAsync(x => x.ID, cancellationToken);
+        var completedMissionIds = progressRecords
+            .Where(p => p.Status == API.Domain.Enums.ProgressStatus.Completed)
+            .Select(p => p.MissionId)
+            .ToHashSet();
 
-        var result = missions.Select(m =>
+        var missionDtos = missions.Select(m =>
         {
-            var progress = progressMap.GetValueOrDefault(m.ID);
-            var badge = badgeMap.GetValueOrDefault(m.BadgeId);
+            var progress = progressRecords.FirstOrDefault(p => p.MissionId == m.ID);
+            var prerequisiteIds = ParsePrerequisiteIds(m.PrerequisiteMissionIds);
+            var isLocked = !CanStartMission(prerequisiteIds, completedMissionIds);
 
-            return new MissionDto
-            {
-                Id = m.ID,
-                Title = m.Title,
-                Description = m.Description ?? "",
-                Icon = m.Icon ?? "📚",
-                Status = GetMissionStatus(progress),
-                Progress = progress != null ? (int)progress.ProgressPercentage : 0,
-                Badge = badge?.Name ?? "",
-                Duration = $"{m.EstimatedMinutes} mins",
-                Requirements = new() // TODO: Implement prerequisites logic
-            };
-        }).OrderBy(x => x.Id).ToList();
+            return new MissionWithPrerequisitesDto(
+                m.ID,
+                m.Title,
+                m.Description ?? string.Empty,
+                "Medium", // Default difficulty
+                0, // Points not in current schema
+                m.HoursAwarded,
+                m.Deadline,
+                isLocked,
+                prerequisiteIds,
+                progress?.Status == API.Domain.Enums.ProgressStatus.Completed,
+                progress != null ? (int?)progress.ProgressPercentage : null);
+        }).ToList();
 
-        return RequestResult<List<MissionDto>>.Success(result);
+        return RequestResult<List<MissionWithPrerequisitesDto>>.Success(missionDtos);
     }
 
-    private static string GetMissionStatus(StudentMissionProgress? progress)
+    private List<long> ParsePrerequisiteIds(string? prerequisiteJson)
     {
-        if (progress == null) return "not-started";
-        
-        return progress.Status switch
+        if (string.IsNullOrWhiteSpace(prerequisiteJson))
         {
-            ProgressStatus.Completed => "completed",
-            ProgressStatus.InProgress => "in-progress",
-            ProgressStatus.NotStarted => "not-started",
-            _ => "locked"
-        };
+            return new List<long>();
+        }
+
+        try
+        {
+            return JsonSerializer.Deserialize<List<long>>(prerequisiteJson) ?? new List<long>();
+        }
+        catch
+        {
+            return new List<long>();
+        }
+    }
+
+    private bool CanStartMission(List<long> prerequisiteIds, HashSet<long> completedMissionIds)
+    {
+        if (!prerequisiteIds.Any())
+        {
+            return true; // No prerequisites
+        }
+
+        // All prerequisites must be completed
+        return prerequisiteIds.All(id => completedMissionIds.Contains(id));
     }
 }

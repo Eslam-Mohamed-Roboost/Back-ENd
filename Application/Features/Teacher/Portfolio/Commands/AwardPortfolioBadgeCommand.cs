@@ -6,6 +6,7 @@ using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using BadgeEntity = API.Domain.Entities.Gamification.Badges;
 
 namespace API.Application.Features.Teacher.Portfolio.Commands;
 
@@ -13,7 +14,7 @@ public record AwardPortfolioBadgeCommand(long StudentId, long SubjectId, Teacher
 
 public class AwardPortfolioBadgeCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Badges> badgesRepository,
+    IRepository<BadgeEntity> badgesRepository,
     IRepository<StudentBadges> studentBadgesRepository)
     : RequestHandlerBase<AwardPortfolioBadgeCommand, RequestResult<PortfolioBadgeDto>>(parameters)
 {
