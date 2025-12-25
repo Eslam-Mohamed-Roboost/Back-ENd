@@ -24,6 +24,9 @@ public enum ErrorCode
     NotFound = 6,
     BadRequest = 7,
     ValidationError = 8,
-    FileTooLarge = 9
+    FileTooLarge = 9,
+    Unauthorized =10,
+    [DescriptionAnnotation("Invalid password", "Invalid password")]
+    InvalidPassword = 11, 
 }
 

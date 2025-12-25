@@ -23,7 +23,7 @@ public class TeacherAssignmentInfo
 public class GetTeacherAssignmentsQueryHandler(
     RequestHandlerBaseParameters parameters,
     IRepository<TeacherClassAssignments> assignmentRepository,
-    IRepository<Classes> classRepository,
+    IRepository<Domain.Entities.General.Classes> classRepository,
     IRepository<Subjects> subjectRepository)
     : RequestHandlerBase<GetTeacherAssignmentsQuery, RequestResult<List<TeacherAssignmentInfo>>>(parameters)
 {

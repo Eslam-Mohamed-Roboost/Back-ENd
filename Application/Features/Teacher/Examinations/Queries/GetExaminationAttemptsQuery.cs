@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Examinations.DTOs;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -14,7 +15,7 @@ public record GetExaminationAttemptsQuery(
 
 public class GetExaminationAttemptsQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Examinations> examinationRepository,
+    IRepository<Domain.Entities.Academic.Examinations> examinationRepository,
     IRepository<ExaminationAttempts> attemptRepository,
     IRepository<TeacherClassAssignments> assignmentRepository)
     : RequestHandlerBase<GetExaminationAttemptsQuery, RequestResult<List<ExaminationAttemptDto>>>(parameters)

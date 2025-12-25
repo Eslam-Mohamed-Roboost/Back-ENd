@@ -16,7 +16,7 @@ public record GetExaminationsQuery(
 
 public class GetExaminationsQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Examinations> examinationRepository,
+    IRepository<Domain.Entities.Academic.Examinations> examinationRepository,
     IRepository<ExaminationAttempts> attemptRepository,
     IRepository<TeacherClassAssignments> assignmentRepository)
     : RequestHandlerBase<GetExaminationsQuery, RequestResult<List<ExaminationDto>>>(parameters)

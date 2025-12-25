@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Examinations.DTOs;
 using API.Application.Features.Teacher.Permissions.Services;
 using API.Domain.Entities.Academic;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -15,7 +16,7 @@ public record GradeExaminationAttemptCommand(
 public class GradeExaminationAttemptCommandHandler(
     RequestHandlerBaseParameters parameters,
     IRepository<ExaminationAttempts> attemptRepository,
-    IRepository<Examinations> examinationRepository,
+    IRepository<Domain.Entities.Academic.Examinations> examinationRepository,
     TeacherPermissionService permissionService)
     : RequestHandlerBase<GradeExaminationAttemptCommand, RequestResult<ExaminationAttemptDto>>(parameters)
 {
@@ -76,7 +77,7 @@ public class GradeExaminationAttemptCommandHandler(
         attempt.UpdatedBy = teacherId;
 
         attemptRepository.Update(attempt);
-        await attemptRepository.SaveChangesAsync(cancellationToken);
+        await attemptRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new ExaminationAttemptDto

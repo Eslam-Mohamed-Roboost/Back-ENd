@@ -25,7 +25,7 @@ public class Grades : BaseEntity
 
     // Navigation properties
     [ForeignKey(nameof(StudentId))]
-    public Identity.User? Student { get; set; }
+    public User? Student { get; set; }
 
     [ForeignKey(nameof(ClassId))]
     public General.Classes? Class { get; set; }
@@ -40,9 +40,9 @@ public class Grades : BaseEntity
     public Examinations? Examination { get; set; }
 
     [ForeignKey(nameof(GradedBy))]
-    public Identity.User? Grader { get; set; }
+    public User? Grader { get; set; }
 
     [ForeignKey(nameof(ApprovedBy))]
-    public Identity.User? Approver { get; set; }
+    public User? Approver { get; set; }
 }
 

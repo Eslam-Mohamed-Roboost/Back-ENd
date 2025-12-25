@@ -2,6 +2,7 @@ using API.Application.Features.Teacher.Exercises.DTOs;
 using API.Application.Features.Teacher.Permissions.Services;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -14,7 +15,7 @@ public record CreateExerciseCommand(CreateExerciseRequest Request) : IRequest<Re
 
 public class CreateExerciseCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Exercises> exerciseRepository,
+    IRepository<Domain.Entities.Academic.Exercises> exerciseRepository,
     IRepository<ClassEntity> classRepository,
     IRepository<TeacherClassAssignments> assignmentRepository,
     TeacherPermissionService permissionService)
@@ -53,7 +54,7 @@ public class CreateExerciseCommandHandler(
         }
 
         // Create exercise
-        var exercise = new Exercises
+        var exercise = new Domain.Entities.Academic.Exercises
         {
             TeacherId = teacherId,
             ClassId = request.Request.ClassId,
@@ -70,7 +71,7 @@ public class CreateExerciseCommandHandler(
         };
 
         exerciseRepository.Add(exercise);
-        await exerciseRepository.SaveChangesAsync(cancellationToken);
+        await exerciseRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new ExerciseDto

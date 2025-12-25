@@ -16,7 +16,7 @@ public class TeacherPermissions : BaseEntity
 
     // Navigation properties
     [ForeignKey(nameof(TeacherId))]
-    public Identity.User? Teacher { get; set; }
+    public User? Teacher { get; set; }
 
     [ForeignKey(nameof(ClassId))]
     public General.Classes? Class { get; set; }

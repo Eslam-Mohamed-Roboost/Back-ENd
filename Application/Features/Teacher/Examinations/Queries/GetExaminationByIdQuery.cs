@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Examinations.DTOs;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -12,7 +13,7 @@ public record GetExaminationByIdQuery(long ExaminationId) : IRequest<RequestResu
 
 public class GetExaminationByIdQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Examinations> examinationRepository,
+    IRepository<Domain.Entities.Academic.Examinations> examinationRepository,
     IRepository<ExaminationAttempts> attemptRepository,
     IRepository<TeacherClassAssignments> assignmentRepository)
     : RequestHandlerBase<GetExaminationByIdQuery, RequestResult<ExaminationDto>>(parameters)

@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Exercises.DTOs;
 using API.Application.Features.Teacher.Permissions.Services;
 using API.Domain.Entities.Academic;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -15,7 +16,7 @@ public record GradeExerciseSubmissionCommand(
 public class GradeExerciseSubmissionCommandHandler(
     RequestHandlerBaseParameters parameters,
     IRepository<ExerciseSubmissions> submissionRepository,
-    IRepository<Exercises> exerciseRepository,
+    IRepository<Domain.Entities.Academic.Exercises> exerciseRepository,
     TeacherPermissionService permissionService)
     : RequestHandlerBase<GradeExerciseSubmissionCommand, RequestResult<ExerciseSubmissionDto>>(parameters)
 {
@@ -77,7 +78,7 @@ public class GradeExerciseSubmissionCommandHandler(
         submission.UpdatedBy = teacherId;
 
         submissionRepository.Update(submission);
-        await submissionRepository.SaveChangesAsync(cancellationToken);
+        await submissionRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new ExerciseSubmissionDto

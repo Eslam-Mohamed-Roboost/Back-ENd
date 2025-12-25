@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Grades.DTOs;
 using API.Application.Features.Teacher.Permissions.Services;
 using API.Domain.Entities.Academic;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -12,7 +13,7 @@ public record UpdateGradeCommand(long GradeId, UpdateGradeRequest Request) : IRe
 
 public class UpdateGradeCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Grades> gradeRepository,
+    IRepository<Domain.Entities.Academic.Grades> gradeRepository,
     TeacherPermissionService permissionService)
     : RequestHandlerBase<UpdateGradeCommand, RequestResult<GradeDto>>(parameters)
 {
@@ -88,7 +89,7 @@ public class UpdateGradeCommandHandler(
         grade.UpdatedBy = teacherId;
 
         gradeRepository.Update(grade);
-        await gradeRepository.SaveChangesAsync(cancellationToken);
+        await gradeRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new GradeDto

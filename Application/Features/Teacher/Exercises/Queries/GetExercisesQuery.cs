@@ -17,7 +17,7 @@ public record GetExercisesQuery(
 
 public class GetExercisesQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Exercises> exerciseRepository,
+    IRepository<Domain.Entities.Academic.Exercises> exerciseRepository,
     IRepository<ExerciseSubmissions> submissionRepository,
     IRepository<TeacherClassAssignments> assignmentRepository)
     : RequestHandlerBase<GetExercisesQuery, RequestResult<List<ExerciseDto>>>(parameters)

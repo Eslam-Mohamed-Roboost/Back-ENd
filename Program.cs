@@ -33,6 +33,9 @@ try
     builder.Services.AddScoped<TransactionMiddleware>();
     builder.Services.AddScoped<UserStateInitializerMiddleware>();
     builder.Services.AddSingleton(new IdGenerator(0));
+    
+    // Register Application Services
+    builder.Services.AddScoped<API.Application.Features.Teacher.Permissions.Services.TeacherPermissionService>();
 
     // Configure HybridCache/Redis
     builder.ConfigureHybridCache();

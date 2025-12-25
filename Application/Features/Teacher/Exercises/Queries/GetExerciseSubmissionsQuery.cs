@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Exercises.DTOs;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -14,7 +15,7 @@ public record GetExerciseSubmissionsQuery(
 
 public class GetExerciseSubmissionsQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Exercises> exerciseRepository,
+    IRepository<Domain.Entities.Academic.Exercises> exerciseRepository,
     IRepository<ExerciseSubmissions> submissionRepository,
     IRepository<TeacherClassAssignments> assignmentRepository)
     : RequestHandlerBase<GetExerciseSubmissionsQuery, RequestResult<List<ExerciseSubmissionDto>>>(parameters)

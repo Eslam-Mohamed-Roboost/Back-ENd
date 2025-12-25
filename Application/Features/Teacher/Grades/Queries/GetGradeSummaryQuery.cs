@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Grades.DTOs;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -17,7 +18,7 @@ public record GetGradeSummaryQuery(
 
 public class GetGradeSummaryQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Grades> gradeRepository,
+    IRepository<Domain.Entities.Academic.Grades> gradeRepository,
     IRepository<ClassEntity> classRepository,
     IRepository<TeacherClassAssignments> assignmentRepository,
     IRepository<Domain.Entities.User> userRepository)

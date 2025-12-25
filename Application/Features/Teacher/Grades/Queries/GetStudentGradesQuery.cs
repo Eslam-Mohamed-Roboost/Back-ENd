@@ -17,7 +17,7 @@ public record GetStudentGradesQuery(
 
 public class GetStudentGradesQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Grades> gradeRepository,
+    IRepository<Domain.Entities.Academic.Grades> gradeRepository,
     IRepository<TeacherClassAssignments> assignmentRepository)
     : RequestHandlerBase<GetStudentGradesQuery, RequestResult<List<GradeDto>>>(parameters)
 {

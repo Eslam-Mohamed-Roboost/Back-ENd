@@ -14,8 +14,7 @@ public record GetSubjectStudentsQuery(long SubjectId) : IRequest<RequestResult<L
 public class GetSubjectStudentsQueryHandler(
     RequestHandlerBaseParameters parameters,
     IRepository<Domain.Entities.User> userRepository,
-    IRepository<Classes> classesRepository,
-    IRepository<PortfolioFiles> portfolioFilesRepository,
+     IRepository<PortfolioFiles> portfolioFilesRepository,
     IRepository<TeacherFeedback> feedbackRepository)
     : RequestHandlerBase<GetSubjectStudentsQuery, RequestResult<List<TeacherStudentSummaryDto>>>(parameters)
 {

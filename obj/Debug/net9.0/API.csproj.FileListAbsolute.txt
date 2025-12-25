@@ -654,10 +654,9 @@
 /home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/API.csproj.Up2Date
 /home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/API.genruntimeconfig.cache
 /home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/ref/API.dll
-/home/eslam/Downloads/School-Hub-v2/Back-End/bin/Debug/net9.0/System.Text.Json.dll
-/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets/msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
-/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets/msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets/msbuild.build.API.props
-/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.API.props
-/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.API.props
-/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets.pack.json
+/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/rpswa.dswa.cache.json
+/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/rjimswa.dswa.cache.json
+/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
+/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
+/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets.build.json.cache
+/home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/swae.build.ex.cache

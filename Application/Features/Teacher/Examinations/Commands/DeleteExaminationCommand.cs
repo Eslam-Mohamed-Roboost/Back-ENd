@@ -1,4 +1,5 @@
 using API.Domain.Entities.Academic;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -10,7 +11,7 @@ public record DeleteExaminationCommand(long ExaminationId) : IRequest<RequestRes
 
 public class DeleteExaminationCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Examinations> examinationRepository)
+    IRepository<Domain.Entities.Academic.Examinations> examinationRepository)
     : RequestHandlerBase<DeleteExaminationCommand, RequestResult<bool>>(parameters)
 {
     public override async Task<RequestResult<bool>> Handle(
@@ -41,7 +42,7 @@ public class DeleteExaminationCommandHandler(
         examination.UpdatedBy = teacherId;
 
         examinationRepository.Update(examination);
-        await examinationRepository.SaveChangesAsync(cancellationToken);
+        await examinationRepository.SaveChangesAsync();
 
         return RequestResult<bool>.Success(true);
     }

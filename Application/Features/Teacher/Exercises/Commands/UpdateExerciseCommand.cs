@@ -1,5 +1,6 @@
 using API.Application.Features.Teacher.Exercises.DTOs;
 using API.Domain.Entities.Academic;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -11,7 +12,7 @@ public record UpdateExerciseCommand(long ExerciseId, UpdateExerciseRequest Reque
 
 public class UpdateExerciseCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Exercises> exerciseRepository)
+    IRepository<Domain.Entities.Academic.Exercises> exerciseRepository)
     : RequestHandlerBase<UpdateExerciseCommand, RequestResult<ExerciseDto>>(parameters)
 {
     public override async Task<RequestResult<ExerciseDto>> Handle(
@@ -65,7 +66,7 @@ public class UpdateExerciseCommandHandler(
         exercise.UpdatedBy = teacherId;
 
         exerciseRepository.Update(exercise);
-        await exerciseRepository.SaveChangesAsync(cancellationToken);
+        await exerciseRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new ExerciseDto

@@ -2,6 +2,7 @@ using API.Application.Features.Teacher.Examinations.DTOs;
 using API.Application.Features.Teacher.Permissions.Services;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -14,7 +15,7 @@ public record CreateExaminationCommand(CreateExaminationRequest Request) : IRequ
 
 public class CreateExaminationCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Examinations> examinationRepository,
+    IRepository<Domain.Entities.Academic.Examinations> examinationRepository,
     IRepository<ClassEntity> classRepository,
     IRepository<TeacherClassAssignments> assignmentRepository,
     TeacherPermissionService permissionService)
@@ -53,7 +54,7 @@ public class CreateExaminationCommandHandler(
         }
 
         // Create examination
-        var examination = new Examinations
+        var examination = new Domain.Entities.Academic.Examinations
         {
             TeacherId = teacherId,
             ClassId = request.Request.ClassId,
@@ -71,7 +72,7 @@ public class CreateExaminationCommandHandler(
         };
 
         examinationRepository.Add(examination);
-        await examinationRepository.SaveChangesAsync(cancellationToken);
+        await examinationRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new ExaminationDto

@@ -2,6 +2,7 @@ using API.Application.Features.Teacher.Grades.DTOs;
 using API.Application.Features.Teacher.Permissions.Services;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -13,7 +14,7 @@ public record CreateGradeCommand(CreateGradeRequest Request) : IRequest<RequestR
 
 public class CreateGradeCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Grades> gradeRepository,
+    IRepository<Domain.Entities.Academic.Grades> gradeRepository,
     IRepository<TeacherClassAssignments> assignmentRepository,
     TeacherPermissionService permissionService)
     : RequestHandlerBase<CreateGradeCommand, RequestResult<GradeDto>>(parameters)
@@ -55,7 +56,7 @@ public class CreateGradeCommandHandler(
         var status = canApprove ? "Approved" : "PendingApproval";
 
         // Create grade
-        var grade = new Grades
+        var grade = new Domain.Entities.Academic.Grades
         {
             StudentId = request.Request.StudentId,
             ClassId = request.Request.ClassId,
@@ -76,7 +77,7 @@ public class CreateGradeCommandHandler(
         };
 
         gradeRepository.Add(grade);
-        await gradeRepository.SaveChangesAsync(cancellationToken);
+        await gradeRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new GradeDto

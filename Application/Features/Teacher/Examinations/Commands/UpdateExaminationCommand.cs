@@ -1,5 +1,6 @@
 using API.Application.Features.Teacher.Examinations.DTOs;
 using API.Domain.Entities.Academic;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -11,7 +12,7 @@ public record UpdateExaminationCommand(long ExaminationId, UpdateExaminationRequ
 
 public class UpdateExaminationCommandHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Examinations> examinationRepository)
+    IRepository<Domain.Entities.Academic.Examinations> examinationRepository)
     : RequestHandlerBase<UpdateExaminationCommand, RequestResult<ExaminationDto>>(parameters)
 {
     public override async Task<RequestResult<ExaminationDto>> Handle(
@@ -68,7 +69,7 @@ public class UpdateExaminationCommandHandler(
         examination.UpdatedBy = teacherId;
 
         examinationRepository.Update(examination);
-        await examinationRepository.SaveChangesAsync(cancellationToken);
+        await examinationRepository.SaveChangesAsync();
 
         // Return DTO
         var result = new ExaminationDto

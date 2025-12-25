@@ -1,6 +1,7 @@
 using API.Application.Features.Teacher.Exercises.DTOs;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Teacher;
+using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -12,7 +13,7 @@ public record GetExerciseByIdQuery(long ExerciseId) : IRequest<RequestResult<Exe
 
 public class GetExerciseByIdQueryHandler(
     RequestHandlerBaseParameters parameters,
-    IRepository<Exercises> exerciseRepository,
+    IRepository<Domain.Entities.Academic.Exercises> exerciseRepository,
     IRepository<ExerciseSubmissions> submissionRepository,
     IRepository<TeacherClassAssignments> assignmentRepository)
     : RequestHandlerBase<GetExerciseByIdQuery, RequestResult<ExerciseDto>>(parameters)

@@ -21,9 +21,9 @@ public class ExaminationAttempts : BaseEntity
     public Examinations? Examination { get; set; }
 
     [ForeignKey(nameof(StudentId))]
-    public Identity.User? Student { get; set; }
+    public User? Student { get; set; }
 
     [ForeignKey(nameof(GradedBy))]
-    public Identity.User? Grader { get; set; }
+    public User? Grader { get; set; }
 }
 
