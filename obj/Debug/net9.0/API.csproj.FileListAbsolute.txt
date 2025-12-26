@@ -660,3 +660,4 @@
 /home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
 /home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/staticwebassets.build.json.cache
 /home/eslam/Downloads/School-Hub-v2/Back-End/obj/Debug/net9.0/swae.build.ex.cache
+/home/eslam/Downloads/School-Hub-v2/Back-End/bin/Debug/net9.0/API.staticwebassets.runtime.json

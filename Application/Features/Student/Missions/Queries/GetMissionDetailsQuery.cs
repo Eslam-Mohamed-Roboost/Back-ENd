@@ -16,7 +16,8 @@ public class GetMissionDetailsQueryHandler(
     IRepository<StudentMissionProgress> progressRepository,
     IRepository<Activities> activitiesRepository,
     IRepository<StudentActivityProgress> activityProgressRepository,
-    IRepository<Domain.Entities.Gamification.Badges> badgesRepository)
+    IRepository<Domain.Entities.Gamification.Badges> badgesRepository,
+    IRepository<Domain.Entities.Missions.MissionResources> resourcesRepository)
     : RequestHandlerBase<GetMissionDetailsQuery, RequestResult<MissionDetailDto>>(parameters)
 {
     public override async Task<RequestResult<MissionDetailDto>> Handle(GetMissionDetailsQuery request, CancellationToken cancellationToken)
@@ -50,6 +51,19 @@ public class GetMissionDetailsQueryHandler(
             Order = a.Order
         }).ToList();
 
+        // Get resources for this mission
+        var resources = await resourcesRepository.Get(x => x.MissionId == request.MissionId)
+            .OrderBy(x => x.Order)
+            .Select(r => new LearningResourceDto
+            {
+                Id = r.ID,
+                Type = r.Type,
+                Title = r.Title,
+                Url = r.Url,
+                IsRequired = r.IsRequired
+            })
+            .ToListAsync(cancellationToken);
+
         var result = new MissionDetailDto
         {
             Id = mission.ID,
@@ -60,7 +74,7 @@ public class GetMissionDetailsQueryHandler(
             Progress = progress != null ? (int)progress.ProgressPercentage : 0,
             Badge = badge?.Name ?? "",
             Activities = activityDtos,
-            Resources = new() // TODO: Implement learning resources if entity exists
+            Resources = resources
         };
 
         return RequestResult<MissionDetailDto>.Success(result);

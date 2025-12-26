@@ -6,8 +6,11 @@ using API.Domain.Entities.Missions;
 using API.Domain.Entities.Portfolio;
 using API.Domain.Entities.System;
 using API.Domain.Entities.Teacher;
+using API.Domain.Entities.Academic;
+using API.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using BadgesEntity = API.Domain.Entities.Gamification.Badges;
+using UserBadgesEntity = API.Domain.Entities.Users.Badges;
 
 namespace API.Infrastructure.Persistence.DbContexts;
 
@@ -38,12 +41,15 @@ public class ApplicationDbContext : DbContext
     public DbSet<Activities> Activities { get; set; }
     public DbSet<StudentMissionProgress> StudentMissionProgress { get; set; }
     public DbSet<StudentActivityProgress> StudentActivityProgress { get; set; }
+    public DbSet<MissionResources> MissionResources { get; set; }
     
     // Portfolio
     public DbSet<PortfolioFiles> PortfolioFiles { get; set; }
     public DbSet<PortfolioReflections> PortfolioReflections { get; set; }
     public DbSet<PortfolioLikes> PortfolioLikes { get; set; }
     public DbSet<PortfolioStatus> PortfolioStatus { get; set; }
+    public DbSet<PortfolioBookReflection> PortfolioBookReflections { get; set; }
+    public DbSet<PortfolioBookJourneyEntry> PortfolioBookJourneyEntries { get; set; }
     public DbSet<TeacherFeedback> TeacherFeedback { get; set; }
     
     // System
@@ -56,9 +62,26 @@ public class ApplicationDbContext : DbContext
     // Teacher
     public DbSet<TeacherBadgeSubmissions> TeacherBadgeSubmissions { get; set; }
     public DbSet<TeacherSubjects> TeacherSubjects { get; set; }
+    public DbSet<TeacherClassAssignments> TeacherClassAssignments { get; set; }
     public DbSet<TeacherCpdProgress> TeacherCpdProgress { get; set; }
     public DbSet<WeeklyChallenges> WeeklyChallenges { get; set; }
     public DbSet<CpdModules> CpdModules { get; set; }
+    public DbSet<TeacherPermissions> TeacherPermissions { get; set; }
+    public DbSet<TeacherMissions> TeacherMissions { get; set; }
+    public DbSet<TeacherMissionProgress> TeacherMissionProgress { get; set; }
+    public DbSet<TeacherActivityProgress> TeacherActivityProgress { get; set; }
+    public DbSet<TeacherActivities> TeacherActivities { get; set; }
+    
+    // Academic
+    public DbSet<Exercises> Exercises { get; set; }
+    public DbSet<Examinations> Examinations { get; set; }
+    public DbSet<Grades> Grades { get; set; }
+    public DbSet<ExerciseSubmissions> ExerciseSubmissions { get; set; }
+    public DbSet<ExaminationAttempts> ExaminationAttempts { get; set; }
+    public DbSet<StudentAttendance> StudentAttendance { get; set; }
+    
+    // Users
+    public DbSet<UserBadgesEntity> UserBadges { get; set; }
  
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -88,9 +111,45 @@ public class ApplicationDbContext : DbContext
         foreach (var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
 
-        // Configure WeeklyChallenges ResourceLinks as JSONB
+        // Configure JSONB columns
+        // WeeklyChallenges ResourceLinks
         modelBuilder.Entity<WeeklyChallenges>()
             .Property(e => e.ResourceLinks)
+            .HasColumnType("jsonb");
+
+        // Academic - Exercises Attachments
+        modelBuilder.Entity<Exercises>()
+            .Property(e => e.Attachments)
+            .HasColumnType("jsonb");
+
+        // Academic - Examinations Questions
+        modelBuilder.Entity<Examinations>()
+            .Property(e => e.Questions)
+            .HasColumnType("jsonb");
+
+        // Academic - ExerciseSubmissions Attachments
+        modelBuilder.Entity<ExerciseSubmissions>()
+            .Property(e => e.Attachments)
+            .HasColumnType("jsonb");
+
+        // Academic - ExaminationAttempts Answers
+        modelBuilder.Entity<ExaminationAttempts>()
+            .Property(e => e.Answers)
+            .HasColumnType("jsonb");
+
+        // Teacher - TeacherCpdProgress EvidenceFiles
+        modelBuilder.Entity<TeacherCpdProgress>()
+            .Property(e => e.EvidenceFiles)
+            .HasColumnType("jsonb");
+
+        // System - Announcements TargetAudience
+        modelBuilder.Entity<Announcements>()
+            .Property(e => e.TargetAudience)
+            .HasColumnType("jsonb");
+
+        // Gamification - QuizAttempts Answers
+        modelBuilder.Entity<QuizAttempts>()
+            .Property(e => e.Answers)
             .HasColumnType("jsonb");
     }
 

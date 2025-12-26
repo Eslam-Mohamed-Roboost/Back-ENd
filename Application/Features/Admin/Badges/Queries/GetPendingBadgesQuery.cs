@@ -1,5 +1,7 @@
+using System.Text.Json.Serialization;
 using API.Domain.Entities.Gamification;
 using API.Domain.Enums;
+using API.Helpers.Attributes;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
@@ -15,10 +17,16 @@ public record GetPendingBadgesQuery(
 
 public class PendingBadgeDto
 {
+    [JsonConverter(typeof(LongAsStringConverter))]
+
     public long Id { get; set; }
+    [JsonConverter(typeof(LongAsStringConverter))]
+
     public long StudentId { get; set; }
     public string StudentName { get; set; } = string.Empty;
     public string ClassName { get; set; } = string.Empty;
+    [JsonConverter(typeof(LongAsStringConverter))]
+
     public long BadgeId { get; set; }
     public string BadgeName { get; set; } = string.Empty;
     public DateTime EarnedAt { get; set; }

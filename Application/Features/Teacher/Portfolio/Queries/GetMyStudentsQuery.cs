@@ -58,29 +58,62 @@ public class GetMyStudentsQueryHandler(
             assignedClassIds.Contains(u.ClassID.Value))
             .ToListAsync(cancellationToken);
 
-        var studentDtos = new List<StudentPortfolioDto>();
-
-        foreach (var student in students)
+        if (!students.Any())
         {
-            // Get class info
-            var classInfo = await classRepository.Get(c => c.ID == student.ClassID!.Value)
-                .FirstOrDefaultAsync(cancellationToken);
+            return RequestResult<List<StudentPortfolioDto>>.Success(new List<StudentPortfolioDto>());
+        }
 
-            // Get portfolio files for this student
-            var portfolioFiles = await portfolioRepository.Get(p => p.StudentId == student.ID)
-                .ToListAsync(cancellationToken);
+        // Get all unique class IDs from students
+        var studentClassIds = students
+            .Where(s => s.ClassID.HasValue)
+            .Select(s => s.ClassID!.Value)
+            .Distinct()
+            .ToList();
 
-            // Filter by subject if provided
-            if (request.SubjectId.HasValue)
+        // Fetch all classes in one query
+        var classes = await classRepository.Get(c => studentClassIds.Contains(c.ID))
+            .Select(c => new { c.ID, c.Name })
+            .ToListAsync(cancellationToken);
+        var classLookup = classes.ToDictionary(c => c.ID, c => c.Name);
+
+        // Get all student IDs
+        var studentIds = students.Select(s => s.ID).ToList();
+
+        // Build portfolio files query for statistics
+        var portfolioFilesQuery = portfolioRepository.Get(p => studentIds.Contains(p.StudentId));
+
+        // Filter by subject if provided
+        if (request.SubjectId.HasValue)
+        {
+            portfolioFilesQuery = portfolioFilesQuery.Where(p => p.SubjectId == request.SubjectId.Value);
+        }
+
+        // Get portfolio statistics grouped by student ID (executed in database)
+        var portfolioStats = await portfolioFilesQuery
+            .GroupBy(p => p.StudentId)
+            .Select(g => new
             {
-                portfolioFiles = portfolioFiles.Where(p => p.SubjectId == request.SubjectId.Value).ToList();
-            }
+                StudentId = g.Key,
+                TotalFiles = g.Count(),
+                PendingFiles = g.Count(p => p.Status == "Pending"),
+                ReviewedFiles = g.Count(p => p.Status == "Reviewed"),
+                NeedsRevisionFiles = g.Count(p => p.Status == "NeedsRevision"),
+                LastSubmissionDate = g.Max(p => (DateTime?)p.UploadedAt)
+            })
+            .ToListAsync(cancellationToken);
 
-            var totalFiles = portfolioFiles.Count;
-            var pendingFiles = portfolioFiles.Count(p => p.Status == "Pending");
-            var reviewedFiles = portfolioFiles.Count(p => p.Status == "Reviewed");
-            var needsRevisionFiles = portfolioFiles.Count(p => p.Status == "NeedsRevision");
-            var lastSubmission = portfolioFiles.OrderByDescending(p => p.UploadedAt).FirstOrDefault();
+        var portfolioStatsLookup = portfolioStats.ToDictionary(s => s.StudentId);
+
+        // Build student DTOs in memory
+        var studentDtos = students.Select(student =>
+        {
+            var stats = portfolioStatsLookup.GetValueOrDefault(student.ID);
+
+            var totalFiles = stats?.TotalFiles ?? 0;
+            var pendingFiles = stats?.PendingFiles ?? 0;
+            var reviewedFiles = stats?.ReviewedFiles ?? 0;
+            var needsRevisionFiles = stats?.NeedsRevisionFiles ?? 0;
+            var lastSubmissionDate = stats?.LastSubmissionDate;
 
             // Determine overall portfolio status
             string portfolioStatus = "Pending";
@@ -93,24 +126,26 @@ public class GetMyStudentsQueryHandler(
                 portfolioStatus = "Reviewed";
             }
 
-            studentDtos.Add(new StudentPortfolioDto
+            return new StudentPortfolioDto
             {
                 StudentId = student.ID,
                 StudentName = student.Name,
                 Email = student.Email,
                 ClassId = student.ClassID!.Value,
-                ClassName = classInfo?.Name ?? "Unknown",
+                ClassName = classLookup.GetValueOrDefault(student.ClassID.Value, "Unknown"),
                 TotalFiles = totalFiles,
                 PendingFiles = pendingFiles,
                 ReviewedFiles = reviewedFiles,
                 NeedsRevisionFiles = needsRevisionFiles,
-                LastSubmissionDate = lastSubmission?.UploadedAt,
+                LastSubmissionDate = lastSubmissionDate,
                 PortfolioStatus = portfolioStatus
-            });
-        }
+            };
+        })
+        .OrderBy(s => s.ClassName)
+        .ThenBy(s => s.StudentName)
+        .ToList();
 
-        return RequestResult<List<StudentPortfolioDto>>.Success(
-            studentDtos.OrderBy(s => s.ClassName).ThenBy(s => s.StudentName).ToList());
+        return RequestResult<List<StudentPortfolioDto>>.Success(studentDtos);
     }
 }
 

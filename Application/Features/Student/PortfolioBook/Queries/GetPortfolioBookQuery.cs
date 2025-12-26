@@ -1,20 +1,52 @@
 using API.Application.Features.Student.PortfolioBook.DTOs;
+using API.Domain.Entities.Portfolio;
+using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Application.Features.Student.PortfolioBook.Queries;
 
 public record GetPortfolioBookQuery(long SubjectId) : IRequest<RequestResult<PortfolioBookDto>>;
 
 public class GetPortfolioBookQueryHandler(
-    RequestHandlerBaseParameters parameters)
+    RequestHandlerBaseParameters parameters,
+    IRepository<PortfolioBookReflection> reflectionRepository,
+    IRepository<PortfolioBookJourneyEntry> journeyRepository)
     : RequestHandlerBase<GetPortfolioBookQuery, RequestResult<PortfolioBookDto>>(parameters)
 {
     public override async Task<RequestResult<PortfolioBookDto>> Handle(GetPortfolioBookQuery request, CancellationToken cancellationToken)
     {
         var studentId = _userState.UserID;
 
-        // TODO: Implement database queries when entities are created
+        // Fetch reflections and journey entries
+        var reflections = await reflectionRepository.Get(r => r.StudentId == studentId && r.SubjectId == request.SubjectId)
+            .OrderByDescending(r => r.Date)
+            .Select(r => new PortfolioReflectionDto
+            {
+                Id = r.ID,
+                WeekOf = r.WeekOf,
+                WhatLearned = r.WhatLearned,
+                BiggestAchievement = r.BiggestAchievement,
+                ChallengesFaced = r.ChallengesFaced,
+                HelpNeeded = r.HelpNeeded,
+                Mood = r.Mood
+            })
+            .ToListAsync(cancellationToken);
+
+        var journeyEntries = await journeyRepository.Get(j => j.StudentId == studentId && j.SubjectId == request.SubjectId)
+            .OrderByDescending(j => j.Date)
+            .Select(j => new PortfolioJourneyEntryDto
+            {
+                Id = j.ID,
+                Date = j.Date,
+                SkillsWorking = j.SkillsWorking,
+                EvidenceOfLearning = j.EvidenceOfLearning,
+                HowGrown = j.HowGrown,
+                NextSteps = j.NextSteps
+            })
+            .ToListAsync(cancellationToken);
+
         // Placeholder return with sample data
         var portfolioBook = new PortfolioBookDto
         {
@@ -54,8 +86,8 @@ public class GetPortfolioBookQueryHandler(
                 Grammar = new GrammarProgressDto()
             },
             Assignments = new List<PortfolioAssignmentDto>(),
-            Reflections = new List<PortfolioReflectionDto>(),
-            JourneyEntries = new List<PortfolioJourneyEntryDto>(),
+            Reflections = reflections,
+            JourneyEntries = journeyEntries,
             Milestones = new List<PortfolioMilestoneDto>(),
             Projects = new List<PortfolioProjectDto>(),
             Progress = new PortfolioProgressDto

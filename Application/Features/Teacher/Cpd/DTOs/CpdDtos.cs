@@ -48,4 +48,24 @@ public class TeacherStatsDto
     public int CurrentStreak { get; set; }
 }
 
+public class CpdHoursSummaryDto
+{
+    public decimal TotalHours { get; set; }
+    public decimal ThisYearHours { get; set; }
+    public decimal AnnualGoal { get; set; }
+    public decimal ProgressPercentage { get; set; }
+    public List<CpdHoursEntryDto> RecentActivities { get; set; } = new();
+}
+
+public class CpdHoursEntryDto
+{
+    [JsonConverter(typeof(LongAsStringConverter))]
+    public long Id { get; set; }
+    [JsonConverter(typeof(LongAsStringConverter))]
+    public long ModuleId { get; set; }
+    public string ModuleTitle { get; set; } = string.Empty;
+    public decimal HoursEarned { get; set; }
+    public DateTime CompletedDate { get; set; }
+}
+
 

@@ -23,37 +23,49 @@ public class GetMissionsQueryHandler(RequestHandlerBaseParameters parameters, IR
             query = query.Where(m => m.BadgeId == request.BadgeId.Value);
         }
 
-        var totalCount = await query.CountAsync(cancellationToken);
-        var totalPages = (int)Math.Ceiling(totalCount / (double)request.PageSize);
 
-        var missions = await query
+
+        // Get all badges for lookup (to avoid excluding missions without badges)
+        var badgeMap = await badgeRepository.Get()
+            .ToDictionaryAsync(b => b.ID, b => b.Name, cancellationToken);
+
+        // Get total count before pagination
+        var totalCount = await query.CountAsync(cancellationToken);
+
+        // Apply pagination
+        var pagedMissions = await query
             .OrderBy(m => m.Order)
             .ThenBy(m => m.Number)
             .Skip((request.Page - 1) * request.PageSize)
             .Take(request.PageSize)
-            .Join(
-                badgeRepository.Get(),
-                mission => mission.BadgeId,
-                badge => badge.ID,
-                (mission, badge) => new MissionDto
-                {
-                    Id = mission.ID,
-                    Number = mission.Number,
-                    Title = mission.Title,
-                    Description = mission.Description,
-                    Icon = mission.Icon,
-                    EstimatedMinutes = mission.EstimatedMinutes,
-                    BadgeId = mission.BadgeId,
-                    BadgeName = badge.Name,
-                    Order = mission.Order,
-                    IsEnabled = mission.IsEnabled,
-                    CreatedAt = mission.CreatedAt
-                })
             .ToListAsync(cancellationToken);
 
-        var result = new PagingDto<MissionDto>(request.PageSize, request.Page, totalCount, totalPages, missions);
+        // Map to DTOs with badge lookup
+        var missionDtos = pagedMissions.Select(mission => new MissionDto
+        {
+            Id = mission.ID,
+            Number = mission.Number,
+            Title = mission.Title,
+            Description = mission.Description,
+            Icon = mission.Icon,
+            EstimatedMinutes = mission.EstimatedMinutes,
+            BadgeId = mission.BadgeId,
+            BadgeName = badgeMap.GetValueOrDefault(mission.BadgeId),
+            Order = mission.Order,
+            IsEnabled = mission.IsEnabled,
+            CreatedAt = mission.CreatedAt
+        }).ToList();
 
-        return RequestResult<PagingDto<MissionDto>>.Success(result);
+        var missions = new PagingDto<MissionDto>(
+            PageSize: request.PageSize,
+            PageIndex: request.Page,
+            Records: totalCount,
+            Pages: (int)Math.Ceiling(totalCount / (double)request.PageSize),
+            Items: missionDtos
+        );
+
+ 
+        return RequestResult<PagingDto<MissionDto>>.Success(missions);
     }
 }
 

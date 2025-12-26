@@ -35,6 +35,7 @@ public class GetUsersQueryHandler(
 
         var pridicate = CreatePredicate(request);
         var query = userRepository.Get(pridicate)
+            .OrderBy(x=>x.CreatedAt)
             .Select(x => new UserListDto
             {
                 Id = x.ID,

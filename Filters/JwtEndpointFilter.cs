@@ -34,6 +34,13 @@ public class JwtEndpointFilter : IEndpointFilter
         {
             var httpContext = context.HttpContext;
 
+            // Check if context is already disposed
+            if (httpContext == null || httpContext.RequestAborted.IsCancellationRequested)
+            {
+                _logger.LogWarning("HttpContext is null or request was aborted");
+                return Results.Unauthorized();
+            }
+
             if (!httpContext.Request.Headers.TryGetValue("Authorization", out var authHeader))
             {
                 _logger.LogWarning("Authorization header is missing");
@@ -63,12 +70,29 @@ public class JwtEndpointFilter : IEndpointFilter
                 return Results.Unauthorized();
             }
 
-            return await next(context);
+            // Call next filter/endpoint and ensure result is awaited properly
+            var result = await next(context);
+            
+            // Ensure we return the result without accessing HttpContext after disposal
+            return result;
+        }
+        catch (OperationCanceledException)
+        {
+            // Request was cancelled - don't log as error, just return unauthorized
+            _logger.LogWarning("Request was cancelled");
+            return Results.Unauthorized();
+        }
+        catch (ObjectDisposedException ex)
+        {
+            // HttpContext was disposed - this can happen if request was aborted
+            _logger.LogWarning(ex, "HttpContext was disposed during JWT filter execution");
+            return Results.Unauthorized();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error in JWT endpoint filter");
-            throw;
+            // Don't throw - return unauthorized instead to prevent further exceptions
+            return Results.Unauthorized();
         }
     }
 
@@ -89,14 +113,14 @@ public class JwtEndpointFilter : IEndpointFilter
         // Not in cache, check database
         var isValid = await VerifyTokenInDatabase(jwtId);
 
-        if (isValid)
-        {
-            await SetAuthorizedTokenToCache(jwtId);
-        }
-        else
-        {
-            await SetUnAuthorizedTokenInCache(jwtId);
-        }
+        // if (isValid)
+        // {
+        //     await SetAuthorizedTokenToCache(jwtId);
+        // }
+        // else
+        // {
+        //     await SetUnAuthorizedTokenInCache(jwtId);
+        // }
 
         return isValid;
     }

@@ -50,7 +50,7 @@ public class UpdateUserCommandHandler(
 
         if (request.IsActive.HasValue)
         {
-            user.IsActive = request.IsActive.Value;
+            user.IsActive = true;
         }
 
         if (!string.IsNullOrEmpty(request.PhoneNumber))

@@ -1,5 +1,6 @@
 using API.Application.Features.Admin.UpdateUser.Commands;
 using API.Filters;
+using API.Middlewares;
 using API.Shared.Models;
 using MediatR;
 
@@ -26,6 +27,17 @@ public class UpdateUserEndpoint : EndpointDefinition
             .WithTags("Admin")
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<bool>>();
+
+        app.MapPut("/Admin/Users/{userId}/ChangePassword",
+                async (IMediator mediator, long userId, ChangeUserPasswordRequest request, CancellationToken cancellationToken) =>
+                {
+                    var result = await mediator.Send(new ChangeUserPasswordCommand(userId, request.NewPassword), cancellationToken);
+                    return Response(result);
+                })
+            .WithTags("Admin")
+           // .AddEndpointFilter<JwtEndpointFilter>()
+            .AddEndpointFilter<ValidationFilter<ChangeUserPasswordRequest>>()
+            .Produces<EndPointResponse<bool>>();
     }
 }
 
@@ -37,5 +49,10 @@ public class UpdateUserRequest
     public bool? IsActive { get; set; }
     public string? PhoneNumber { get; set; }
     public long? ClassID { get; set; }
+}
+
+public class ChangeUserPasswordRequest
+{
+    public string NewPassword { get; set; } = string.Empty;
 }
 

@@ -19,6 +19,6 @@ public interface IRepository<T> where T : BaseEntity
     void AddRange(IEnumerable<T> entities);
     Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
     void SaveChanges();
-    Task SaveChangesAsync();
+    Task SaveChangesAsync(CancellationToken? cancellationToken = null);
 }
 

@@ -36,6 +36,7 @@ public class LearningResourceDto
     public string Type { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string Url { get; set; } = string.Empty;
+    public bool IsRequired { get; set; }
 }
 
 public class MissionDetailDto

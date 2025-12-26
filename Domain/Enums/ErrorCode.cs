@@ -28,5 +28,8 @@ public enum ErrorCode
     Unauthorized =10,
     [DescriptionAnnotation("Invalid password", "Invalid password")]
     InvalidPassword = 11, 
+    InternalError = 12,
+    [DescriptionAnnotation("Daily limit reached for this action", "Daily limit reached for this action")]
+    DailyLimitReached = 13
 }
 

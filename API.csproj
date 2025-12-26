@@ -46,4 +46,8 @@
     <PackageReference Include="System.Text.Json" Version="9.0.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

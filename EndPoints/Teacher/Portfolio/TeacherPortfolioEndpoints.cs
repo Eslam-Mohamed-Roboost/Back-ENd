@@ -9,6 +9,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
 using API.Application.Features.Student.Portfolio.DTOs;
+using API.Application.Features.Teacher.Classes.DTOs;
 
 namespace API.EndPoints.Teacher.Portfolio;
 
@@ -18,8 +19,22 @@ public class TeacherPortfolioEndpoints : EndpointDefinition
     {
         // GET /Teacher/Portfolio/MyStudents?subjectId=...&classId=...
         app.MapGet("/Teacher/Portfolio/MyStudents",
-                async (IMediator mediator, long? subjectId, long? classId, CancellationToken cancellationToken) =>
+                async (IMediator mediator, string? subjectIdStr, string? classIdStr, CancellationToken cancellationToken) =>
                 {
+                    // Parse subjectId - treat "null" string as null
+                    long? subjectId = null;
+                    if (!string.IsNullOrWhiteSpace(subjectIdStr) && subjectIdStr != "null" && long.TryParse(subjectIdStr, out long parsedSubjectId))
+                    {
+                        subjectId = parsedSubjectId;
+                    }
+
+                    // Parse classId - treat "null" string as null
+                    long? classId = null;
+                    if (!string.IsNullOrWhiteSpace(classIdStr) && classIdStr != "null" && long.TryParse(classIdStr, out long parsedClassId))
+                    {
+                        classId = parsedClassId;
+                    }
+
                     var result = await mediator.Send(new GetMyStudentsQuery(subjectId, classId), cancellationToken);
                     return Response(result);
                 })
@@ -38,49 +53,87 @@ public class TeacherPortfolioEndpoints : EndpointDefinition
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<List<TeacherStudentSummaryDto>>>();
 
-        // GET /Teacher/Portfolio/{studentId}/{subjectId}
-        app.MapGet("/Teacher/Portfolio/{studentId}/{subjectId}",
-                async (IMediator mediator, [AsParameters] PortfolioRouteParams routeParams, CancellationToken cancellationToken) =>
+        // GET /Teacher/Portfolio/Student/{studentId}/{subjectId}
+        app.MapGet("/Teacher/Portfolio/Student/{studentId}/{subjectId}",
+                async (IMediator mediator, [FromRoute] string studentId, [FromRoute] string subjectId, CancellationToken cancellationToken) =>
                 {
-                    var result = await mediator.Send(new GetStudentPortfolioQuery(routeParams.StudentId, routeParams.SubjectId), cancellationToken);
+                    // Validate and parse route parameters
+                    if (string.IsNullOrWhiteSpace(studentId) || studentId == "null" || 
+                        string.IsNullOrWhiteSpace(subjectId) || subjectId == "null")
+                    {
+                        return Results.BadRequest(new { Message = "StudentId and SubjectId are required and cannot be null." });
+                    }
+
+                    if (!long.TryParse(studentId, out long studentIdLong) || !long.TryParse(subjectId, out long subjectIdLong))
+                    {
+                        return Results.BadRequest(new { Message = "Invalid StudentId or SubjectId format." });
+                    }
+
+                    var result = await mediator.Send(new GetStudentPortfolioQuery(studentIdLong, subjectIdLong), cancellationToken);
                     return Response(result);
                 })
             .WithTags("Teacher")
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<TeacherPortfolioDto>>();
 
-        // POST /Teacher/Portfolio/{studentId}/{subjectId}/Comment
-        app.MapPost("/Teacher/Portfolio/{studentId}/{subjectId}/Comment",
-                async (IMediator mediator, [AsParameters] PortfolioRouteParams routeParams, [FromBody] TeacherPortfolioCommentRequest request, CancellationToken cancellationToken) =>
+        // POST /Teacher/Portfolio/Student/{studentId}/{subjectId}/Comment
+        app.MapPost("/Teacher/Portfolio/Student/{studentId}/{subjectId}/Comment",
+                async (IMediator mediator, [FromRoute] string studentId, [FromRoute] string subjectId, [FromBody] TeacherPortfolioCommentRequest request, CancellationToken cancellationToken) =>
                 {
-                    var result = await mediator.Send(new AddPortfolioCommentCommand(routeParams.StudentId, routeParams.SubjectId, request), cancellationToken);
+                    if (!long.TryParse(studentId, out long studentIdLong) || !long.TryParse(subjectId, out long subjectIdLong))
+                    {
+                        return Results.BadRequest(new { Message = "Invalid StudentId or SubjectId format." });
+                    }
+
+                    var result = await mediator.Send(new AddPortfolioCommentCommand(studentIdLong, subjectIdLong, request), cancellationToken);
                     return Response(result);
                 })
             .WithTags("Teacher")
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<bool>>();
 
-        // POST /Teacher/Portfolio/{studentId}/{subjectId}/ToggleLike
-        app.MapPost("/Teacher/Portfolio/{studentId}/{subjectId}/ToggleLike",
-                async (IMediator mediator, [AsParameters] PortfolioRouteParams routeParams, CancellationToken cancellationToken) =>
+        // POST /Teacher/Portfolio/Student/{studentId}/{subjectId}/ToggleLike
+        app.MapPost("/Teacher/Portfolio/Student/{studentId}/{subjectId}/ToggleLike",
+                async (IMediator mediator, [FromRoute] string studentId, [FromRoute] string subjectId, CancellationToken cancellationToken) =>
                 {
-                    var result = await mediator.Send(new TogglePortfolioLikeCommand(routeParams.StudentId, routeParams.SubjectId), cancellationToken);
+                    if (!long.TryParse(studentId, out long studentIdLong) || !long.TryParse(subjectId, out long subjectIdLong))
+                    {
+                        return Results.BadRequest(new { Message = "Invalid StudentId or SubjectId format." });
+                    }
+
+                    var result = await mediator.Send(new TogglePortfolioLikeCommand(studentIdLong, subjectIdLong), cancellationToken);
                     return Response(result);
                 })
             .WithTags("Teacher")
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<bool>>();
 
-        // POST /Teacher/Portfolio/{studentId}/{subjectId}/RequestRevision
-        app.MapPost("/Teacher/Portfolio/{studentId}/{subjectId}/RequestRevision",
-                async (IMediator mediator, [AsParameters] PortfolioRouteParams routeParams, [FromBody] TeacherPortfolioRevisionRequest request, CancellationToken cancellationToken) =>
+        // POST /Teacher/Portfolio/Student/{studentId}/{subjectId}/RequestRevision
+        app.MapPost("/Teacher/Portfolio/Student/{studentId}/{subjectId}/RequestRevision",
+                async (IMediator mediator, [FromRoute] string studentId, [FromRoute] string subjectId, [FromBody] TeacherPortfolioRevisionRequest request, CancellationToken cancellationToken) =>
                 {
-                    var result = await mediator.Send(new RequestPortfolioRevisionCommand(routeParams.StudentId, routeParams.SubjectId, request), cancellationToken);
+                    if (!long.TryParse(studentId, out long studentIdLong) || !long.TryParse(subjectId, out long subjectIdLong))
+                    {
+                        return Results.BadRequest(new { Message = "Invalid StudentId or SubjectId format." });
+                    }
+
+                    var result = await mediator.Send(new RequestPortfolioRevisionCommand(studentIdLong, subjectIdLong, request), cancellationToken);
                     return Response(result);
                 })
             .WithTags("Teacher")
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<bool>>();
+
+        // GET /Teacher/Portfolio/MySubjects - Get teacher's assigned subjects
+        app.MapGet("/Teacher/Portfolio/MySubjects",
+                async (IMediator mediator, CancellationToken cancellationToken) =>
+                {
+                    var result = await mediator.Send(new GetMySubjectsQuery(), cancellationToken);
+                    return Response(result);
+                })
+            .WithTags("Teacher")
+            .AddEndpointFilter<JwtEndpointFilter>()
+            .Produces<EndPointResponse<List<ClassSubjectInfo>>>();
 
         // GET /Teacher/Portfolio/Badges
         app.MapGet("/Teacher/Portfolio/Badges",
@@ -93,26 +146,22 @@ public class TeacherPortfolioEndpoints : EndpointDefinition
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<List<BadgeDto>>>();
 
-        // POST /Teacher/Portfolio/{studentId}/{subjectId}/AwardBadge
-        app.MapPost("/Teacher/Portfolio/{studentId}/{subjectId}/AwardBadge",
-                async (IMediator mediator, [AsParameters] PortfolioRouteParams routeParams, [FromBody] TeacherAwardPortfolioBadgeRequest request, CancellationToken cancellationToken) =>
+        // POST /Teacher/Portfolio/Student/{studentId}/{subjectId}/AwardBadge
+        app.MapPost("/Teacher/Portfolio/Student/{studentId}/{subjectId}/AwardBadge",
+                async (IMediator mediator, [FromRoute] string studentId, [FromRoute] string subjectId, [FromBody] TeacherAwardPortfolioBadgeRequest request, CancellationToken cancellationToken) =>
                 {
-                    var result = await mediator.Send(new AwardPortfolioBadgeCommand(routeParams.StudentId, routeParams.SubjectId, request), cancellationToken);
+                    if (!long.TryParse(studentId, out long studentIdLong) || !long.TryParse(subjectId, out long subjectIdLong))
+                    {
+                        return Results.BadRequest(new { Message = "Invalid StudentId or SubjectId format." });
+                    }
+
+                    var result = await mediator.Send(new AwardPortfolioBadgeCommand(studentIdLong, subjectIdLong, request), cancellationToken);
                     return Response(result);
                 })
             .WithTags("Teacher")
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<PortfolioBadgeDto>>();
     }
-}
-
-public class PortfolioRouteParams
-{
-    [JsonConverter(typeof(LongAsStringConverter))]
-    public long StudentId { get; set; }
-
-    [JsonConverter(typeof(LongAsStringConverter))]
-    public long SubjectId { get; set; }
 }
 
 

@@ -69,6 +69,28 @@ public class CpdModulesEndpoint : EndpointDefinition
             .AddEndpointFilter<JwtEndpointFilter>()
             .DisableAntiforgery()
             .Produces<EndPointResponse<CpdModuleDto>>();
+
+        // GET /Teacher/CPD/Hours
+        app.MapGet("/Teacher/CPD/Hours",
+                async (IMediator mediator, CancellationToken cancellationToken) =>
+                {
+                    var result = await mediator.Send(new GetCpdHoursQuery(), cancellationToken);
+                    return Response(result);
+                })
+            .WithTags("Teacher")
+            .AddEndpointFilter<JwtEndpointFilter>()
+            .Produces<EndPointResponse<CpdHoursSummaryDto>>();
+
+        // GET /Teacher/CPD/Hours/Summary
+        app.MapGet("/Teacher/CPD/Hours/Summary",
+                async (IMediator mediator, CancellationToken cancellationToken) =>
+                {
+                    var result = await mediator.Send(new GetCpdHoursQuery(), cancellationToken);
+                    return Response(result);
+                })
+            .WithTags("Teacher")
+            .AddEndpointFilter<JwtEndpointFilter>()
+            .Produces<EndPointResponse<CpdHoursSummaryDto>>();
     }
 }
 

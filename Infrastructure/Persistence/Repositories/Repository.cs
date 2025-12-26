@@ -129,7 +129,9 @@ public class Repository<T> : IRepository<T> where T : BaseEntity, new()
         _context.SaveChanges();
     }
 
-    public async Task SaveChangesAsync()
+
+
+    public async Task SaveChangesAsync(CancellationToken? cancellationToken = null)
     {
         await _context.SaveChangesAsync();
     }

@@ -52,24 +52,47 @@ public class UpdateMissionProgressCommandHandler(
             x.ActivityId == request.Request.ActivityId)
             .FirstOrDefaultAsync(cancellationToken);
 
-        if (activityProgress == null && request.Request.Completed)
+        if (request.Request.Completed)
         {
-            activityProgress = new StudentActivityProgress
+            if (activityProgress == null)
             {
-                StudentId = studentId,
-                MissionId = request.MissionId,
-                ActivityId = request.Request.ActivityId,
-               // Status = ProgressStatus.Completed,
-                CompletedAt = DateTime.UtcNow
-            };
-            activityProgressRepository.Add(activityProgress);
-            missionProgress.CompletedActivities++;
+                // Create new activity progress record
+                activityProgress = new StudentActivityProgress
+                {
+                    StudentId = studentId,
+                    MissionId = request.MissionId,
+                    ActivityId = request.Request.ActivityId,
+                    IsCompleted = true,
+                    CompletedAt = DateTime.UtcNow
+                };
+                activityProgressRepository.Add(activityProgress);
+                missionProgress.CompletedActivities++;
+            }
+            else if (!activityProgress.IsCompleted)
+            {
+                // Update existing record to completed (was previously incomplete)
+                activityProgress.IsCompleted = true;
+                activityProgress.CompletedAt = DateTime.UtcNow;
+                activityProgressRepository.Update(activityProgress);
+                missionProgress.CompletedActivities++;
+            }
+            // If already completed, do nothing (prevent duplicate increments)
         }
-        else if (activityProgress != null && request.Request.Completed)
+        else
         {
-           // activityProgress.Status = ProgressStatus.Completed;
-            activityProgress.CompletedAt = DateTime.UtcNow;
-             activityProgressRepository.Update(activityProgress);
+            // Mark as incomplete
+            if (activityProgress != null && activityProgress.IsCompleted)
+            {
+                activityProgress.IsCompleted = false;
+                activityProgress.CompletedAt = null;
+                activityProgressRepository.Update(activityProgress);
+                
+                // Decrement completed activities count
+                if (missionProgress.CompletedActivities > 0)
+                {
+                    missionProgress.CompletedActivities--;
+                }
+            }
         }
 
         // Calculate progress percentage
@@ -77,14 +100,31 @@ public class UpdateMissionProgressCommandHandler(
             ? (decimal)missionProgress.CompletedActivities / missionProgress.TotalActivities * 100
             : 0;
 
-        // Check if mission is completed
-        if (missionProgress.CompletedActivities >= missionProgress.TotalActivities)
+        // Update mission status based on completion
+        if (missionProgress.CompletedActivities >= missionProgress.TotalActivities && missionProgress.TotalActivities > 0)
         {
             missionProgress.Status = ProgressStatus.Completed;
-            missionProgress.CompletedAt = DateTime.UtcNow;
+            if (missionProgress.CompletedAt == null)
+            {
+                missionProgress.CompletedAt = DateTime.UtcNow;
+            }
+        }
+        else if (missionProgress.CompletedActivities > 0)
+        {
+            missionProgress.Status = ProgressStatus.InProgress;
+            missionProgress.CompletedAt = null; // Reset completion date if activities undone
+        }
+        else
+        {
+            missionProgress.Status = ProgressStatus.NotStarted;
+            missionProgress.CompletedAt = null;
         }
 
-         progressRepository.Update(missionProgress);
+        progressRepository.Update(missionProgress);
+        await progressRepository.SaveChangesAsync(cancellationToken);
+        
+        // Save activity progress changes
+        await activityProgressRepository.SaveChangesAsync(cancellationToken);
 
         // Award badge if mission completed
         Portfolio.DTOs.PortfolioBadgeDto? badgeEarned = null;

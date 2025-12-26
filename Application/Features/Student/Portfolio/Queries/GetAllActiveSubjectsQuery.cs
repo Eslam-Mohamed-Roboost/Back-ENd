@@ -16,7 +16,7 @@ public class GetAllActiveSubjectsQueryHandler(
 {
     public override async Task<RequestResult<List<SimpleSubjectDto>>> Handle(GetAllActiveSubjectsQuery request, CancellationToken cancellationToken)
     {
-        var subjects = await subjectsRepository.Get(x => x.IsActive)
+        var subjects = await subjectsRepository.Get(x => x.IsActive && !x.IsDeleted)
             .AsNoTracking()
             .Select(s => new SimpleSubjectDto
             {
@@ -24,8 +24,17 @@ public class GetAllActiveSubjectsQueryHandler(
                 Name = s.Name,
                 Icon = s.Icon
             })
+            .Distinct()
+            .OrderBy(s => s.Name)
             .ToListAsync(cancellationToken);
+        
+        // Additional client-side deduplication by Id (in case of database duplicates)
+        var uniqueSubjects = subjects
+            .GroupBy(s => s.Id)
+            .Select(g => g.First())
+            .OrderBy(s => s.Name)
+            .ToList();
 
-        return RequestResult<List<SimpleSubjectDto>>.Success(subjects);
+        return RequestResult<List<SimpleSubjectDto>>.Success(uniqueSubjects);
     }
 }

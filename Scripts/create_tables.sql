@@ -370,18 +370,27 @@ CREATE TABLE IF NOT EXISTS "Portfolio"."PortfolioFiles" (
     "PreviewUrl" TEXT,
     "DownloadUrl" TEXT NOT NULL,
     "UploadedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "Status" VARCHAR(20) NOT NULL DEFAULT 'Pending',
+    "ReviewedBy" BIGINT,
+    "ReviewedAt" TIMESTAMP WITH TIME ZONE,
+    "RevisionNotes" TEXT,
     "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     "CreatedBy" BIGINT,
     "UpdatedAt" TIMESTAMP WITH TIME ZONE,
     "UpdatedBy" BIGINT,
     "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
     "TTL" TIMESTAMP WITH TIME ZONE,
-    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000'
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_PortfolioFiles_ReviewedBy" FOREIGN KEY ("ReviewedBy") 
+        REFERENCES "Identity"."User"("ID") ON DELETE SET NULL,
+    CONSTRAINT "chk_portfoliofiles_status" CHECK ("Status" IN ('Pending', 'Reviewed', 'NeedsRevision'))
 );
 
 CREATE INDEX IF NOT EXISTS "idx_portfoliofiles_studentid" ON "Portfolio"."PortfolioFiles" ("StudentId");
 CREATE INDEX IF NOT EXISTS "idx_portfoliofiles_subjectid" ON "Portfolio"."PortfolioFiles" ("SubjectId");
 CREATE INDEX IF NOT EXISTS "idx_portfoliofiles_uploadedat" ON "Portfolio"."PortfolioFiles" ("UploadedAt");
+CREATE INDEX IF NOT EXISTS "idx_portfoliofiles_status" ON "Portfolio"."PortfolioFiles"("Status");
+CREATE INDEX IF NOT EXISTS "idx_portfoliofiles_reviewedby" ON "Portfolio"."PortfolioFiles"("ReviewedBy");
 
 -- PortfolioReflections Table
 CREATE TABLE IF NOT EXISTS "Portfolio"."PortfolioReflections" (
@@ -573,6 +582,37 @@ CREATE TABLE IF NOT EXISTS "Teacher"."TeacherSubjects" (
 CREATE UNIQUE INDEX IF NOT EXISTS "idx_teachersubjects_unique" ON "Teacher"."TeacherSubjects" ("TeacherId", "SubjectId", "Grade") WHERE "IsDeleted" = FALSE;
 CREATE INDEX IF NOT EXISTS "idx_teachersubjects_teacherid" ON "Teacher"."TeacherSubjects" ("TeacherId");
 CREATE INDEX IF NOT EXISTS "idx_teachersubjects_subjectid" ON "Teacher"."TeacherSubjects" ("SubjectId");
+
+-- TeacherClassAssignments Table
+CREATE TABLE IF NOT EXISTS "Teacher"."TeacherClassAssignments" (
+    "ID" BIGSERIAL PRIMARY KEY,
+    "CompanyID" BIGINT NOT NULL DEFAULT 0,
+    "TeacherId" BIGINT NOT NULL,
+    "ClassId" BIGINT NOT NULL,
+    "SubjectId" BIGINT NOT NULL,
+    "AssignedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "CreatedBy" BIGINT,
+    "UpdatedAt" TIMESTAMP WITH TIME ZONE,
+    "UpdatedBy" BIGINT,
+    "IsDeleted" BOOLEAN NOT NULL DEFAULT FALSE,
+    "TTL" TIMESTAMP WITH TIME ZONE,
+    "RowVersion" BYTEA NOT NULL DEFAULT '\x0000000000000000',
+    CONSTRAINT "FK_TeacherClassAssignments_Teacher" FOREIGN KEY ("TeacherId") 
+        REFERENCES "Identity"."User"("ID") ON DELETE RESTRICT,
+    CONSTRAINT "FK_TeacherClassAssignments_Class" FOREIGN KEY ("ClassId") 
+        REFERENCES "General"."Classes"("ID") ON DELETE RESTRICT,
+    CONSTRAINT "FK_TeacherClassAssignments_Subject" FOREIGN KEY ("SubjectId") 
+        REFERENCES "General"."Subjects"("ID") ON DELETE RESTRICT
+);
+
+CREATE INDEX IF NOT EXISTS "idx_teacherclass_teacher" ON "Teacher"."TeacherClassAssignments"("TeacherId");
+CREATE INDEX IF NOT EXISTS "idx_teacherclass_class" ON "Teacher"."TeacherClassAssignments"("ClassId");
+CREATE INDEX IF NOT EXISTS "idx_teacherclass_subject" ON "Teacher"."TeacherClassAssignments"("SubjectId");
+CREATE INDEX IF NOT EXISTS "idx_teacherclass_isdeleted" ON "Teacher"."TeacherClassAssignments"("IsDeleted");
+CREATE UNIQUE INDEX IF NOT EXISTS "idx_teacherclass_unique" 
+    ON "Teacher"."TeacherClassAssignments"("TeacherId", "ClassId", "SubjectId") 
+    WHERE "IsDeleted" = FALSE;
 
 -- WeeklyChallenges Table
 CREATE TABLE IF NOT EXISTS "Teacher"."WeeklyChallenges" (

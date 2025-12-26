@@ -1,6 +1,7 @@
 using API.Application.Features.Student.Portfolio.DTOs;
 using API.Application.Features.Teacher.Portfolio.DTOs;
 using API.Domain.Entities.Gamification;
+using API.Domain.Entities.Portfolio;
 using API.Domain.Enums;
 using API.Infrastructure.Persistence.Repositories;
 using API.Shared.Models;
@@ -14,7 +15,8 @@ public record AwardPortfolioBadgeCommand(long StudentId, long SubjectId, Teacher
 public class AwardPortfolioBadgeCommandHandler(
     RequestHandlerBaseParameters parameters,
     IRepository<Badges> badgesRepository,
-    IRepository<StudentBadges> studentBadgesRepository)
+    IRepository<StudentBadges> studentBadgesRepository,
+    IRepository<PortfolioFiles> portfolioFilesRepository)
     : RequestHandlerBase<AwardPortfolioBadgeCommand, RequestResult<PortfolioBadgeDto>>(parameters)
 {
     public override async Task<RequestResult<PortfolioBadgeDto>> Handle(AwardPortfolioBadgeCommand request, CancellationToken cancellationToken)
@@ -51,7 +53,25 @@ public class AwardPortfolioBadgeCommandHandler(
         };
 
         studentBadgesRepository.Add(studentBadge);
+
+        // Mark all pending portfolio files for this student and subject as reviewed
+        var pendingFiles = await portfolioFilesRepository.Get(x =>
+            x.StudentId == studentId &&
+            x.SubjectId == request.SubjectId &&
+            (x.Status == null || x.Status == "Pending"))
+            .ToListAsync(cancellationToken);
+
+        foreach (var file in pendingFiles)
+        {
+            file.Status = "Reviewed";
+            file.ReviewedBy = teacherId;
+            file.ReviewedAt = now;
+            file.UpdatedAt = now;
+            portfolioFilesRepository.Update(file);
+        }
+
         await studentBadgesRepository.SaveChangesAsync();
+        await portfolioFilesRepository.SaveChangesAsync();
 
         var dto = new PortfolioBadgeDto
         {

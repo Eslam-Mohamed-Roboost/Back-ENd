@@ -86,6 +86,17 @@ try
 
     app.UseSerilogRequestLogging();
 
+    // Enable static file serving for uploaded files
+    app.UseStaticFiles();
+    
+    // Serve files from wwwroot/uploads
+    app.UseStaticFiles(new StaticFileOptions()
+    {
+        FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")),
+        RequestPath = "/uploads"
+    });
+
     app.ConfigureEndpoints();
 
     app.Run();

@@ -36,39 +36,56 @@ public class GetMyClassesQueryHandler(
             return RequestResult<List<TeacherClassDto>>.Success(new List<TeacherClassDto>());
         }
 
-        // Get classes with student counts
+        // Get classes first
         var classes = await classRepository.Get(c =>
             assignedClassIds.Contains(c.ID) && !c.IsDeleted)
-            .Select(c => new
-            {
-                Class = c,
-                StudentCount = userRepository.Get(u =>
-                    u.ClassID == c.ID &&
-                    u.Role == ApplicationRole.Student &&
-                    u.IsActive &&
-                    !u.IsDeleted).Count(),
-                Subjects = assignmentRepository.Get(a =>
-                    a.TeacherId == teacherId &&
-                    a.ClassId == c.ID &&
-                    !a.IsDeleted)
-                    .Select(a => new ClassSubjectInfo
-                    {
-                        SubjectId = a.SubjectId,
-                        SubjectName = a.Subject != null ? a.Subject.Name : "Unknown"
-                    })
-                    .Distinct()
-                    .ToList()
-            })
             .ToListAsync(cancellationToken);
 
-        var result = classes.Select(c => new TeacherClassDto
+        // Get all assignments for this teacher and these classes
+        var classIds = classes.Select(c => c.ID).ToList();
+        var assignments = await assignmentRepository.Get(a =>
+            a.TeacherId == teacherId &&
+            classIds.Contains(a.ClassId) &&
+            !a.IsDeleted)
+            .Include(a => a.Subject)
+            .ToListAsync(cancellationToken);
+
+        // Get student counts for each class
+        var studentCounts = await userRepository.Get(u =>
+            u.ClassID.HasValue &&
+            classIds.Contains(u.ClassID.Value) &&
+            u.Role == ApplicationRole.Student &&
+            u.IsActive &&
+            !u.IsDeleted)
+            .GroupBy(u => u.ClassID)
+            .Select(g => new { ClassId = g.Key, Count = g.Count() })
+            .ToListAsync(cancellationToken);
+
+        // Build result
+        var result = classes.Select(c =>
         {
-            Id = c.Class.ID,
-            Name = c.Class.Name,
-            Grade = c.Class.Grade,
-            StudentCount = c.StudentCount,
-            Subjects = c.Subjects
-        }).OrderBy(c => c.Grade).ThenBy(c => c.Name).ToList();
+            var studentCount = studentCounts.FirstOrDefault(sc => sc.ClassId == c.ID)?.Count ?? 0;
+            var classAssignments = assignments.Where(a => a.ClassId == c.ID).ToList();
+            
+            return new TeacherClassDto
+            {
+                Id = c.ID,
+                Name = c.Name,
+                Grade = c.Grade,
+                StudentCount = studentCount,
+                Subjects = classAssignments
+                    .GroupBy(a => a.SubjectId)
+                    .Select(g => new ClassSubjectInfo
+                    {
+                        SubjectId = g.Key,
+                        SubjectName = g.First().Subject?.Name ?? "Unknown"
+                    })
+                    .ToList()
+            };
+        })
+        .OrderBy(c => c.Grade)
+        .ThenBy(c => c.Name)
+        .ToList();
 
         return RequestResult<List<TeacherClassDto>>.Success(result);
     }

@@ -19,5 +19,15 @@ public class GetStudentProgressEndpoint : EndpointDefinition
             .WithTags("Student")
             .AddEndpointFilter<JwtEndpointFilter>()
             .Produces<EndPointResponse<StudentProgressDto>>();
+
+        app.MapGet("/Student/Progress/LearningHours",
+                async (IMediator mediator, CancellationToken cancellationToken) =>
+                {
+                    var result = await mediator.Send(new GetLearningHoursQuery(), cancellationToken);
+                    return Response(result);
+                })
+            .WithTags("Student")
+            .AddEndpointFilter<JwtEndpointFilter>()
+            .Produces<EndPointResponse<LearningHoursSummaryDto>>();
     }
 }

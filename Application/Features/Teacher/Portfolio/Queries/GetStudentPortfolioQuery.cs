@@ -74,10 +74,27 @@ public class GetStudentPortfolioQueryHandler(
         var isLiked = await likesRepository.Get(x => x.StudentId == request.StudentId && x.SubjectId == request.SubjectId && x.TeacherId == teacherId)
             .AnyAsync(cancellationToken);
 
-        // Portfolio-specific badges are not explicitly modeled; for now, return empty list.
-        var badges = new List<PortfolioBadgeDto>();
+        // Get student's earned badges (approved badges for this student)
+        var studentBadges = await (from sb in studentBadgesRepository.Get()
+                                   join b in badgesRepository.Get() on sb.BadgeId equals b.ID
+                                   where sb.StudentId == request.StudentId && sb.Status == Status.Approved && b.IsActive
+                                   orderby sb.EarnedDate descending
+                                   select new PortfolioBadgeDto
+                                   {
+                                       Id = b.ID,
+                                       Name = b.Name,
+                                       Description = b.Description ?? string.Empty,
+                                       Icon = b.Icon ?? "🏆",
+                                       Color = b.Color ?? "#6366f1",
+                                       EarnedDate = sb.EarnedDate,
+                                       RelatedWorkId = null,
+                                       Category = b.Category.ToString()
+                                   })
+            .ToListAsync(cancellationToken);
 
-        var lastUpdated = files.FirstOrDefault()?.UploadDate ?? feedback.FirstOrDefault()?.CreatedAt;
+        var badges = studentBadges;
+
+        var lastUpdated = files.FirstOrDefault()?.UploadDate ?? feedback.FirstOrDefault()?.CreatedAt ?? badges.FirstOrDefault()?.EarnedDate;
 
         var dto = new TeacherPortfolioDto
         {
