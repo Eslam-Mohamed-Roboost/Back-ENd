@@ -19,6 +19,7 @@ public class UpdateMapScoreEndpoint : EndpointDefinition
                 })
             .WithTags("Teacher")
             .AddEndpointFilter<JwtEndpointFilter>()
+            .AddEndpointFilter<TeacherRoleFilter>()
             .Produces<EndPointResponse<PortfolioMapScoreDto>>();
     }
 }

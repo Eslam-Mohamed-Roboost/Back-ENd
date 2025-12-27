@@ -18,7 +18,7 @@ public class BaseEntity
     public long? UpdatedBy { get; set; }
     
     public bool IsDeleted { get; set; } = false;
-    public DateTime? TTL { get; set; }
-    public byte[] RowVersion { get; set; } = new byte[8];
+   // public DateTime? TTL { get; set; }
+    // public byte[] RowVersion { get; set; } = new byte[8];
 }
 

@@ -1,1 +1,125 @@
-{"Version":1,"Hash":"9SBIIAFrRbZYRJiYj3JdOU/l6sqEgCRO6nYWD7s9uzE=","Source":"API","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[{"Name":"API/wwwroot","Source":"API","ContentRoot":"/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/","BasePath":"/","Pattern":"**"}],"Assets":[{"Identity":"/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4","SourceId":"API","SourceType":"Discovered","ContentRoot":"/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/","BasePath":"/","RelativePath":"uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce#[.{fingerprint}]?.mp4","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"bhtoijn6ec","Integrity":"wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4","FileLength":3908533,"LastWriteTime":"2025-12-26T14:30:47+00:00"}],"Endpoints":[{"Route":"uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.bhtoijn6ec.mp4","AssetFile":"/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4","Selectors":[],"ResponseHeaders":[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3908533"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\"wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM=\""},{"Name":"Last-Modified","Value":"Fri, 26 Dec 2025 14:30:47 GMT"}],"EndpointProperties":[{"Name":"fingerprint","Value":"bhtoijn6ec"},{"Name":"integrity","Value":"sha256-wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM="},{"Name":"label","Value":"uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4"}]},{"Route":"uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4","AssetFile":"/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4","Selectors":[],"ResponseHeaders":[{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"3908533"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\"wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM=\""},{"Name":"Last-Modified","Value":"Fri, 26 Dec 2025 14:30:47 GMT"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM="}]}]}
+{
+  "Version": 1,
+  "Hash": "gJOMQ1lRxPKniNKkI7xV1eliL9jjxvlH28DPisoQxTE=",
+  "Source": "API",
+  "BasePath": "_content/API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "API/wwwroot",
+      "Source": "API",
+      "ContentRoot": "/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/",
+      "BasePath": "_content/API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/",
+      "BasePath": "_content/API",
+      "RelativePath": "uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce#[.{fingerprint}]?.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "bhtoijn6ec",
+      "Integrity": "wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.bhtoijn6ec.mp4",
+      "AssetFile": "/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3908533"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 26 Dec 2025 14:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bhtoijn6ec"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4",
+      "AssetFile": "/home/eslam/Downloads/School-Hub-v2/Back-End/wwwroot/uploads/missions/1450212447796330496/resources/c11f35dc-9aa3-4319-9590-24694d0ec0ce.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3908533"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 26 Dec 2025 14:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wea4tpN/uDD8BAEmoGunDw0n+CkGO7YXPmwDPQ+mvUM="
+        }
+      ]
+    }
+  ]
+}

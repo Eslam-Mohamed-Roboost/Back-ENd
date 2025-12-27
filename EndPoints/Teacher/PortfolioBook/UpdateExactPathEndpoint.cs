@@ -19,6 +19,7 @@ public class UpdateExactPathEndpoint : EndpointDefinition
                 })
             .WithTags("Teacher")
             .AddEndpointFilter<JwtEndpointFilter>()
+            .AddEndpointFilter<TeacherRoleFilter>()
             .Produces<EndPointResponse<ExactPathProgressDto>>();
     }
 }

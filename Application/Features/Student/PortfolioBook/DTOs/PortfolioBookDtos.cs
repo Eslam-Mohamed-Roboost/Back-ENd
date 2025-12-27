@@ -12,6 +12,9 @@ public class PortfolioBookDto
     public string SubjectName { get; set; } = string.Empty;
     public string StudentName { get; set; } = string.Empty;
     public string AcademicYear { get; set; } = string.Empty;
+    public bool IsProfileSubmitted { get; set; }
+    public bool IsGoalsSubmitted { get; set; }
+    public bool IsLearningStyleSubmitted { get; set; }
     public PortfolioProfileDto? Profile { get; set; }
     public PortfolioGoalsDto? Goals { get; set; }
     public PortfolioLearningStyleDto? LearningStyle { get; set; }
@@ -185,6 +188,7 @@ public class PortfolioAssignmentDto
     public DateTime? DueDate { get; set; }
     public string Status { get; set; } = string.Empty;
     public string Notes { get; set; } = string.Empty;
+    public string? Grade { get; set; }
 }
 
 public class SavePortfolioAssignmentRequest

@@ -18,7 +18,8 @@ public class UpdateMissionProgressCommandHandler(
     IRepository<Activities> activitiesRepository,
     IRepository<Domain.Entities.Missions.Missions> missionsRepository,
     IRepository<Domain.Entities.Gamification.StudentBadges> studentBadgesRepository,
-    IRepository<Domain.Entities.Gamification.Badges> badgesRepository)
+    IRepository<Domain.Entities.Gamification.Badges> badgesRepository,
+    IRepository<Domain.Entities.Gamification.StudentLevels> studentLevelsRepository)
     : RequestHandlerBase<UpdateMissionProgressCommand, RequestResult<MissionProgressResponse>>(parameters)
 {
     public override async Task<RequestResult<MissionProgressResponse>> Handle(UpdateMissionProgressCommand request, CancellationToken cancellationToken)
@@ -152,7 +153,11 @@ public class UpdateMissionProgressCommandHandler(
                             EarnedDate = DateTime.UtcNow,
                             Status = Status.Approved
                         };
-                         studentBadgesRepository.Add(studentBadge);
+                        studentBadgesRepository.Add(studentBadge);
+                        await studentBadgesRepository.SaveChangesAsync(cancellationToken);
+
+                        // Update student level
+                        await UpdateStudentLevelAsync(studentId, cancellationToken);
 
                         badgeEarned = new Portfolio.DTOs.PortfolioBadgeDto
                         {
@@ -178,5 +183,58 @@ public class UpdateMissionProgressCommandHandler(
         };
 
         return RequestResult<MissionProgressResponse>.Success(response);
+    }
+
+    private async Task UpdateStudentLevelAsync(long studentId, CancellationToken cancellationToken)
+    {
+        // Get or create student level record
+        var studentLevel = await studentLevelsRepository.Get(x => x.StudentId == studentId)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        // Count total badges earned by this student
+        var totalBadges = await studentBadgesRepository.Get(x => x.StudentId == studentId && x.Status == Status.Approved)
+            .CountAsync(cancellationToken);
+
+        if (studentLevel == null)
+        {
+            studentLevel = new StudentLevels
+            {
+                StudentId = studentId,
+                CurrentLevel = 1,
+                LevelName = StudentLevelName.DigitalScout,
+                BadgesEarned = totalBadges,
+                NextLevelBadgeCount = 3,
+                LevelIcon = "🌟"
+            };
+            studentLevelsRepository.Add(studentLevel);
+        }
+        else
+        {
+            studentLevel.BadgesEarned = totalBadges;
+        }
+
+        // Calculate new level based on badges earned
+        // Level thresholds: Scout (0-2), Explorer (3-5), Champion (6-7), Leader (8+)
+        var (newLevel, newLevelName, nextThreshold, icon) = totalBadges switch
+        {
+            >= 8 => (4, StudentLevelName.Leader, (int?)null, "👑"),
+            >= 6 => (3, StudentLevelName.Champion, 8, "🏆"),
+            >= 3 => (2, StudentLevelName.Explorer, 6, "🚀"),
+            _ => (1, StudentLevelName.DigitalScout, 3, "🌟")
+        };
+
+        // Check if level up occurred
+        if (newLevel > studentLevel.CurrentLevel)
+        {
+            studentLevel.LastLevelUpDate = DateTime.UtcNow;
+        }
+
+        studentLevel.CurrentLevel = newLevel;
+        studentLevel.LevelName = newLevelName;
+        studentLevel.NextLevelBadgeCount = nextThreshold;
+        studentLevel.LevelIcon = icon;
+
+        studentLevelsRepository.Update(studentLevel);
+        await studentLevelsRepository.SaveChangesAsync(cancellationToken);
     }
 }

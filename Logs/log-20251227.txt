@@ -1,0 +1,1174 @@
+2025-12-27 09:19:08.731 +02:00 [INF] Starting APP
+2025-12-27 09:19:54.196 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 09:19:54.843 +02:00 [INF] HTTP POST /user/login responded 200 in 655.4476 ms
+2025-12-27 09:19:56.448 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=13,QueuedItems=0,CompletedItems=705,Timers=11), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:19:57.020 +02:00 [INF] HTTP GET /Student/Activity/Streak responded 200 in 1647.8105 ms
+2025-12-27 09:19:57.433 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=13,QueuedItems=0,CompletedItems=757,Timers=10), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:19:58.376 +02:00 [INF] HTTP GET /Student/Progress/LearningHours responded 200 in 3004.2150 ms
+2025-12-27 09:19:58.379 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Student/Progress/LearningHours, Method: GET, Time Taken: 3008ms
+2025-12-27 09:19:58.582 +02:00 [INF] HTTP GET /Student/Portfolio/Overview responded 200 in 3209.7461 ms
+2025-12-27 09:19:58.583 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Student/Portfolio/Overview, Method: GET, Time Taken: 3214ms
+2025-12-27 09:19:59.598 +02:00 [INF] HTTP GET /Student/Badges responded 200 in 912.0154 ms
+2025-12-27 09:20:01.856 +02:00 [INF] HTTP GET /Student/Dashboard responded 200 in 6484.0852 ms
+2025-12-27 09:20:01.857 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Student/Dashboard, Method: GET, Time Taken: 6488ms
+2025-12-27 09:20:10.039 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 1936.8722 ms
+2025-12-27 09:20:36.424 +02:00 [INF] HTTP PUT /Student/PortfolioBook/Profile responded 200 in 680.0574 ms
+2025-12-27 09:21:05.726 +02:00 [INF] HTTP PUT /Student/PortfolioBook/Goals responded 200 in 693.2492 ms
+2025-12-27 09:21:24.039 +02:00 [INF] HTTP PUT /Student/PortfolioBook/LearningStyle responded 200 in 853.7126 ms
+2025-12-27 09:24:20.283 +02:00 [INF] HTTP POST /Student/PortfolioBook/Assignment responded 200 in 1757.8592 ms
+2025-12-27 09:24:33.093 +02:00 [INF] HTTP POST /Student/PortfolioBook/Reflection responded 200 in 753.1312 ms
+2025-12-27 09:24:45.117 +02:00 [INF] HTTP POST /Student/PortfolioBook/Journey responded 200 in 923.8581 ms
+2025-12-27 09:25:05.810 +02:00 [ERR] Error in JWT endpoint filter
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.InvalidCastException: Writing values of 'System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]' is not supported for parameters having NpgsqlDbType 'Jsonb'.
+ ---> System.NotSupportedException: Type 'List`1' required dynamic JSON serialization, which requires an explicit opt-in; call 'EnableDynamicJson' on 'NpgsqlDataSourceBuilder' or NpgsqlConnection.GlobalTypeMapper (see https://www.npgsql.org/doc/types/json.html and the 8.0 release notes for more details). Alternatively, if you meant to use Newtonsoft JSON.NET instead of System.Text.Json, call UseJsonNet() instead.
+
+   at Npgsql.Internal.ResolverFactories.JsonDynamicTypeInfoResolverFactory.Support.ThrowIfUnsupported[TBuilder](Type type, Nullable`1 dataTypeName)
+   at Npgsql.Internal.ResolverFactories.UnsupportedTypeInfoResolver`1.GetTypeInfo(Type type, Nullable`1 dataTypeName, PgSerializerOptions options)
+   at Npgsql.Internal.ChainTypeInfoResolver.GetTypeInfo(Type type, Nullable`1 dataTypeName, PgSerializerOptions options)
+   at Npgsql.Internal.TypeInfoCache`1.<GetOrAddInfo>g__CreateInfo|6_3(Type type, Nullable`1 typeId, PgSerializerOptions options, Boolean validatePgTypeIds)
+   at Npgsql.Internal.TypeInfoCache`1.<GetOrAddInfo>g__AddEntryById|6_2(Type type, TPgTypeId pgTypeId, ValueTuple`2[] infos)
+   at Npgsql.Internal.PgSerializerOptions.GetTypeInfoCore(Type type, Nullable`1 pgTypeId)
+   at Npgsql.Internal.AdoSerializerHelpers.GetTypeInfoForWriting(Type type, Nullable`1 pgTypeId, PgSerializerOptions options, Nullable`1 npgsqlDbType)
+   --- End of inner exception stack trace ---
+   at Npgsql.Internal.AdoSerializerHelpers.<GetTypeInfoForWriting>g__ThrowWritingNotSupported|1_0(Type type, PgSerializerOptions options, Nullable`1 pgTypeId, Nullable`1 npgsqlDbType, Exception inner)
+   at Npgsql.Internal.AdoSerializerHelpers.GetTypeInfoForWriting(Type type, Nullable`1 pgTypeId, PgSerializerOptions options, Nullable`1 npgsqlDbType)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Infrastructure.Persistence.Repositories.Repository`1.SaveChangesAsync(Nullable`1 cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Infrastructure/Persistence/Repositories/Repository.cs:line 136
+   at API.Application.Features.Student.PortfolioBook.Commands.SavePortfolioProjectCommandHandler.Handle(SavePortfolioProjectCommand request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Student/PortfolioBook/Commands/SavePortfolioProjectCommand.cs:line 33
+   at API.EndPoints.Student.PortfolioBook.SavePortfolioProjectEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Student/PortfolioBook/SavePortfolioProjectEndpoint.cs:line 37
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+2025-12-27 09:25:05.821 +02:00 [INF] HTTP POST /Student/PortfolioBook/Project responded 401 in 358.2621 ms
+2025-12-27 09:25:09.737 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 1574.6861 ms
+2025-12-27 09:25:23.089 +02:00 [ERR] Error in JWT endpoint filter
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.InvalidCastException: Writing values of 'System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]' is not supported for parameters having NpgsqlDbType 'Jsonb'.
+ ---> System.NotSupportedException: Type 'List`1' required dynamic JSON serialization, which requires an explicit opt-in; call 'EnableDynamicJson' on 'NpgsqlDataSourceBuilder' or NpgsqlConnection.GlobalTypeMapper (see https://www.npgsql.org/doc/types/json.html and the 8.0 release notes for more details). Alternatively, if you meant to use Newtonsoft JSON.NET instead of System.Text.Json, call UseJsonNet() instead.
+
+   at Npgsql.Internal.ResolverFactories.JsonDynamicTypeInfoResolverFactory.Support.ThrowIfUnsupported[TBuilder](Type type, Nullable`1 dataTypeName)
+   at Npgsql.Internal.ResolverFactories.UnsupportedTypeInfoResolver`1.GetTypeInfo(Type type, Nullable`1 dataTypeName, PgSerializerOptions options)
+   at Npgsql.Internal.ChainTypeInfoResolver.GetTypeInfo(Type type, Nullable`1 dataTypeName, PgSerializerOptions options)
+   at Npgsql.Internal.TypeInfoCache`1.<GetOrAddInfo>g__CreateInfo|6_3(Type type, Nullable`1 typeId, PgSerializerOptions options, Boolean validatePgTypeIds)
+   at Npgsql.Internal.TypeInfoCache`1.<GetOrAddInfo>g__AddEntryById|6_2(Type type, TPgTypeId pgTypeId, ValueTuple`2[] infos)
+   at Npgsql.Internal.PgSerializerOptions.GetTypeInfoCore(Type type, Nullable`1 pgTypeId)
+   at Npgsql.Internal.AdoSerializerHelpers.GetTypeInfoForWriting(Type type, Nullable`1 pgTypeId, PgSerializerOptions options, Nullable`1 npgsqlDbType)
+   --- End of inner exception stack trace ---
+   at Npgsql.Internal.AdoSerializerHelpers.<GetTypeInfoForWriting>g__ThrowWritingNotSupported|1_0(Type type, PgSerializerOptions options, Nullable`1 pgTypeId, Nullable`1 npgsqlDbType, Exception inner)
+   at Npgsql.Internal.AdoSerializerHelpers.GetTypeInfoForWriting(Type type, Nullable`1 pgTypeId, PgSerializerOptions options, Nullable`1 npgsqlDbType)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Infrastructure.Persistence.Repositories.Repository`1.SaveChangesAsync(Nullable`1 cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Infrastructure/Persistence/Repositories/Repository.cs:line 136
+   at API.Application.Features.Student.PortfolioBook.Commands.SavePortfolioProjectCommandHandler.Handle(SavePortfolioProjectCommand request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Student/PortfolioBook/Commands/SavePortfolioProjectCommand.cs:line 33
+   at API.EndPoints.Student.PortfolioBook.SavePortfolioProjectEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Student/PortfolioBook/SavePortfolioProjectEndpoint.cs:line 37
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+2025-12-27 09:25:23.095 +02:00 [INF] HTTP POST /Student/PortfolioBook/Project responded 401 in 151.6316 ms
+2025-12-27 09:25:26.378 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 1279.5319 ms
+2025-12-27 09:27:25.019 +02:00 [ERR] Error in JWT endpoint filter
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.InvalidCastException: Writing values of 'System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]' is not supported for parameters having NpgsqlDbType 'Jsonb'.
+ ---> System.NotSupportedException: Type 'List`1' required dynamic JSON serialization, which requires an explicit opt-in; call 'EnableDynamicJson' on 'NpgsqlDataSourceBuilder' or NpgsqlConnection.GlobalTypeMapper (see https://www.npgsql.org/doc/types/json.html and the 8.0 release notes for more details). Alternatively, if you meant to use Newtonsoft JSON.NET instead of System.Text.Json, call UseJsonNet() instead.
+
+   at Npgsql.Internal.ResolverFactories.JsonDynamicTypeInfoResolverFactory.Support.ThrowIfUnsupported[TBuilder](Type type, Nullable`1 dataTypeName)
+   at Npgsql.Internal.ResolverFactories.UnsupportedTypeInfoResolver`1.GetTypeInfo(Type type, Nullable`1 dataTypeName, PgSerializerOptions options)
+   at Npgsql.Internal.ChainTypeInfoResolver.GetTypeInfo(Type type, Nullable`1 dataTypeName, PgSerializerOptions options)
+   at Npgsql.Internal.TypeInfoCache`1.<GetOrAddInfo>g__CreateInfo|6_3(Type type, Nullable`1 typeId, PgSerializerOptions options, Boolean validatePgTypeIds)
+   at Npgsql.Internal.TypeInfoCache`1.<GetOrAddInfo>g__AddEntryById|6_2(Type type, TPgTypeId pgTypeId, ValueTuple`2[] infos)
+   at Npgsql.Internal.PgSerializerOptions.GetTypeInfoCore(Type type, Nullable`1 pgTypeId)
+   at Npgsql.Internal.AdoSerializerHelpers.GetTypeInfoForWriting(Type type, Nullable`1 pgTypeId, PgSerializerOptions options, Nullable`1 npgsqlDbType)
+   --- End of inner exception stack trace ---
+   at Npgsql.Internal.AdoSerializerHelpers.<GetTypeInfoForWriting>g__ThrowWritingNotSupported|1_0(Type type, PgSerializerOptions options, Nullable`1 pgTypeId, Nullable`1 npgsqlDbType, Exception inner)
+   at Npgsql.Internal.AdoSerializerHelpers.GetTypeInfoForWriting(Type type, Nullable`1 pgTypeId, PgSerializerOptions options, Nullable`1 npgsqlDbType)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Infrastructure.Persistence.Repositories.Repository`1.SaveChangesAsync(Nullable`1 cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Infrastructure/Persistence/Repositories/Repository.cs:line 136
+   at API.Application.Features.Student.PortfolioBook.Commands.SavePortfolioProjectCommandHandler.Handle(SavePortfolioProjectCommand request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Student/PortfolioBook/Commands/SavePortfolioProjectCommand.cs:line 33
+   at API.EndPoints.Student.PortfolioBook.SavePortfolioProjectEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Student/PortfolioBook/SavePortfolioProjectEndpoint.cs:line 37
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+2025-12-27 09:27:25.028 +02:00 [INF] HTTP POST /Student/PortfolioBook/Project responded 401 in 175.6149 ms
+2025-12-27 09:34:13.998 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 2968.9220 ms
+2025-12-27 09:35:16.076 +02:00 [INF] APP STARTED
+2025-12-27 09:35:16.077 +02:00 [ERR] Shut down complete
+2025-12-27 09:35:20.372 +02:00 [INF] Starting APP
+2025-12-27 09:36:07.035 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 09:36:08.132 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=660,Timers=8), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:36:08.862 +02:00 [INF] HTTP POST /Student/PortfolioBook/Project responded 200 in 1830.5501 ms
+2025-12-27 09:36:09.123 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=3,Free=32764,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=695,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:36:40.963 +02:00 [INF] HTTP POST /Student/PortfolioBook/Project responded 200 in 398.7199 ms
+2025-12-27 09:37:00.719 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 2024.8277 ms
+2025-12-27 09:37:14.839 +02:00 [INF] HTTP POST /Student/PortfolioBook/Assignment responded 200 in 496.0109 ms
+2025-12-27 09:38:13.023 +02:00 [INF] HTTP POST /user/login responded 200 in 205.6309 ms
+2025-12-27 09:38:17.669 +02:00 [INF] HTTP POST /user/login responded 200 in 183.4601 ms
+2025-12-27 09:38:23.526 +02:00 [INF] HTTP POST /user/login responded 200 in 147.9540 ms
+2025-12-27 09:38:30.740 +02:00 [INF] HTTP POST /user/login responded 200 in 262.1303 ms
+2025-12-27 09:38:32.123 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 8, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=3589,Timers=10), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:38:33.122 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 10, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=8,QueuedItems=0,CompletedItems=3642,Timers=15), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:38:34.014 +02:00 [INF] HTTP GET /Admin/CPD/Categories responded 200 in 2601.4566 ms
+2025-12-27 09:38:34.152 +02:00 [INF] HTTP GET /Admin/Badges responded 200 in 2762.1264 ms
+2025-12-27 09:38:34.210 +02:00 [INF] HTTP GET /Admin/BadgeSubmissions responded 200 in 2814.6260 ms
+2025-12-27 09:38:34.231 +02:00 [INF] HTTP GET /Admin/BadgeStatistics responded 200 in 2829.1012 ms
+2025-12-27 09:38:34.257 +02:00 [INF] HTTP GET /Admin/Dashboard responded 200 in 2885.3971 ms
+2025-12-27 09:38:34.479 +02:00 [INF] HTTP GET /Admin/ActivityLogs/TodayCount responded 200 in 315.9863 ms
+2025-12-27 09:38:34.518 +02:00 [INF] HTTP GET /Admin/ActivityLogs responded 200 in 493.5458 ms
+2025-12-27 09:38:34.621 +02:00 [INF] HTTP GET /Admin/ActivityLogs/WeekCount responded 200 in 393.0432 ms
+2025-12-27 09:38:34.657 +02:00 [INF] HTTP GET /Admin/Dashboard/Enhanced responded 200 in 3269.9262 ms
+2025-12-27 09:38:34.664 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Admin/Dashboard/Enhanced, Method: GET, Time Taken: 3272ms
+2025-12-27 09:38:35.036 +02:00 [INF] HTTP GET /Admin/Classes/Dropdown responded 200 in 314.2914 ms
+2025-12-27 09:38:35.375 +02:00 [INF] HTTP GET /User/GetUsers responded 200 in 648.3767 ms
+2025-12-27 09:38:35.605 +02:00 [INF] HTTP GET /Admin/Evidence/Stats responded 200 in 1340.7125 ms
+2025-12-27 09:38:35.743 +02:00 [INF] HTTP GET /Admin/TeacherSubjects/Matrix responded 200 in 1249.1274 ms
+2025-12-27 09:38:36.745 +02:00 [INF] HTTP GET /Admin/TeacherSubjects/Analytics responded 200 in 2219.6141 ms
+2025-12-27 09:38:42.891 +02:00 [INF] HTTP GET /Admin/Portfolio/CompletionStats responded 200 in 8652.0329 ms
+2025-12-27 09:38:42.894 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Admin/Portfolio/CompletionStats, Method: GET, Time Taken: 8656ms
+2025-12-27 09:38:45.075 +02:00 [INF] HTTP GET /Admin/Classes/Dropdown responded 200 in 288.8886 ms
+2025-12-27 09:38:45.462 +02:00 [INF] HTTP GET /User/GetUsers responded 200 in 665.7466 ms
+2025-12-27 09:38:46.941 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 1443.1265 ms
+2025-12-27 09:38:55.023 +02:00 [INF] HTTP PUT /Admin/Users/1445915322631585792/ChangePassword responded 200 in 391.6625 ms
+2025-12-27 09:38:59.268 +02:00 [INF] HTTP GET /Admin/Classes/Dropdown responded 200 in 296.7935 ms
+2025-12-27 09:38:59.591 +02:00 [INF] HTTP GET /User/GetUsers responded 200 in 612.0621 ms
+2025-12-27 09:39:01.238 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 1620.2629 ms
+2025-12-27 09:39:04.563 +02:00 [INF] HTTP POST /auth/logout responded 404 in 0.1195 ms
+2025-12-27 09:39:09.972 +02:00 [INF] HTTP POST /user/login responded 200 in 150.3262 ms
+2025-12-27 09:39:18.585 +02:00 [INF] HTTP POST /user/login responded 200 in 154.8112 ms
+2025-12-27 09:39:20.122 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 12, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=4930,Timers=10), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:39:20.416 +02:00 [INF] HTTP GET /Admin/CPD/Categories responded 200 in 1567.1094 ms
+2025-12-27 09:39:20.694 +02:00 [INF] HTTP GET /Admin/BadgeSubmissions responded 200 in 1864.6981 ms
+2025-12-27 09:39:20.698 +02:00 [INF] HTTP GET /Admin/Badges responded 200 in 1890.5315 ms
+2025-12-27 09:39:20.716 +02:00 [INF] HTTP GET /Admin/BadgeStatistics responded 200 in 1887.5749 ms
+2025-12-27 09:39:20.855 +02:00 [INF] HTTP GET /Admin/Dashboard responded 200 in 2068.4250 ms
+2025-12-27 09:39:20.883 +02:00 [INF] HTTP GET /Admin/ActivityLogs responded 200 in 452.9893 ms
+2025-12-27 09:39:21.001 +02:00 [INF] HTTP GET /Admin/ActivityLogs/TodayCount responded 200 in 298.7555 ms
+2025-12-27 09:39:21.003 +02:00 [INF] HTTP GET /Admin/ActivityLogs/WeekCount responded 200 in 300.2575 ms
+2025-12-27 09:39:21.127 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 14, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=3,Free=32764,Min=12,Max=32767), POOL: (Threads=8,QueuedItems=0,CompletedItems=5055,Timers=14), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:39:21.617 +02:00 [INF] HTTP GET /Admin/TeacherSubjects/Matrix responded 200 in 721.1738 ms
+2025-12-27 09:39:21.838 +02:00 [INF] HTTP GET /Admin/Dashboard/Enhanced responded 200 in 3044.5183 ms
+2025-12-27 09:39:21.838 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Admin/Dashboard/Enhanced, Method: GET, Time Taken: 3045ms
+2025-12-27 09:39:22.112 +02:00 [INF] HTTP GET /Admin/Evidence/Stats responded 200 in 1250.2798 ms
+2025-12-27 09:39:23.266 +02:00 [INF] HTTP GET /Admin/TeacherSubjects/Analytics responded 200 in 2252.7201 ms
+2025-12-27 09:39:23.497 +02:00 [INF] HTTP GET /Admin/Classes/Dropdown responded 200 in 430.1661 ms
+2025-12-27 09:39:23.657 +02:00 [INF] HTTP GET /User/GetUsers responded 200 in 579.2945 ms
+2025-12-27 09:39:28.603 +02:00 [INF] HTTP GET /Admin/Portfolio/CompletionStats responded 200 in 7880.8757 ms
+2025-12-27 09:39:28.603 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Admin/Portfolio/CompletionStats, Method: GET, Time Taken: 7882ms
+2025-12-27 09:39:37.341 +02:00 [INF] HTTP POST /auth/logout responded 404 in 0.1130 ms
+2025-12-27 09:39:41.743 +02:00 [INF] HTTP POST /user/login responded 200 in 161.4260 ms
+2025-12-27 09:39:46.640 +02:00 [INF] HTTP POST /user/login responded 200 in 337.2131 ms
+2025-12-27 09:39:48.123 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 16, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=5708,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:39:48.784 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 1824.2206 ms
+2025-12-27 09:39:49.122 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 18, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=5744,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:39:49.155 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 200 in 2195.4378 ms
+2025-12-27 09:39:55.437 +02:00 [INF] HTTP GET /Teacher/CPD/ExportCertificate responded 404 in 0.0680 ms
+2025-12-27 09:39:56.366 +02:00 [INF] HTTP GET /Teacher/CPD/ExportCertificate responded 404 in 0.0532 ms
+2025-12-27 09:40:02.008 +02:00 [INF] HTTP GET /Teacher/Classes responded 200 in 1469.2314 ms
+2025-12-27 09:40:04.651 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 438.7742 ms
+2025-12-27 09:40:05.691 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1475.9784 ms
+2025-12-27 09:40:08.529 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 654.1291 ms
+2025-12-27 09:40:08.547 +02:00 [INF] HTTP GET /Teacher/Cpd/Progress responded 200 in 671.7646 ms
+2025-12-27 09:40:08.581 +02:00 [INF] HTTP GET /Teacher/Cpd/Modules responded 200 in 706.3590 ms
+2025-12-27 09:40:11.831 +02:00 [INF] HTTP GET /Teacher/Cpd/Progress responded 200 in 1528.1685 ms
+2025-12-27 09:40:11.831 +02:00 [INF] HTTP GET /Teacher/Cpd/Modules responded 200 in 1528.1776 ms
+2025-12-27 09:40:11.835 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 1532.8022 ms
+2025-12-27 09:40:12.059 +02:00 [INF] HTTP GET /Teacher/Lounge/Announcements responded 200 in 334.2916 ms
+2025-12-27 09:40:15.269 +02:00 [INF] HTTP GET /Teacher/Lounge responded 200 in 3546.0809 ms
+2025-12-27 09:40:15.270 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Teacher/Lounge, Method: GET, Time Taken: 3547ms
+2025-12-27 09:40:16.289 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 287.9726 ms
+2025-12-27 09:40:17.248 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1245.7987 ms
+2025-12-27 09:40:28.825 +02:00 [INF] HTTP GET /Teacher/Classes responded 200 in 1112.1649 ms
+2025-12-27 09:40:31.912 +02:00 [INF] HTTP GET /Teacher/Classes/1449418564485251072/Students responded 200 in 826.5829 ms
+2025-12-27 09:40:34.678 +02:00 [INF] HTTP GET /Teacher/Grades/Student/1449418564489445397 responded 200 in 571.5589 ms
+2025-12-27 09:40:36.575 +02:00 [INF] HTTP GET /Teacher/Classes/1449418564485251072/Students responded 200 in 787.5086 ms
+2025-12-27 09:41:29.591 +02:00 [INF] HTTP GET /Teacher/Lounge/Announcements responded 200 in 305.3615 ms
+2025-12-27 09:41:31.857 +02:00 [INF] HTTP GET /Teacher/Lounge responded 200 in 2570.9585 ms
+2025-12-27 09:42:13.290 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 399.4822 ms
+2025-12-27 09:42:14.112 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1219.6771 ms
+2025-12-27 09:42:17.217 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1214.5287 ms
+2025-12-27 09:42:18.516 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1297.8659 ms
+2025-12-27 09:42:33.182 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1445915232273694720/1449417842356125696 responded 200 in 1520.9275 ms
+2025-12-27 09:42:33.676 +02:00 [INF] HTTP GET /Teacher/Portfolio/Badges responded 200 in 479.6916 ms
+2025-12-27 09:42:39.711 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2338.9005 ms
+2025-12-27 09:42:48.930 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2290.5461 ms
+2025-12-27 09:43:54.889 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449418564485251082 responded 200 in 1472.2097 ms
+2025-12-27 09:44:40.030 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1445915232273694720/1449417842356125696 responded 200 in 1321.5863 ms
+2025-12-27 09:44:40.438 +02:00 [INF] HTTP GET /Teacher/Portfolio/Badges responded 200 in 374.1854 ms
+2025-12-27 09:44:48.927 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 288.8845 ms
+2025-12-27 09:44:49.831 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1190.2763 ms
+2025-12-27 09:44:56.094 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1632.2312 ms
+2025-12-27 09:44:57.177 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1089.1229 ms
+2025-12-27 09:44:57.179 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1082.6616 ms
+2025-12-27 09:44:58.405 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1216.9082 ms
+2025-12-27 09:45:09.141 +02:00 [INF] HTTP GET /Student/Portfolio/Overview responded 200 in 1282.5815 ms
+2025-12-27 09:45:12.098 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449417842356125696 responded 200 in 1363.6582 ms
+2025-12-27 09:45:21.718 +02:00 [INF] HTTP PUT /Student/PortfolioBook/Profile responded 200 in 798.2431 ms
+2025-12-27 09:45:44.146 +02:00 [INF] HTTP PUT /Student/PortfolioBook/Goals responded 200 in 2476.6023 ms
+2025-12-27 09:45:52.862 +02:00 [INF] HTTP PUT /Student/PortfolioBook/LearningStyle responded 200 in 620.2466 ms
+2025-12-27 09:46:07.073 +02:00 [INF] HTTP POST /Student/PortfolioBook/Assignment responded 200 in 480.2151 ms
+2025-12-27 09:46:18.336 +02:00 [INF] HTTP POST /Student/PortfolioBook/Reflection responded 200 in 692.6208 ms
+2025-12-27 09:46:28.266 +02:00 [INF] HTTP POST /Student/PortfolioBook/Journey responded 200 in 650.0576 ms
+2025-12-27 09:46:45.965 +02:00 [INF] HTTP POST /Student/PortfolioBook/Project responded 200 in 401.2216 ms
+2025-12-27 09:46:56.005 +02:00 [INF] HTTP POST /Student/PortfolioBook/Project responded 200 in 656.2973 ms
+2025-12-27 09:47:06.751 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1445915232273694720/1449417842356125696 responded 200 in 1501.9440 ms
+2025-12-27 09:47:09.662 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2020.8095 ms
+2025-12-27 09:47:20.993 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/MapScore responded 200 in 261.8123 ms
+2025-12-27 09:47:39.133 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449417842356125696 responded 200 in 1525.2776 ms
+2025-12-27 09:48:00.601 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2333.3296 ms
+2025-12-27 09:48:09.503 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/MapScore responded 200 in 146.2428 ms
+2025-12-27 09:48:37.670 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2090.9668 ms
+2025-12-27 09:51:58.087 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/ExactPath responded 200 in 1298.5530 ms
+2025-12-27 09:52:06.122 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 20, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=4,QueuedItems=1,CompletedItems=19091,Timers=7), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:52:07.121 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 22, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=5,QueuedItems=0,CompletedItems=19120,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:52:07.436 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449417842356125696 responded 200 in 2126.8272 ms
+2025-12-27 09:52:20.352 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 1787.4629 ms
+2025-12-27 09:53:36.755 +02:00 [INF] APP STARTED
+2025-12-27 09:53:36.755 +02:00 [ERR] Shut down complete
+2025-12-27 09:53:42.093 +02:00 [INF] Starting APP
+2025-12-27 09:54:05.849 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 09:54:06.913 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=348,Timers=8), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:54:07.789 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42P01: relation "PortfolioMapScores" does not exist
+
+POSITION: 254
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Commands.UpdateMapScoreCommandHandler.Handle(UpdateMapScoreCommand request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Commands/UpdateMapScoreCommand.cs:line 22
+   at API.EndPoints.Teacher.PortfolioBook.UpdateMapScoreEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/UpdateMapScoreEndpoint.cs:line 17
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "PortfolioMapScores" does not exist
+    Position: 254
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-12-27 09:54:07.797 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/MapScore responded 401 in 1961.5316 ms
+2025-12-27 09:54:07.906 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=384,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:54:18.136 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42P01: relation "PortfolioMapScores" does not exist
+
+POSITION: 117
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Queries.GetStudentPortfolioBookQueryHandler.Handle(GetStudentPortfolioBookQuery request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Queries/GetStudentPortfolioBookQuery.cs:line 120
+   at API.EndPoints.Teacher.PortfolioBook.GetStudentPortfolioBookEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/GetStudentPortfolioBookEndpoint.cs:line 20
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "PortfolioMapScores" does not exist
+    Position: 117
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-12-27 09:54:18.144 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 401 in 3091.4759 ms
+2025-12-27 09:54:18.147 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696, Method: GET, Time Taken: 3099ms
+2025-12-27 09:55:06.702 +02:00 [INF] HTTP POST /user/login responded 200 in 236.4752 ms
+2025-12-27 09:55:16.527 +02:00 [INF] HTTP POST /user/login responded 200 in 221.9757 ms
+2025-12-27 09:55:17.903 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 8, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=5,QueuedItems=0,CompletedItems=1839,Timers=7), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:55:18.901 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 10, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=3,Free=32764,Min=12,Max=32767), POOL: (Threads=5,QueuedItems=1,CompletedItems=1874,Timers=9), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 09:55:19.159 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 200 in 2137.7067 ms
+2025-12-27 09:55:19.641 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 2613.2676 ms
+2025-12-27 09:55:24.318 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 888.4640 ms
+2025-12-27 09:55:24.930 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1499.8885 ms
+2025-12-27 09:55:27.438 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1322.5382 ms
+2025-12-27 09:55:28.567 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1126.6754 ms
+2025-12-27 09:55:29.006 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1449418564489445397/1449417842356125696 responded 200 in 1436.7451 ms
+2025-12-27 09:55:29.426 +02:00 [INF] HTTP GET /Teacher/Portfolio/Badges responded 200 in 407.8201 ms
+2025-12-27 09:55:30.030 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 322.2433 ms
+2025-12-27 09:55:31.066 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1357.0023 ms
+2025-12-27 09:55:35.159 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1545.4801 ms
+2025-12-27 09:55:36.367 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1205.3190 ms
+2025-12-27 09:55:40.776 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1445915232273694720/1449417842356125696 responded 200 in 1146.0802 ms
+2025-12-27 09:55:43.917 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2076.3642 ms
+2025-12-27 09:55:54.835 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42703: column p.CompanyID does not exist
+
+POSITION: 16
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Commands.UpdateMapScoreCommandHandler.Handle(UpdateMapScoreCommand request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Commands/UpdateMapScoreCommand.cs:line 22
+   at API.EndPoints.Teacher.PortfolioBook.UpdateMapScoreEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/UpdateMapScoreEndpoint.cs:line 17
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column p.CompanyID does not exist
+    Position: 16
+    File: parse_relation.c
+    Line: 3716
+    Routine: errorMissingColumn
+2025-12-27 09:55:54.843 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/MapScore responded 401 in 483.2342 ms
+2025-12-27 09:57:06.557 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2550.3888 ms
+2025-12-27 09:57:15.784 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42703: column p.CompanyID does not exist
+
+POSITION: 16
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Commands.UpdateMapScoreCommandHandler.Handle(UpdateMapScoreCommand request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Commands/UpdateMapScoreCommand.cs:line 22
+   at API.EndPoints.Teacher.PortfolioBook.UpdateMapScoreEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/UpdateMapScoreEndpoint.cs:line 17
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column p.CompanyID does not exist
+    Hint: Perhaps you meant to reference the column "p.CompnayID".
+    Position: 16
+    File: parse_relation.c
+    Line: 3723
+    Routine: errorMissingColumn
+2025-12-27 09:57:15.798 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/MapScore responded 401 in 365.3940 ms
+2025-12-27 09:57:37.302 +02:00 [INF] APP STARTED
+2025-12-27 09:57:37.302 +02:00 [ERR] Shut down complete
+2025-12-27 10:01:05.543 +02:00 [INF] Starting APP
+2025-12-27 10:01:29.161 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 10:01:30.239 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=351,Timers=8), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:01:31.225 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=3,Free=32764,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=387,Timers=8), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:01:33.380 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42703: column p.RowVersion does not exist
+
+POSITION: 314
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Queries.GetStudentPortfolioBookQueryHandler.Handle(GetStudentPortfolioBookQuery request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Queries/GetStudentPortfolioBookQuery.cs:line 137
+   at API.EndPoints.Teacher.PortfolioBook.GetStudentPortfolioBookEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/GetStudentPortfolioBookEndpoint.cs:line 20
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column p.RowVersion does not exist
+    Position: 314
+    File: parse_relation.c
+    Line: 3716
+    Routine: errorMissingColumn
+2025-12-27 10:01:33.389 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 401 in 4229.9330 ms
+2025-12-27 10:01:33.399 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696, Method: GET, Time Taken: 4303ms
+2025-12-27 10:01:45.582 +02:00 [INF] HTTP POST /user/login responded 200 in 400.6133 ms
+2025-12-27 10:01:47.227 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 8, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=4,Free=32763,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=1,CompletedItems=812,Timers=7), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:01:48.009 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 2136.5338 ms
+2025-12-27 10:01:48.224 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 10, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=852,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:01:49.819 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 200 in 3942.2239 ms
+2025-12-27 10:01:49.821 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Teacher/Dashboard, Method: GET, Time Taken: 3952ms
+2025-12-27 10:01:51.470 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 342.7978 ms
+2025-12-27 10:01:52.457 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1326.3948 ms
+2025-12-27 10:01:55.219 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1260.7362 ms
+2025-12-27 10:01:56.492 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1268.9413 ms
+2025-12-27 10:02:03.024 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1445915232273694720/1449417842356125696 responded 200 in 1767.0430 ms
+2025-12-27 10:02:03.377 +02:00 [INF] HTTP GET /Teacher/Portfolio/Badges responded 200 in 337.4043 ms
+2025-12-27 10:02:15.097 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42703: column p.RowVersion does not exist
+
+POSITION: 314
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Queries.GetStudentPortfolioBookQueryHandler.Handle(GetStudentPortfolioBookQuery request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Queries/GetStudentPortfolioBookQuery.cs:line 137
+   at API.EndPoints.Teacher.PortfolioBook.GetStudentPortfolioBookEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/GetStudentPortfolioBookEndpoint.cs:line 20
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column p.RowVersion does not exist
+    Position: 314
+    File: parse_relation.c
+    Line: 3716
+    Routine: errorMissingColumn
+2025-12-27 10:02:15.107 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 401 in 2754.3136 ms
+2025-12-27 10:02:50.162 +02:00 [INF] APP STARTED
+2025-12-27 10:02:50.163 +02:00 [ERR] Shut down complete
+2025-12-27 10:02:55.720 +02:00 [INF] Starting APP
+2025-12-27 10:03:26.711 +02:00 [INF] APP STARTED
+2025-12-27 10:03:26.712 +02:00 [ERR] Shut down complete
+2025-12-27 10:03:29.947 +02:00 [INF] Starting APP
+2025-12-27 10:03:58.726 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 10:03:59.805 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=426,Timers=8), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:04:00.794 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=462,Timers=8), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:04:03.190 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42703: column p.TTL does not exist
+
+POSITION: 344
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Queries.GetStudentPortfolioBookQueryHandler.Handle(GetStudentPortfolioBookQuery request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Queries/GetStudentPortfolioBookQuery.cs:line 137
+   at API.EndPoints.Teacher.PortfolioBook.GetStudentPortfolioBookEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/GetStudentPortfolioBookEndpoint.cs:line 20
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column p.TTL does not exist
+    Position: 344
+    File: parse_relation.c
+    Line: 3716
+    Routine: errorMissingColumn
+2025-12-27 10:04:03.203 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 401 in 4477.4594 ms
+2025-12-27 10:04:03.214 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696, Method: GET, Time Taken: 4501ms
+2025-12-27 10:04:16.143 +02:00 [INF] APP STARTED
+2025-12-27 10:04:16.143 +02:00 [ERR] Shut down complete
+2025-12-27 10:04:21.314 +02:00 [INF] Starting APP
+2025-12-27 10:04:41.003 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 10:04:41.622 +02:00 [INF] HTTP POST /user/login responded 200 in 627.5048 ms
+2025-12-27 10:04:41.918 +02:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "RowVersion" of relation "Token" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "RowVersion" of relation "Token" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: Identity
+    TableName: Token
+    ColumnName: RowVersion
+    File: execMain.c
+    Line: 2032
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Domain.UnitOfWork.UnitOfWork.SaveChangesAsync() in /home/eslam/Downloads/School-Hub-v2/Back-End/Domain/UnitOfWork/UnitOfWork.cs:line 29
+   at API.Middlewares.TransactionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/TransactionMiddleware.cs:line 30
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.UserStateInitializerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/UserStateInitializerMiddleware.cs:line 40
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.SlowRequestLoggingMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/SlowRequestLoggingMiddleware.cs:line 24
+   at API.Middlewares.RequestTimeoutMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/RequestTimeoutMiddleware.cs:line 44
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at API.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/GlobalExceptionMiddleware.cs:line 20
+2025-12-27 10:04:43.167 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=348,Timers=9), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:04:43.427 +02:00 [WRN] Token 1454384481291993088 not found in database or is invalid
+2025-12-27 10:04:43.428 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 401 in 1371.5907 ms
+2025-12-27 10:04:44.154 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=378,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:04:44.558 +02:00 [WRN] Token 1454384481291993088 not found in database or is invalid
+2025-12-27 10:04:44.559 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 401 in 2507.8405 ms
+2025-12-27 10:07:39.963 +02:00 [INF] HTTP POST /user/login responded 200 in 214.3160 ms
+2025-12-27 10:07:46.996 +02:00 [INF] HTTP POST /user/login responded 200 in 221.0615 ms
+2025-12-27 10:07:52.123 +02:00 [INF] HTTP POST /user/login responded 200 in 282.5558 ms
+2025-12-27 10:07:52.283 +02:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "RowVersion" of relation "Token" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "RowVersion" of relation "Token" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: Identity
+    TableName: Token
+    ColumnName: RowVersion
+    File: execMain.c
+    Line: 2032
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Domain.UnitOfWork.UnitOfWork.SaveChangesAsync() in /home/eslam/Downloads/School-Hub-v2/Back-End/Domain/UnitOfWork/UnitOfWork.cs:line 29
+   at API.Middlewares.TransactionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/TransactionMiddleware.cs:line 30
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.UserStateInitializerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/UserStateInitializerMiddleware.cs:line 40
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.SlowRequestLoggingMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/SlowRequestLoggingMiddleware.cs:line 24
+   at API.Middlewares.RequestTimeoutMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/RequestTimeoutMiddleware.cs:line 44
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at API.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/GlobalExceptionMiddleware.cs:line 20
+2025-12-27 10:07:53.157 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 8, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=5,QueuedItems=0,CompletedItems=3806,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:07:53.307 +02:00 [WRN] Token 1454385280801832960 not found in database or is invalid
+2025-12-27 10:07:53.308 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 401 in 959.9126 ms
+2025-12-27 10:07:53.308 +02:00 [WRN] Token 1454385280801832960 not found in database or is invalid
+2025-12-27 10:07:53.309 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 401 in 958.1244 ms
+2025-12-27 10:07:54.153 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 10, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=3,Free=32764,Min=12,Max=32767), POOL: (Threads=5,QueuedItems=0,CompletedItems=3828,Timers=5), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:07:58.209 +02:00 [INF] APP STARTED
+2025-12-27 10:07:58.209 +02:00 [ERR] Shut down complete
+2025-12-27 10:08:01.945 +02:00 [INF] Starting APP
+2025-12-27 10:08:19.641 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 10:08:20.299 +02:00 [INF] HTTP POST /user/login responded 200 in 666.6257 ms
+2025-12-27 10:08:20.561 +02:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "RowVersion" of relation "Token" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "RowVersion" of relation "Token" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: Identity
+    TableName: Token
+    ColumnName: RowVersion
+    File: execMain.c
+    Line: 2032
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Domain.UnitOfWork.UnitOfWork.SaveChangesAsync() in /home/eslam/Downloads/School-Hub-v2/Back-End/Domain/UnitOfWork/UnitOfWork.cs:line 29
+   at API.Middlewares.TransactionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/TransactionMiddleware.cs:line 30
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.UserStateInitializerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/UserStateInitializerMiddleware.cs:line 40
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.SlowRequestLoggingMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/SlowRequestLoggingMiddleware.cs:line 24
+   at API.Middlewares.RequestTimeoutMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/RequestTimeoutMiddleware.cs:line 44
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at API.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/GlobalExceptionMiddleware.cs:line 20
+2025-12-27 10:08:21.711 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=12,QueuedItems=0,CompletedItems=304,Timers=9), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:08:21.959 +02:00 [WRN] Token 1454385398556917760 not found in database or is invalid
+2025-12-27 10:08:21.960 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 401 in 1348.9888 ms
+2025-12-27 10:08:22.696 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=4,Free=32763,Min=12,Max=32767), POOL: (Threads=12,QueuedItems=0,CompletedItems=335,Timers=8), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:08:22.913 +02:00 [WRN] Token 1454385398556917760 not found in database or is invalid
+2025-12-27 10:08:22.915 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 401 in 2299.0101 ms
+2025-12-27 10:09:18.131 +02:00 [INF] HTTP POST /user/login responded 200 in 283.1741 ms
+2025-12-27 10:09:18.274 +02:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "RowVersion" of relation "Token" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "RowVersion" of relation "Token" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: Identity
+    TableName: Token
+    ColumnName: RowVersion
+    File: execMain.c
+    Line: 2032
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Domain.UnitOfWork.UnitOfWork.SaveChangesAsync() in /home/eslam/Downloads/School-Hub-v2/Back-End/Domain/UnitOfWork/UnitOfWork.cs:line 29
+   at API.Middlewares.TransactionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/TransactionMiddleware.cs:line 30
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.UserStateInitializerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/UserStateInitializerMiddleware.cs:line 40
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.SlowRequestLoggingMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/SlowRequestLoggingMiddleware.cs:line 24
+   at API.Middlewares.RequestTimeoutMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/RequestTimeoutMiddleware.cs:line 44
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at API.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/GlobalExceptionMiddleware.cs:line 20
+2025-12-27 10:09:19.698 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 8, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=5,QueuedItems=0,CompletedItems=1537,Timers=7), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:09:19.869 +02:00 [WRN] Token 1454385641566502912 not found in database or is invalid
+2025-12-27 10:09:19.869 +02:00 [WRN] Token 1454385641566502912 not found in database or is invalid
+2025-12-27 10:09:19.870 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 401 in 1543.7146 ms
+2025-12-27 10:09:19.870 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 401 in 1538.9485 ms
+2025-12-27 10:09:20.696 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 10, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=5,QueuedItems=0,CompletedItems=1561,Timers=4), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:10:22.806 +02:00 [INF] APP STARTED
+2025-12-27 10:10:22.806 +02:00 [ERR] Shut down complete
+2025-12-27 10:10:26.791 +02:00 [INF] Starting APP
+2025-12-27 10:10:47.091 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 10:10:47.740 +02:00 [INF] HTTP POST /user/login responded 200 in 656.4220 ms
+2025-12-27 10:10:48.054 +02:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "RowVersion" of relation "Token" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "RowVersion" of relation "Token" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: Identity
+    TableName: Token
+    ColumnName: RowVersion
+    File: execMain.c
+    Line: 2032
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Domain.UnitOfWork.UnitOfWork.SaveChangesAsync() in /home/eslam/Downloads/School-Hub-v2/Back-End/Domain/UnitOfWork/UnitOfWork.cs:line 29
+   at API.Middlewares.TransactionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/TransactionMiddleware.cs:line 30
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.UserStateInitializerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/UserStateInitializerMiddleware.cs:line 40
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.SlowRequestLoggingMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/SlowRequestLoggingMiddleware.cs:line 24
+   at API.Middlewares.RequestTimeoutMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/RequestTimeoutMiddleware.cs:line 44
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at API.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/GlobalExceptionMiddleware.cs:line 20
+2025-12-27 10:10:49.721 +02:00 [ERR] Cache backend read failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HGET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 4, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=364,Timers=9), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.Microsoft.Extensions.Caching.Distributed.IBufferDistributedCache.TryGetAsync(String key, IBufferWriter`1 destination, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.<GetFromL2DirectAsync>g__AwaitedBuffersAsync|47_1(ValueTask`1 pending, RecyclableArrayBufferWriter`1 writer)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:10:50.000 +02:00 [WRN] Token 1454386016977682432 not found in database or is invalid
+2025-12-27 10:10:50.000 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 401 in 1884.8733 ms
+2025-12-27 10:10:50.689 +02:00 [ERR] Cache backend write failure.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (500ms) - Last Connection Exception: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041, command=HMSET, timeout: 500, inst: 0, qu: 1, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 6, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: eslam-Dell-G15-5510(SE.Redis-v2.9.25.3041), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=12,Max=32767), POOL: (Threads=11,QueuedItems=0,CompletedItems=393,Timers=6), v: 2.9.25.3041 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: UnableToConnect on localhost:6379/Interactive, Initializing/NotStarted, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.9.25.3041
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.SetImplAsync(String key, ReadOnlySequence`1 value, DistributedCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.WritePayloadAsync(String key, CacheItem cacheItem, BufferChunk payload, HybridCacheEntryOptions options, CancellationToken token)
+   at Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache.StampedeState`2.BackgroundFetchAsync()
+2025-12-27 10:10:51.104 +02:00 [WRN] Token 1454386016977682432 not found in database or is invalid
+2025-12-27 10:10:51.105 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 401 in 2992.3651 ms
+2025-12-27 10:11:49.708 +02:00 [INF] APP STARTED
+2025-12-27 10:11:49.709 +02:00 [ERR] Shut down complete
+2025-12-27 10:11:52.973 +02:00 [INF] Starting APP
+2025-12-27 10:12:24.069 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 10:12:24.658 +02:00 [INF] HTTP POST /user/login responded 200 in 597.2301 ms
+2025-12-27 10:12:35.566 +02:00 [INF] HTTP POST /user/login responded 200 in 325.7876 ms
+2025-12-27 10:12:35.831 +02:00 [ERR] An unhandled exception occurred.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "RowVersion" of relation "Token" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "RowVersion" of relation "Token" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: Identity
+    TableName: Token
+    ColumnName: RowVersion
+    File: execMain.c
+    Line: 2032
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at API.Domain.UnitOfWork.UnitOfWork.SaveChangesAsync() in /home/eslam/Downloads/School-Hub-v2/Back-End/Domain/UnitOfWork/UnitOfWork.cs:line 29
+   at API.Middlewares.TransactionMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/TransactionMiddleware.cs:line 30
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.UserStateInitializerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/UserStateInitializerMiddleware.cs:line 40
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at API.Middlewares.SlowRequestLoggingMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/SlowRequestLoggingMiddleware.cs:line 24
+   at API.Middlewares.RequestTimeoutMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/RequestTimeoutMiddleware.cs:line 44
+   at Microsoft.AspNetCore.ResponseCompression.ResponseCompressionMiddleware.InvokeCore(HttpContext context)
+   at API.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in /home/eslam/Downloads/School-Hub-v2/Back-End/Middlewares/GlobalExceptionMiddleware.cs:line 20
+2025-12-27 10:12:36.154 +02:00 [WRN] Token 1454386469324980224 not found in database or is invalid
+2025-12-27 10:12:36.155 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 401 in 261.1435 ms
+2025-12-27 10:12:37.107 +02:00 [WRN] Token 1454386469324980224 not found in database or is invalid
+2025-12-27 10:12:37.108 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 401 in 1214.9067 ms
+2025-12-27 10:13:18.049 +02:00 [INF] APP STARTED
+2025-12-27 10:13:18.050 +02:00 [ERR] Shut down complete
+2025-12-27 10:15:09.296 +02:00 [INF] Starting APP
+2025-12-27 10:15:15.347 +02:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-12-27 10:15:15.977 +02:00 [INF] HTTP POST /user/login responded 200 in 637.6556 ms
+2025-12-27 10:15:17.128 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 851.3191 ms
+2025-12-27 10:15:18.541 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 200 in 2267.5636 ms
+2025-12-27 10:15:26.356 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 461.0542 ms
+2025-12-27 10:15:26.367 +02:00 [INF] HTTP GET /Teacher/Cpd/Modules responded 200 in 471.2853 ms
+2025-12-27 10:15:27.102 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 381.1173 ms
+2025-12-27 10:15:27.612 +02:00 [INF] HTTP GET /Teacher/Cpd/Progress responded 200 in 1716.3877 ms
+2025-12-27 10:15:28.048 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1325.8200 ms
+2025-12-27 10:15:29.669 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1334.0967 ms
+2025-12-27 10:15:31.201 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1529.6536 ms
+2025-12-27 10:15:37.683 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1445915232273694720/1449417842356125696 responded 200 in 1696.5114 ms
+2025-12-27 10:15:38.082 +02:00 [INF] HTTP GET /Teacher/Portfolio/Badges responded 200 in 385.8986 ms
+2025-12-27 10:15:42.607 +02:00 [ERR] Error in JWT endpoint filter
+Npgsql.PostgresException (0x80004005): 42703: column p.UpdatedAt does not exist
+
+POSITION: 344
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at API.Application.Features.Teacher.PortfolioBook.Queries.GetStudentPortfolioBookQueryHandler.Handle(GetStudentPortfolioBookQuery request, CancellationToken cancellationToken) in /home/eslam/Downloads/School-Hub-v2/Back-End/Application/Features/Teacher/PortfolioBook/Queries/GetStudentPortfolioBookQuery.cs:line 137
+   at API.EndPoints.Teacher.PortfolioBook.GetStudentPortfolioBookEndpoint.<>c.<<RegisterEndpoints>b__0_0>d.MoveNext() in /home/eslam/Downloads/School-Hub-v2/Back-End/EndPoints/Teacher/PortfolioBook/GetStudentPortfolioBookEndpoint.cs:line 20
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<TaskOfTToValueTaskOfObject>g__ExecuteAwaited|91_0[T](Task`1 task)
+   at API.Filters.TeacherRoleFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/TeacherRoleFilter.cs:line 24
+   at API.Filters.JwtEndpointFilter.InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next) in /home/eslam/Downloads/School-Hub-v2/Back-End/Filters/JwtEndpointFilter.cs:line 74
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column p.UpdatedAt does not exist
+    Hint: Perhaps you meant to reference the column "p.CreatedAt".
+    Position: 344
+    File: parse_relation.c
+    Line: 3723
+    Routine: errorMissingColumn
+2025-12-27 10:15:42.631 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 401 in 2638.6666 ms
+2025-12-27 10:16:48.063 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2425.0668 ms
+2025-12-27 10:16:58.106 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/MapScore responded 200 in 771.0540 ms
+2025-12-27 10:17:05.892 +02:00 [INF] HTTP POST /auth/logout responded 404 in 0.4030 ms
+2025-12-27 10:17:08.283 +02:00 [INF] HTTP POST /user/login responded 400 in 42.2297 ms
+2025-12-27 10:17:13.794 +02:00 [INF] HTTP POST /user/login responded 200 in 155.6854 ms
+2025-12-27 10:17:14.364 +02:00 [INF] HTTP GET /Student/Activity/Streak responded 200 in 291.4790 ms
+2025-12-27 10:17:14.835 +02:00 [INF] HTTP GET /Student/Portfolio/Overview responded 200 in 772.5691 ms
+2025-12-27 10:17:15.892 +02:00 [INF] HTTP GET /Student/Progress/LearningHours responded 200 in 1815.2533 ms
+2025-12-27 10:17:18.405 +02:00 [INF] HTTP GET /Student/Dashboard responded 200 in 4334.5041 ms
+2025-12-27 10:17:18.408 +02:00 [WRN] ⚠️ Slow Request Detected! Path: /Student/Dashboard, Method: GET, Time Taken: 4336ms
+2025-12-27 10:17:20.589 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449417842356125696 responded 200 in 2325.5933 ms
+2025-12-27 10:17:39.427 +02:00 [INF] HTTP POST /auth/logout responded 404 in 0.1784 ms
+2025-12-27 10:17:47.736 +02:00 [INF] HTTP POST /user/login responded 200 in 220.2818 ms
+2025-12-27 10:17:48.518 +02:00 [INF] HTTP GET /Teacher/CPD/Hours responded 200 in 463.8932 ms
+2025-12-27 10:17:49.058 +02:00 [INF] HTTP GET /Teacher/Dashboard responded 200 in 1003.9414 ms
+2025-12-27 10:17:52.468 +02:00 [INF] HTTP GET /Teacher/Portfolio/MySubjects responded 200 in 395.0893 ms
+2025-12-27 10:17:53.484 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1411.3538 ms
+2025-12-27 10:17:56.536 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1498.8308 ms
+2025-12-27 10:17:57.765 +02:00 [INF] HTTP GET /Teacher/Portfolio/MyStudents responded 200 in 1226.5351 ms
+2025-12-27 10:18:03.602 +02:00 [INF] HTTP GET /Teacher/Portfolio/Student/1445915232273694720/1449417842356125696 responded 200 in 1631.5132 ms
+2025-12-27 10:18:03.941 +02:00 [INF] HTTP GET /Teacher/Portfolio/Badges responded 200 in 303.2641 ms
+2025-12-27 10:18:09.025 +02:00 [INF] HTTP GET /Teacher/PortfolioBook/Student/1445915232273694720/1449417842356125696 responded 200 in 2609.0128 ms
+2025-12-27 10:18:25.732 +02:00 [INF] HTTP PUT /Teacher/PortfolioBook/ExactPath responded 200 in 660.4368 ms
+2025-12-27 10:18:34.118 +02:00 [INF] HTTP GET /Student/PortfolioBook/1449417842356125696 responded 200 in 2260.0987 ms

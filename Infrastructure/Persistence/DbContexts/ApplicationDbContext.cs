@@ -9,6 +9,8 @@ using API.Domain.Entities.Teacher;
 using API.Domain.Entities.Academic;
 using API.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Text.Json;
 using BadgesEntity = API.Domain.Entities.Gamification.Badges;
 using UserBadgesEntity = API.Domain.Entities.Users.Badges;
 
@@ -48,8 +50,15 @@ public class ApplicationDbContext : DbContext
     public DbSet<PortfolioReflections> PortfolioReflections { get; set; }
     public DbSet<PortfolioLikes> PortfolioLikes { get; set; }
     public DbSet<PortfolioStatus> PortfolioStatus { get; set; }
+    public DbSet<PortfolioBookProfile> PortfolioBookProfiles { get; set; }
+    public DbSet<PortfolioBookGoals> PortfolioBookGoals { get; set; }
+    public DbSet<PortfolioBookLearningStyle> PortfolioBookLearningStyles { get; set; }
+    public DbSet<PortfolioBookAssignment> PortfolioBookAssignments { get; set; }
     public DbSet<PortfolioBookReflection> PortfolioBookReflections { get; set; }
     public DbSet<PortfolioBookJourneyEntry> PortfolioBookJourneyEntries { get; set; }
+    public DbSet<PortfolioBookProject> PortfolioBookProjects { get; set; }
+    public DbSet<PortfolioMapScore> PortfolioMapScores { get; set; }
+    public DbSet<PortfolioExactPath> PortfolioExactPaths { get; set; }
     public DbSet<TeacherFeedback> TeacherFeedback { get; set; }
     
     // System
@@ -116,6 +125,22 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<WeeklyChallenges>()
             .Property(e => e.ResourceLinks)
             .HasColumnType("jsonb");
+
+        modelBuilder.Entity<PortfolioBookProject>()
+            .Property(e => e.FileUrls)
+            .HasColumnType("jsonb")
+            .HasConversion(
+                v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
+                v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions?)null) ?? new List<string>()
+            );
+
+        modelBuilder.Entity<PortfolioExactPath>()
+            .Property(e => e.GrammarFocusAreas)
+            .HasColumnType("jsonb")
+            .HasConversion(
+                v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
+                v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions?)null) ?? new List<string>()
+            );
 
         // Academic - Exercises Attachments
         modelBuilder.Entity<Exercises>()
